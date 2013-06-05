@@ -38,8 +38,13 @@
 |
 */
 
-$route['default_controller'] = "arena";
+$route['default_controller'] = "startup";
 $route['404_override'] = '';
+
+
+$route['login'] = "login/index";
+$route['logout'] = "login/logout";
+
 
 
 /* End of file routes.php */
