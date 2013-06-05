@@ -5,6 +5,5 @@ class Main extends CI_Controller {
 	public function index()
 	{
         echo "main page";
-		//$this->load->view('welcome_message');
 	}
 }
