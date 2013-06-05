@@ -23,7 +23,8 @@ class Arena extends CI_Controller {
         }
 
         $data['user'] = $user_data;
-        $this->load->view('arena');
+        $data['header'] = $this->load->view('headers', null, true);
+        $this->load->view('arena', $data);
 	}
 }
 
