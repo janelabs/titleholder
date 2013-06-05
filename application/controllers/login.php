@@ -10,7 +10,7 @@ class Login extends CI_Controller {
 	public function index()
 	{
         if ($this->session->userdata('auth') === true) {
-            redirect(base_url() . 'main');
+            redirect(site_url() . 'main');
         }
 
         $post = $this->input->post();
@@ -38,6 +38,6 @@ class Login extends CI_Controller {
     {
         $auth = array('userid' => '','username' => '','auth' => '');
         $this->session->unset_userdata($auth);
-        redirect(base_url() . 'login');
+        redirect(site_url() . 'login');
     }
 }

@@ -7,7 +7,7 @@ class Main extends CI_Controller {
         parent::__construct();
 
         if ($this->session->userdata('auth') !== true) {
-            redirect(base_url() . 'login');
+            redirect(site_url() . 'login');
         }
     }
 
