@@ -20,7 +20,7 @@ class Main extends CI_Controller {
         if ($user) {
 
             // calculate level based on experience
-            $level = 0;
+            $level = $this->users->get_userlevel($user->xp);
 
             $data = array(
                 'user_id' => $user->id,
@@ -31,7 +31,8 @@ class Main extends CI_Controller {
                 'user_def' => $user->defense + $user->pet_defense,
                 'user_lvl' => $level,
                 'pet_id' => $user->pet_id,
-                'pet_img' => $user->pet_name
+                'pet_img' => $user->pet_name,
+                'required_xp' => $this->users->required_xp($level)
             );
 
         } else {

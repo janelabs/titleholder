@@ -24,4 +24,27 @@ class Users extends CI_Model {
         return ($user) ? $user : false;
     }
 
+    public function get_userlevel($exp)
+    {
+        $level = $this->db
+            ->where('needed_xp <=', $exp)
+            ->order_by('level_id','desc')
+            ->limit(1)
+            ->get('levels')
+            ->row();
+
+         return ($level) ? $level->level_id : 0;
+    }
+
+    public function required_xp($current_level)
+    {
+        $base = 10;
+        $ratio = 3;
+
+        $previous_xp = ($base * $ratio * ($current_level - 1));
+        $required_xp = ($base * $ratio * $current_level) + $previous_xp;
+
+        return $required_xp;
+    }
+
 }
