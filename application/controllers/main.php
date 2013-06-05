@@ -2,9 +2,19 @@
 
 class Main extends CI_Controller {
 
+    public function __construct()
+    {
+        parent::__construct();
+
+        if ($this->session->userdata('auth') !== true) {
+            redirect(base_url() . 'login');
+        }
+    }
+
+
 	public function index()
 	{
         echo "main page";
-		//$this->load->view('welcome_message');
+        exit;
 	}
 }
