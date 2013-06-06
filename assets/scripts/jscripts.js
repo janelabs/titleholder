@@ -17,7 +17,12 @@ $(document).ready(function(){
                 });
             } else {
                 $('#'+form+'_message').html(data.message);
-                // redirect next ??
+
+                if(data.success) {
+                    setTimeout(function(){
+                        window.location.href = data.location;
+                    },2000);
+                }
             }
 
         },'json');

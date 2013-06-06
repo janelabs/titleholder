@@ -57,9 +57,12 @@ class Register extends CI_Controller {
 
                     if($user) {
                         $data['status'] = 1;
-                        $data['message'] = 'Registration successful!';
+                        $data['success'] = true;
+                        $data['message'] = 'Registration successful! Redirecting';
+                        $data['location'] = site_url('login');
                     } else {
                         $data['status'] = 1;
+                        $data['success'] = false;
                         $data['message'] = 'Unable to add user!';
                     }
 

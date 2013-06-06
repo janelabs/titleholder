@@ -42,11 +42,15 @@ class Login extends CI_Controller {
 
                     $this->session->set_userdata($auth);
 
-                    redirect(base_url() . 'main');
+                    $data['status'] = 1;
+                    $data['success'] = true;
+                    $data['message'] = 'Login Successful! Redirecting...';
+                    $data['location'] = site_url('main');
 
                 } else {
 
                     $data['status'] = 1;
+                    $data['success'] = false;
                     $data['message'] = 'Login failed';
 
                 }
