@@ -17,6 +17,7 @@ class Login extends CI_Controller {
 
         if(!$post) {
 
+            $this->load->view('headers');
             $this->load->view('login/index');
 
         } else {
@@ -51,6 +52,8 @@ class Login extends CI_Controller {
                 }
 
             }
+
+            echo json_encode($data);
 
         }
 	}

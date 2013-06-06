@@ -6,6 +6,7 @@ $(document).ready(function(){
         var action = $(this).attr('action');
 
         $('#'+form+'_message').html('Processing...');
+        $('.vspan').empty();
 
         $.post(action,param,function(data){
 

@@ -4,19 +4,19 @@
 
     <div>
         <input type="text" name="username" placeholder="Username" />
-        <span id="username"></span>
+        <span id="username" class="vspan"></span>
     </div>
     <div>
         <input type="password" name="password" placeholder="Password" />
-        <span id="password"></span>
+        <span id="password" class="vspan"></span>
     </div>
     <div>
         <input type="password" name="pwordconf" placeholder="Confirm Password" />
-        <span id="pwordconf"></span>
+        <span id="pwordconf" class="vspan"></span>
     </div>
     <div>
         <input type="text" name="email" placeholder="Email Address" />
-        <span id="email"></span>
+        <span id="email" class="vspan"></span>
     </div>
     <div>
         <span id="avatar"></span>
