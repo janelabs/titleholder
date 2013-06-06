@@ -15,10 +15,7 @@ class Users extends CI_Model {
     public function get_userdata($userid)
     {
         $user = $this->db
-            ->select("users.*", false)
-            ->select('pets.*', false)
-            ->join('pets', 'pets.pet_id = users.pet_id')
-            ->get_where('users',array('id' => $userid))
+            ->get_where('user_data',array('id' => $userid))
             ->row();
 
         return ($user) ? $user : false;

@@ -6,6 +6,9 @@
     <canvas id="canvas_rpg" width="640px" height="480px" style="margin-top: 10;"></canvas>
 
     <input type="hidden" id="hcore" value="<?php echo base_url('assets/scripts/rpgJs/core/'); ?>" />
+    <input type="hidden" id="avatar_file" value="<?php echo $user->avatar_filename; ?>" />
+
+    <input type="hidden" id="site_url" value="<?php echo site_url(); ?>" />
     </body>
 </html>
 
