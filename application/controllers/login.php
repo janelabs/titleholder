@@ -16,21 +16,42 @@ class Login extends CI_Controller {
         $post = $this->input->post();
 
         if(!$post) {
+
             $this->load->view('login/index');
+
         } else {
-            $user = $this->users->check_login($post['email'],$post['password']);
 
-            if ($user) {
-                $auth = array(
-                    'userid'       => $user->id,
-                    'username' => $user->name,
-                    'auth'         => true,
-                );
+            $data['status'] = 0;
 
-                $this->session->set_userdata($auth);
+            if($this->form_validation->run('login') == FALSE) {
 
-                redirect(base_url() . 'main');
+                $data['errors'] = $this->form_validation->errors();
+
+            } else {
+
+                $user = $this->users->check_login($post['email'],$post['password']);
+
+                if ($user) {
+
+                    $auth = array(
+                        'userid'       => $user->id,
+                        'username' => $user->name,
+                        'auth'         => true,
+                    );
+
+                    $this->session->set_userdata($auth);
+
+                    redirect(base_url() . 'main');
+
+                } else {
+
+                    $data['status'] = 1;
+                    $data['message'] = 'Login failed';
+
+                }
+
             }
+
         }
 	}
 

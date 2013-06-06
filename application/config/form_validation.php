@@ -1,7 +1,6 @@
 <?php
 
 $config = array(
-
     'signup' => array(
         array(
             'field'   => 'username',
@@ -32,6 +31,18 @@ $config = array(
             'field'   => 'avatar',
             'label'   => 'Character',
             'rules'   => 'trim|callback__avatar_required'
+        )
+    ),
+    'login' => array(
+        array(
+            'field'   => 'email',
+            'label'   => 'Email Address',
+            'rules'   => 'trim|required|valid_email'
+        ),
+        array(
+            'field'   => 'password',
+            'label'   => 'Password',
+            'rules'   => 'trim|required'
         )
     )
 );
