@@ -35,7 +35,6 @@ class Users extends CI_Model {
 
     public function needed_xp($current_level)
     {
-        $this->output->enable_profiler(true);
         $required_xp = $this->db
             ->where('level_id >=',$current_level)
             ->order_by('level_id','asc')
