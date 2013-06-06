@@ -3,7 +3,7 @@
 <html>
 <head>
     <title>TitleHolder</title>
-
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/scripts/bootstrap/css/bootstrap.min.css'); ?>" />
     <script type="text/javascript" src="<?php echo base_url('assets/scripts/jquery.js'); ?>"></script>
     <script type="text/javascript" src="<?php echo base_url('assets/scripts/rpgJs/rpg-beta-2.js'); ?>"></script>
 </head>

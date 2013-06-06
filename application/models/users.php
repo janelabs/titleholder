@@ -15,10 +15,7 @@ class Users extends CI_Model {
     public function get_userdata($userid)
     {
         $user = $this->db
-            ->select("users.*", false)
-            ->select('pets.*', false)
-            ->join('pets', 'pets.pet_id = users.pet_id')
-            ->get_where('users',array('id' => $userid))
+            ->get_where('user_data',array('id' => $userid))
             ->row();
 
         return ($user) ? $user : false;
@@ -36,14 +33,26 @@ class Users extends CI_Model {
          return ($level) ? $level->level_id : 0;
     }
 
-    public function required_xp($current_level)
+    public function needed_xp($current_level)
     {
-        $base = 10;
-        $ratio = 3;
-
-        $previous_xp = ($base * $ratio * ($current_level - 1));
-        $required_xp = ($base * $ratio * $current_level) + $previous_xp;
+        $this->output->enable_profiler(true);
+        $required_xp = $this->db
+            ->where('level_id >=',$current_level)
+            ->order_by('level_id','asc')
+            ->limit(2)
+            ->get('levels')
+            ->result();
 
         return $required_xp;
     }
+
+    public function xp_percentage($user_xp,$needed_xp,$prev_xp)
+    {
+        $to_gain = $needed_xp - $prev_xp;
+        $progress = $user_xp - $prev_xp;
+        $percentage = floor($progress / $to_gain * 100);
+
+        return $percentage;
+    }
+
 }
