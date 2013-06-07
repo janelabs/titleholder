@@ -9,7 +9,7 @@
 }
 
 .opt_selected {
-    background-color: #ccc;
+    background-color: #444;
 }
 
 .options {
@@ -21,11 +21,15 @@
 .options li {
     display: block;
     cursor: pointer;
-    border: 1px solid red;
+    font-size: 0;
+
 }
 
 .options img {
     margin: 5px;
+    width: 80px;
+    height: 80px;
+    box-shadow: 0 0 5px rgb(0,0,0);
 }
 
 #div_main {
@@ -73,4 +77,49 @@
 
 .td_elem {
     text-align: center;
+}
+
+
+
+
+/*==================================
+*   sign-up
+*=================================*/
+
+.main_container {
+    width: 640px;
+    height: 480px;
+    margin: 50px auto;
+    box-shadow: 0 0 15px rgba(0,0,0,0.5);
+    border: 1px solid #444;
+    background: #dbc59e url('http://localhost/scene01.jpg');
+}
+
+.inner_div {
+    margin: 20px 50px;
+    color: #FFF;
+    text-shadow: 0 0 10px rgb(0,0,0);
+}
+
+.inner_div h4 {
+    margin: 0;
+    padding: 0;
+    text-transform: uppercase;
+}
+
+
+.input_div {
+    margin: 5px;
+}
+
+.input_div label {
+    display: inline-block;
+    min-width: 180px;
+    float: left;
+    font-weight: bold;
+    padding: 5px;
+}
+
+.tbox, .btn {
+    padding: 5px;
 }
