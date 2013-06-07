@@ -42,8 +42,23 @@ $route['default_controller'] = "startup";
 $route['404_override'] = '';
 
 
+// login
 $route['login'] = "login/index";
 $route['logout'] = "login/logout";
+
+// signup
+$route['signup'] = "register/index";
+
+// battle
+$route['battle'] = "battle/index";
+$route['battleview'] = "battle/view";
+
+// logs
+$route['logs/(:num)'] = "logs/index/$1";
+$route['logs'] = "history/index";
+$route['logs/battle/players'] = "history/players";
+$route['logs/battle/monsters'] = "history/monsters";
+$route['logs/quest'] = "history/quests";
 
 
 

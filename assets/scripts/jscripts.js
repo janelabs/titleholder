@@ -1,4 +1,13 @@
 $(document).ready(function(){
+
+    // hide radio on registration
+    $('.options input:radio').addClass('radio_hidden');
+
+    $('.options').click(function() {
+        $(this).addClass('opt_selected').siblings().removeClass('opt_selected');
+    });
+
+    // login and registration
     $('#signup,#login').submit(function(e){
 
         var form = e.target.id;
@@ -23,6 +32,7 @@ $(document).ready(function(){
                         window.location.href = data.location;
                     },2000);
                 }
+
             }
 
         },'json');
@@ -30,12 +40,14 @@ $(document).ready(function(){
         e.preventDefault();
     });
 
+    $('.log_nav').click(function(e){
+        action = $(this).attr('href');
 
-    $("#attack").on("click", function(){
-        $.post("/battle/view",{ id: "2" }, function(data) {
-            $("#player_name").html(data.player.name);
-            $("#enemy_name").html(data.enemy.name);
-        },"json");
+        $('#logs_window').html('Loading content...')
+        $.get(action,function(data){
+            $('#logs_window').html(data);
+        });
+        e.preventDefault();
     });
 
 });

@@ -30,7 +30,7 @@ class Battle extends CI_Controller {
             $isUser = false;
 
             $enemy_id = $post['id'];
-            $player_id = $this->session->userdata('id')->id;
+            $player_id = $this->session->userdata('userid');
 
             $player_id = 1;
 
@@ -53,7 +53,7 @@ class Battle extends CI_Controller {
                 $enemy_dmg_rcv = 1;
             }
             $enemy_return_hp = $enemy_hp - $enemy_dmg_rcv;
-            if($enemy_return_hp<0){
+            if($enemy_return_hp<=0){
                 $enemy_return_hp = 0;
                 if (!$isUser){
                     $exp_gain = 5;
@@ -72,7 +72,7 @@ class Battle extends CI_Controller {
                 }
 
                 $player_return_hp = $player_hp - $player_dmg_rcv;
-                if($player_return_hp<0){
+                if($player_return_hp<=0){
                     $player_return_hp = 0;
                     $is_dead = true;
                 }
