@@ -3,14 +3,23 @@
 
 class Logs extends CI_Model {
 
-    public function getLogs($user_id, $log_type = 1)
+    public function getLogs($user_id, $enemy_type, $log_type = 1)
     {
 
-        $logs = $this->db
+        $this->db
             ->where('user_id',$user_id)
             ->where('log_type',$log_type)
-            ->get('logs')
-            ->result();
+            ->where('enemy_type',$enemy_type)
+            ->limit(10)
+            ->order_by('log_id','desc');
+
+        if($enemy_type == 1) {
+            $this->db->join('users','users.id = logs.enemy_id');
+        } elseif ($enemy_type == 2) {
+            $this->db->join('monsters','monsters.monster_id = logs.enemy_id');
+        }
+
+        $logs = $this->db->get('logs')->result();
 
         return ($logs) ? $logs : false;
 
