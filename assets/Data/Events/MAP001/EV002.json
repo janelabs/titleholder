@@ -1,0 +1,48 @@
+[
+    {
+        "x": 4,
+        "y": 8,
+        "id": "2",
+        "name": "EV002"
+    },
+
+    [
+        {
+
+            "character_hue": "s_01.png","pattern": 2,
+            "trigger": "action_button",
+            "direction": "bottom",
+            "frequence": 16,
+            "type": "random",
+            "through": false,
+            "stop_animation": false,
+            "no_animation": false,
+            "direction_fix": false,
+            "alwaysOnTop": true,
+            "speed": 4,
+            "commands": [
+                "SHOW_TEXT: {'text': 'Hi! Do you know the Red Moon Kingdom?'}",
+                "SELF_SWITCH_ON: 'A'"
+            ]
+        },
+
+        {
+            "conditions": {"self_switch": "A"},
+            "character_hue": "s_01.png","pattern": 0,
+            "trigger": "action_button",
+            "direction": "left",
+            "frequence": 16,
+            "type": "random",
+            "through": false,
+            "stop_animation": false,
+            "no_animation": false,
+            "direction_fix": false,
+            "alwaysOnTop": false,
+            "speed": 4,
+            "commands": [
+                "SHOW_TEXT: {'text': 'Have you met Reni?'}",
+                "SELF_SWITCH_ON: 'B'"
+            ]
+        }
+    ]
+]
