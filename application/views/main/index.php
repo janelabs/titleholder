@@ -1,11 +1,9 @@
 <?php
     echo $header;
-echo "<pre>";
-var_dump($user);
-echo "</pre>";
 ?>
-<div id="div_main">
+<center>
 
+<div id="div_main">
     <!-- avatar -->
     <div class="div_child">
         <img id="user_dp" src="<?php echo base_url('assets/images/dummy.png'); ?>" />
@@ -48,8 +46,17 @@ echo "</pre>";
 
     <!-- menu -->
     <div class="div_child">
-        <button>RANKS</button>
-        <button>LOGS</button>
+        <button id="btn_rank">RANKS</button>
+        <button id="btn_log">LOGS</button>
     </div>
 
+    <!-- arena -->
+    <div class="div_child">
+        <button id="btn_arena">ARENA</button>
+    </div>
+
+    <div class="div_child">
+        <a><i class="ui-icon-volume-on"></i></a>
+    </div>
 </div>
+</center>
