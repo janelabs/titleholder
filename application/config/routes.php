@@ -43,7 +43,15 @@ $route['404_override'] = '';
 
 
 $route['login'] = "login/index";
+
 $route['logout'] = "login/logout";
+
+$route['battle'] = "battle/index";
+$route['battleview'] = "battle/view";
+
+$route['logs/(:num)'] = "logs/index/$1";
+
+
 
 
 
