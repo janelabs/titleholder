@@ -43,7 +43,7 @@ class Arena extends CI_Controller {
 
     private function generateEvents($monsters = array())
     {
-        $file_path = '/home/sarah/public_html/titleholder/assets/Data/Events/MAP001/'; //will be changed, used in prod
+        $file_path = $_SERVER['DOCUMENT_ROOT'] . 'assets/Data/Events/MAP001/'; //will be changed, used in prod
         $file_name = "EV00";
         $ctr = 4; // 4 start of the count for there are default 4 events.
         $dataOptions = array();
