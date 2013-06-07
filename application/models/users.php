@@ -24,7 +24,7 @@ class Users extends CI_Model {
         $user = $this->db
             ->get_where('user_data',array('id' => $userid))
             ->row();
-
+        
         return ($user) ? $user : false;
     }
 
