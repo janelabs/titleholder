@@ -7,7 +7,7 @@ $(document).ready(function(){
         $(this).addClass('opt_selected').siblings().removeClass('opt_selected');
     });
 
-
+    // login and registration
     $('#signup,#login').submit(function(e){
 
         var form = e.target.id;
@@ -39,4 +39,15 @@ $(document).ready(function(){
 
         e.preventDefault();
     });
+
+    $('.log_nav').click(function(e){
+        action = $(this).attr('href');
+
+        $('#logs_window').html('Loading content...')
+        $.get(action,function(data){
+            $('#logs_window').html(data);
+        });
+        e.preventDefault();
+    });
+
 });

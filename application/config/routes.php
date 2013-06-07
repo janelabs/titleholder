@@ -45,6 +45,19 @@ $route['404_override'] = '';
 $route['login'] = "login/index";
 $route['logout'] = "login/logout";
 
+$route['signup'] = "register/index";
+
+
+$route['logs'] = "history/index";
+$route['logs/battle/players'] = "history/players";
+$route['logs/battle/monsters'] = "history/monsters";
+$route['logs/quest'] = "history/quests";
+
+
+
+
+
+
 
 
 /* End of file routes.php */
