@@ -27,3 +27,50 @@
 .options img {
     margin: 5px;
 }
+
+#div_main {
+    width: 640px;
+    height: 480px;
+    background-image: url('../images/menu_bg.jpg');
+    background-repeat: no-repeat;
+    -webkit-box-shadow: inset 0px 0px 120px 60px rgba(0, 0, 0, 0.6);
+    box-shadow: inset 0px 0px 120px 60px rgba(0, 0, 0, 0.6);
+    opacity: 1;
+    outline: 2px solid #0f0e0f;
+}
+
+#user_dp {
+    width: 455px;
+    position: absolute;
+    top: 0px;
+    left: -99px;
+}
+
+#user_pet {
+    position: absolute;
+    left: 241px;
+    top: 317px;
+    width: 143px;
+}
+
+.div_child {
+    position: relative;
+}
+
+.user_stat {
+    color: #ffffff;
+    font-weight:bold;
+    font-size: 22px;
+    text-shadow: 1px 2px 4px #000000;
+    filter: dropshadow(color=#000000, offx=1, offy=2);
+}
+
+.status {
+    position: absolute;
+    top: 100px;
+    left: 300px;
+}
+
+.td_elem {
+    text-align: center;
+}
