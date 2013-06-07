@@ -29,4 +29,13 @@ $(document).ready(function(){
 
         e.preventDefault();
     });
+
+
+    $("#attack").on("click", function(){
+        $.post("/battle/view",{ id: "2" }, function(data) {
+            $("#player_name").html(data.player.name);
+            $("#enemy_name").html(data.enemy.name);
+        },"json");
+    });
+
 });

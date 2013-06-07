@@ -11,16 +11,5 @@ echo $header;
 <div><strong>HP: </strong><div id="enemy_hp" style="display: inline"></div></div><br />
 <input type="button" id="attack" value="Attack!" />
 
-
-<script type="text/javascript">
-$(function(){
-    $("#attack").on("click", function(){
-        $.post("/battle/view",{ id: "2" }, function(data) {
-            $("#player_name").html(data.player.name);
-            $("#enemy_name").html(data.enemy.name);
-        },"json");
-    })
-})
-</script>
 </body>
 </html>
