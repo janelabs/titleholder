@@ -45,6 +45,7 @@ $route['404_override'] = '';
 $route['login'] = "login/index";
 $route['logout'] = "login/logout";
 $route['signup'] = "register/index";
+$route['ranking'] = "rankings/index";
 
 
 
