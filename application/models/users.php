@@ -17,7 +17,7 @@ class Users extends CI_Model {
         $user = $this->db
             ->select("users.*", false)
             ->select('pets.*', false)
-            ->join('pets', 'pets.pet_id = users.pet_id')
+            ->join('pets', 'pets.pet_id = users.pid')
             ->get_where('users',array('id' => $userid))
             ->row();
 
@@ -46,4 +46,5 @@ class Users extends CI_Model {
 
         return $required_xp;
     }
+
 }
