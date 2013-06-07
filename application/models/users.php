@@ -3,6 +3,13 @@
 
 class Users extends CI_Model {
 
+    public function add_user($data) {
+
+        $this->db->insert('users',$data);
+
+        return ($this->db->affected_rows()) ? true : false;
+    }
+
     public function check_login($email,$pass) {
         $data['email'] = $email;
         $data['password'] = md5($pass);
