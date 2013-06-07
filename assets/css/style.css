@@ -1,0 +1,29 @@
+/* hide character and pet description */
+.desc {
+    display: none;
+}
+
+.radio_hidden {
+    position: absolute;
+    left: -9999px;
+}
+
+.opt_selected {
+    background-color: #ccc;
+}
+
+.options {
+    padding: 0;
+    margin: 0;
+    display: inline-block;
+}
+
+.options li {
+    display: block;
+    cursor: pointer;
+    border: 1px solid red;
+}
+
+.options img {
+    margin: 5px;
+}

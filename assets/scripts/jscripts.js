@@ -1,4 +1,13 @@
 $(document).ready(function(){
+
+    // hide radio on registration
+    $('.options input:radio').addClass('radio_hidden');
+
+    $('.options').click(function() {
+        $(this).addClass('opt_selected').siblings().removeClass('opt_selected');
+    });
+
+
     $('#signup,#login').submit(function(e){
 
         var form = e.target.id;
@@ -23,6 +32,7 @@ $(document).ready(function(){
                         window.location.href = data.location;
                     },2000);
                 }
+
             }
 
         },'json');
