@@ -27,7 +27,7 @@ class Users extends CI_Model {
             ->join('pets', 'pets.pet_id = users.pet_id')
             ->get_where('users',array('id' => $userid))
             ->row();
-
+        
         return ($user) ? $user : false;
     }
 
