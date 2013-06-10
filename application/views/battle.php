@@ -21,10 +21,10 @@
 </div>
 
 <form action="<?php echo site_url('battle/view') ?>" id="atk" method="post">
-    <input type="text" name="player_hp" id="player_hp" placeholder="player hp" value="<?php echo $player->hp ?>" />
+    <input type="hidden" name="player_hp" id="player_hp" placeholder="player hp" value="<?php echo $player->hp ?>" />
 
-    <input type="text" name="enemy_id" id="enemy_id" value="<?php echo $enemy->id; ?>"  />
-    <input type="text" name="enemy_hp" id="enemy_hp" placeholder="enemy hp"  value="<?php echo $enemy->hp ?>" />
+    <input type="hidden" name="enemy_id" id="enemy_id" value="<?php echo $enemy->id; ?>"  />
+    <input type="hidden" name="enemy_hp" id="enemy_hp" placeholder="enemy hp"  value="<?php echo $enemy->hp ?>" />
 
     <div style="display: block; text-align: center;">
         <input type="submit" id="attack" value="Attack!" />

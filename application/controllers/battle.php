@@ -113,10 +113,9 @@ class Battle extends CI_Controller {
     public function index(){
 
         $post = $this->input->post();
-        $post = true;
 
         if($post) {
-            $enemy_id = 1;
+            $enemy_id = $post['id'];
             $enemy_data = $this->monsters->getMonsterData($enemy_id);
 
             $player_id = $this->session->userdata('userid');
