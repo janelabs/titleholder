@@ -11,10 +11,10 @@ var Arena = {
 
             rpg.loadMap('MAP001', {
                 tileset: 'tilea1.png',
-                events: ['EV001', 'EV002', 'EV003', 'EV005', 'EV006', 'EV007'],
+                events: ['EV001', 'EV002', 'EV005', 'EV006', 'EV007'],
                 player:  {
                     x: 26,
-                    y: 18,
+                    y: 19,
                     filename: player_filename
                 }
             }, function () {
@@ -22,7 +22,8 @@ var Arena = {
                 rpg.setScreenIn("Player");
 
                 rpg.onEventCall("battle", function(){
-                    Arena.battle();
+                    var enemy_id = $(this)[0].id;
+                    Arena.battle(enemy_id);
                 });
             });
 
@@ -30,17 +31,24 @@ var Arena = {
         });
     },
 
-    battle: function() {
+    battle: function(enemy_id) {
         var site_url = $('#site_url').val();
-
+        enemy_id = enemy_id > 0 ? enemy_id:0;
         // put transition here
             // transition
         // end transition
 
         $.ajax({
-            url: site_url,
+            url: site_url + 'battle',
+            type: 'POST',
+            data: {
+                id: enemy_id
+            },
             success: function(result) {
-
+                if (result) {
+                    $('#battle').html(result);
+                    $('#battle').modal();
+                }
             }
         });
     }

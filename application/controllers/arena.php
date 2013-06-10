@@ -95,8 +95,10 @@ class Arena extends CI_Controller {
 
                 $event = $this->load->view('battle_event_format', $dataOptions, true);
 
-                $fp = fopen($file_path . $f_name . '.json', 'r');
-                fwrite($fp, $event);
+                $fp = fopen($file_path . $f_name . '.json', 'w+');
+                if (!fwrite($fp, $event)) {
+                    echo "File not written \n";
+                }
                 fclose($fp);
             }
         }

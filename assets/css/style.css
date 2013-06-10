@@ -110,7 +110,13 @@
     text-align: center;
 }
 
-
+.frame {
+    width: 640px;
+    height: 520px;
+    margin: 50px auto;
+    text-align: center;
+    border: 0px;
+}
 
 
 /*==================================
