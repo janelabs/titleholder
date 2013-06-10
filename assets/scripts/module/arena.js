@@ -22,7 +22,8 @@ var Arena = {
                 rpg.setScreenIn("Player");
 
                 rpg.onEventCall("battle", function(){
-                    Arena.battle();
+                    var enemy_id = $(this)[0].id;
+                    Arena.battle(enemy_id);
                 });
             });
 
@@ -30,17 +31,22 @@ var Arena = {
         });
     },
 
-    battle: function() {
+    battle: function(enemy_id) {
         var site_url = $('#site_url').val();
-
+        enemy_id = enemy_id > 0 ? enemy_id:0;
         // put transition here
             // transition
         // end transition
 
         $.ajax({
-            url: site_url,
+            url: site_url + 'battle',
+            type: 'POST',
+            data: {
+                id: enemy_id
+            },
             success: function(result) {
-
+                $('#battle').html(result);
+                $('#battle').modal();
             }
         });
     }

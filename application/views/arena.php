@@ -12,6 +12,8 @@
     </body>
 </html>
 
+<div id="battle" role="dialog" class="modal hide"></div>
+
 <script type="text/javascript">
     $(function(){
         Arena.initView();
