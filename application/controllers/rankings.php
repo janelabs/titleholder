@@ -16,10 +16,11 @@ class Rankings extends CI_Controller {
 	public function index()
 	{
 
-        $rankings = new Ranks();
+        $data['ranks'] = $this->ranks->getRankingsByTitle();
+        $data['r_level'] = $this->ranks->getRankingsByLevel();
 
         $this->load->view('headers');
-        $this->load->view('ranks',$rankings);
+        $this->load->view('ranks',$data);
         $this->load->view('footers');
 	}
 }
