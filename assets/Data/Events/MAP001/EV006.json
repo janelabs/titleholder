@@ -21,7 +21,7 @@
             "alwaysOnTop": false,
             "speed": 4,
             "commands": [
-                "SHOW_TEXT: {'text': 'Escape now while you have the time!'}",
+                "SHOW_TEXT: {'text': 'You dared to challenge me?'}",
                 "SELF_SWITCH_ON: 'A'"
             ]
         },

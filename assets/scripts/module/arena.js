@@ -11,10 +11,10 @@ var Arena = {
 
             rpg.loadMap('MAP001', {
                 tileset: 'tilea1.png',
-                events: ['EV001', 'EV002', 'EV003', 'EV005', 'EV006', 'EV007'],
+                events: ['EV001', 'EV002', 'EV005', 'EV006', 'EV007'],
                 player:  {
                     x: 26,
-                    y: 18,
+                    y: 19,
                     filename: player_filename
                 }
             }, function () {

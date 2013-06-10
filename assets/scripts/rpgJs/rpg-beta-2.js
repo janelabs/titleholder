@@ -13,7 +13,7 @@
  * Date: December 08, 2011
  */
  
-RPGJS = {}
+RPGJS = {};
 RPGJS.loadPath = "rpgjs/core/";
 RPGJS.params = {};
 RPGJS.dirPluginsName = "/plugins";

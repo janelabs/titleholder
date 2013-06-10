@@ -21,7 +21,7 @@
             "alwaysOnTop": false,
             "speed": 4,
             "commands": [
-                "SHOW_TEXT: {'text': 'Want my title huh?!?'}",
+                "SHOW_TEXT: {'text': 'Let's get this over with'}",
                 "SELF_SWITCH_ON: 'A'"
             ]
         },
@@ -40,7 +40,7 @@
             "alwaysOnTop": false,
             "speed": 4,
             "commands": [
-                "SHOW_TEXT: {'text': 'You will never be the Title Holder!!'}",
+                "SHOW_TEXT: {'text': 'Say hello to your ancestors!'}",
                 "CALL: 'battle'"
             ]
         }
