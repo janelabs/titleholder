@@ -118,6 +118,11 @@
     border: 0px;
 }
 
+#back_to_main {
+    position: absolute;
+    top: 57px;
+    left: 350px;
+}
 
 /*==================================
 *   sign-up
