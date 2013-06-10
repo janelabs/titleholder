@@ -46,7 +46,7 @@ class Main extends CI_Controller {
                 'percentage' => $xp_percent
             );
 
-            $this->load->view('headers.php');
+            $data['header'] = $this->load->view('headers.php', null, true);
             $this->load->view('main/index',$data);
 
         } else {

@@ -37,7 +37,7 @@ class Users extends CI_Model {
             ->get('levels')
             ->row();
 
-         return ($level) ? $level->level_id : 0;
+        return ($level) ? $level->level_id : 0;
     }
 
     public function needed_xp($current_level)
