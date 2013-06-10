@@ -61,4 +61,23 @@ class Users extends CI_Model {
         return $percentage;
     }
 
+    public function getLevelExp($user_level)
+    {
+        $exp = $this->db
+                    ->select('reward_xp')
+                    ->get_where('levels',array('level_id' => $user_level))
+                    ->row();
+
+        return $exp;
+    }
+
+    public function updateUser($data, $user_id)
+    {
+         $this->db
+            ->where('id',$user_id)
+            ->update('users', $data);
+
+        return ($this->db->affected_rows()) ? true : false;
+    }
+
 }
