@@ -48,6 +48,7 @@ $route['logout'] = "login/logout";
 
 // signup
 $route['signup'] = "register/index";
+$route['ranking'] = "rankings/index";
 
 // battle
 $route['battle'] = "battle/index";

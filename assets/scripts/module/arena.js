@@ -37,6 +37,7 @@ var Arena = {
         // put transition here
             // transition
         // end transition
+        alert(site_url);
 
         $.ajax({
             url: site_url + 'battle',

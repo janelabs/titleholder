@@ -50,4 +50,10 @@ $(document).ready(function(){
         e.preventDefault();
     });
 
+    $('#rankTab a:first').tab('show');
+    $('#rankTab a').click(function (e) {
+        e.preventDefault();
+        $(this).tab('show');
+    })
+
 });
