@@ -21,7 +21,7 @@
             "alwaysOnTop": false,
             "speed": 4,
             "commands": [
-                "SHOW_TEXT: {'text': 'You dared to challenge me?'}",
+                "SHOW_TEXT: {'text': 'Let's get this over with'}",
                 "SELF_SWITCH_ON: 'A'"
             ]
         },
