@@ -22,7 +22,8 @@ class Monsters extends CI_Model {
             ->select("monster_attack as attack", false)
             ->select("monster_defense as defense", false)
             ->select("monster_hp as hp", false)
-            ->where('monster_id',$monster_id)
+            ->select("monster_rank as rank",false)
+            ->where("monster_id",$monster_id)
             ->get('monsters')
             ->row();
 

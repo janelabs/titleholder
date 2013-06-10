@@ -30,6 +30,9 @@ class Battle extends CI_Controller {
         $enemy_hp = $post['enemy_hp'];
         $player_id = $this->session->userdata('userid');
         $player_hp = $post['player_hp'];
+        $has_rank = false;
+        $rank_name = null;
+        $result = null;
 
         $enemy_data = $this->monsters->getMonsterData($enemy_id);
         $player_data = $this->users->get_userdata($player_id);
@@ -41,6 +44,7 @@ class Battle extends CI_Controller {
             exit;
         }
 
+        // start battle
         $enemy_attack = $enemy_data->attack;
         $enemy_defense = $enemy_data->defense;
 
@@ -60,13 +64,13 @@ class Battle extends CI_Controller {
         $enemy_return_hp = $enemy_hp - $enemy_dmg_rcv;
         $player_return_hp = $player_hp - $player_dmg_rcv;
 
+        // if enemy is killed
         if ($enemy_return_hp <= 0) {
             $enemy_return_hp = 0;
             $exp_gain = $this->users->getLevelExp($player_data->level);
             $is_killed = true;
         } else {
             // enemy will fight back now
-
             if ($player_return_hp <=0 ) {
                 $player_return_hp = 0;
                 $is_dead = true;
@@ -74,7 +78,7 @@ class Battle extends CI_Controller {
         }
 
         // if player won
-        if($exp_gain) {
+        if($exp_gain && $is_killed) {
             $player_xp = $player_data->xp + $exp_gain->reward_xp;
 
             $data = array(
@@ -87,24 +91,36 @@ class Battle extends CI_Controller {
 
             // add to battle history
             $this->logs->addLogs(1, $player_data->id, $enemy_data->id);
+
+            // add user ranks if rank title is not owned yet
+            $rank_is_owned = $this->ranks->isRankOwned($player_data->id,$enemy_data->rank);
+
+            if(!$rank_is_owned) {
+                $has_rank = true;
+                $this->ranks->addUserRanks($player_data->id,$enemy_data->rank);
+
+                // get rank detail
+                $rank = $this->ranks->getRanks($enemy_data->rank);
+                $rank_name = $rank->rank_name;
+            }
+
+            $result = "You won the battle";
         }
 
         // if player lost
         if($is_dead) {
             $this->logs->addLogs(2, $player_data->id, $enemy_data->id);
+            $result = "You were killed!";
         }
 
-        $response = array(
-            'enemy' => array(
-                'hp' => $enemy_return_hp,
-                'is_dead' => $is_killed,
-            ),
-            'player' => array(
-                'hp' => $player_return_hp,
-                'is_dead' =>$is_dead,
-            ),
-            'status' => 1
-        );
+        $response['status'] = 1;
+        $response['enemy']['hp'] = $enemy_return_hp;
+        $response['enemy']['is_dead'] = $is_killed;
+        $response['player']['hp'] = $player_return_hp;
+        $response['player']['is_dead'] = $is_dead;
+        $response['has_rank'] = $has_rank;
+        $response['rank_name'] = $rank_name;
+        $response['result'] = $result;
 
         echo json_encode($response);
         exit;
@@ -113,7 +129,6 @@ class Battle extends CI_Controller {
     public function index(){
 
         $post = $this->input->post();
-
         if($post) {
             $enemy_id = $post['id'];
             $enemy_data = $this->monsters->getMonsterData($enemy_id);

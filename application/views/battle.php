@@ -53,12 +53,16 @@ $('#atk').submit(function(e){
             $('#player_hp').val(response.player.hp);
             $('#enemy_hp').val(response.enemy.hp);
 
-            if(response.player.is_dead) {
-                $('#result').html('You were killed');
+            if(response.player.is_dead && response.result) {
+                $('#result').html(response.result);
             }
 
-            if(response.enemy.is_dead) {
-                $('#result').html('You won the battle');
+            if(response.enemy.is_dead && response.result) {
+                $('#result').html(response.result);
+            }
+
+            if(response.has_rank) {
+                $('#result').append('<br> You gained the rank '+response.rank_name);
             }
         }
     },'json');

@@ -1,7 +1,8 @@
 <?php
 
 
-class Users extends CI_Model {
+class Users extends CI_Model
+{
 
     public function add_user($data) {
 
