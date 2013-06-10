@@ -21,7 +21,7 @@
             "alwaysOnTop": false,
             "speed": 4,
             "commands": [
-                "SHOW_TEXT: {'text': 'Escape now while you have the time!'}",
+                "SHOW_TEXT: {'text': 'You dared to challenge me?'}",
                 "SELF_SWITCH_ON: 'A'"
             ]
         },
@@ -40,7 +40,7 @@
             "alwaysOnTop": false,
             "speed": 4,
             "commands": [
-                "SHOW_TEXT: {'text': 'Ha!! Prepare to die!'}",
+                "SHOW_TEXT: {'text': 'Do you think you can defeat me?'}",
                 "CALL: 'battle'"
             ]
         }
