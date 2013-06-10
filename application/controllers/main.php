@@ -2,6 +2,8 @@
 
 class Main extends CI_Controller {
 
+    const MAX_LEVEL = 10;
+
     public function __construct()
     {
         parent::__construct();
@@ -18,6 +20,7 @@ class Main extends CI_Controller {
         if ($user) {
 
             $required_xp = $this->users->needed_xp($user->level);
+
             foreach($required_xp as $required) {
                 if($required->level_id == $user->level) {
                     $prev_xp = $required->needed_xp;
@@ -26,7 +29,13 @@ class Main extends CI_Controller {
                 }
             }
 
-            $xp_percent = $this->users->xp_percentage($user->xp,$needed_xp,$prev_xp);
+            // max level has been reached, assign needed xp to 100%
+            if(count($required_xp) == 1) {
+                $needed_xp = $user->xp;
+                $xp_percent = 100;
+            } else {
+                $xp_percent = $this->users->xp_percentage($user->xp,$needed_xp,$prev_xp);
+            }
 
             $data['user'] = array(
                 'user_id' => $user->id,

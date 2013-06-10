@@ -1,7 +1,6 @@
 <?php
-    echo $header;
+ echo $header;
 ?>
-<center>
 
 <div id="div_main">
     <!-- avatar -->
@@ -60,3 +59,17 @@
     </div>
 </div>
 </center>
+</body>
+</html>
+
+<script type="text/javascript">
+    $(function(){
+        $('#btn_arena').on("click", function(){
+            $("#div_main").fadeOut("slow",function(){
+                $("#arena_frame").fadeIn("slow");
+            });
+
+            $('#arena_frame iframe').attr({src : "<?php echo site_url('arena'); ?>"});
+        });
+    });
+</script>

@@ -43,7 +43,7 @@ class Arena extends CI_Controller {
 
     private function generateEvents($monsters = array())
     {
-        $file_path = $_SERVER['DOCUMENT_ROOT'] . 'assets/Data/Events/MAP001/'; //will be changed, used in prod
+        $file_path =  getcwd() . '/assets/Data/Events/MAP001/'; //will be changed, used in prod
         $file_name = "EV00";
         $ctr = 4; // 4 start of the count for there are default 4 events.
         $dataOptions = array();
@@ -95,8 +95,10 @@ class Arena extends CI_Controller {
 
                 $event = $this->load->view('battle_event_format', $dataOptions, true);
 
-                $fp = fopen($file_path . $f_name . '.json', 'r');
-                fwrite($fp, $event);
+                $fp = fopen($file_path . $f_name . '.json', 'w+');
+                if (!fwrite($fp, $event)) {
+                    echo "File not written \n";
+                }
                 fclose($fp);
             }
         }
