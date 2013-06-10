@@ -45,8 +45,10 @@ var Arena = {
                 id: enemy_id
             },
             success: function(result) {
-                $('#battle').html(result);
-                $('#battle').modal();
+                if (result) {
+                    $('#battle').html(result);
+                    $('#battle').modal();
+                }
             }
         });
     }
