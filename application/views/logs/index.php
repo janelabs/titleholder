@@ -1,11 +1,4 @@
-<a href="<?php echo 'main' ?>">Back</a>
-
-
-<br><br>
-<a href="<?php echo 'logs/battle/monsters' ?>" class="log_nav">Monsters</a>
-<a href="<?php echo 'logs/battle/players' ?>" class="log_nav">Players</a>
-
-<div id="logs_window"></div>
+<div id="logs_window" class="container" style="width: 640px; height: 480px"></div>
 
 <script type="text/javascript">
     $(document).ready(function(){

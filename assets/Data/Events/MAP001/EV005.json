@@ -1,7 +1,7 @@
 [
     {
-        "x": 29,
-        "y": 31,
+        "x": 25,
+        "y": 32,
         "id": "1",
         "name": "EV005"
     },
@@ -13,12 +13,12 @@
             "trigger": "action_button",
             "direction": "left",
             "frequence": 4,
-            "type": "random",
+            "type": "fixed",
             "through": false,
             "stop_animation": false,
             "no_animation": false,
             "direction_fix": false,
-            "alwaysOnTop": false,
+            "alwaysOnTop": true,
             "speed": 4,
             "commands": [
                 "SHOW_TEXT: {'text': 'Want my title huh?!?'}",
@@ -30,17 +30,17 @@
             "conditions": {"self_switch": "A"},
             "character_hue": "c_01.png","pattern": 0,
             "trigger": "action_button",
-            "direction": "bottom",
+            "direction": "left",
             "frequence": 4,
-            "type": "random",
+            "type": "fixed",
             "through": false,
             "stop_animation": false,
             "no_animation": false,
             "direction_fix": false,
-            "alwaysOnTop": false,
+            "alwaysOnTop": true,
             "speed": 4,
             "commands": [
-                "SHOW_TEXT: {'text': 'Say hello to your ancestors!'}",
+                "SHOW_TEXT: {'text': 'Ha!! Prepare to die!'}",
                 "CALL: 'battle'"
             ]
         }

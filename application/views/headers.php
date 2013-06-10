@@ -13,8 +13,9 @@
 
     <script type="text/javascript">
         $(function(){
-            $('#back_to_main').on("click", function(){
-                $("#arena_frame").fadeOut("slow",function(){
+            $('.back_to_main').on("click", function(){
+                var parent_div = $(this).parent('div').attr('id');
+                $('#' + parent_div).fadeOut("slow",function(){
                     $("#div_main").fadeIn("slow");
                 });
             });
@@ -27,5 +28,9 @@
 <noscript>You must enable your javascript to view this game!</noscript><center>
 <div id="arena_frame" style="display: none;">
     <iframe class="frame"></iframe>
-    <button id="back_to_main">MENU</button>
+    <button class="back_to_main">MENU</button>
+</div>
+<div id="logs_frame" style="display: none;">
+    <iframe class="frame"></iframe>
+    <button class="back_to_main">MENU</button>
 </div>

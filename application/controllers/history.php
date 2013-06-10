@@ -30,7 +30,6 @@ class History extends CI_Controller {
 
     public function monsters()
     {
-        sleep(3);
         $logs = $this->logs->getLogs($this->user_id,self::ENEMY_MONSTER);
 
         $data['logs'] = null;
@@ -40,7 +39,7 @@ class History extends CI_Controller {
                 $data['logs'][] = array(
                     'name' => $log->monster_name,
                     'avatar' => $log->monster_avatar,
-                    'result' => ($log->result == 2) ? 'L' : 'W',
+                    'result' => ($log->result == 2) ? 'Lost' : 'Won',
                 );
             }
         }
@@ -50,7 +49,6 @@ class History extends CI_Controller {
 
     public function players()
     {
-        sleep(3);
         $data['logs'] = null;
 
         $logs = $this->logs->getLogs($this->user_id,self::ENEMY_PLAYER);
