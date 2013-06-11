@@ -340,9 +340,6 @@ html,body {
 .ranklevel{
     float:right;
 }
-<<<<<<< HEAD
-
-
 
 /* added for battle results */
 #result {
@@ -360,8 +357,8 @@ html,body {
     text-align: center;
     text-shadow: 0 0 3px rgb(0,0,0);
     z-index: 10000;
-=======
+}
+
 .msgcontainer{
     visibility: hidden;
->>>>>>> ed63214af89f3adee3bbba37da36d816b8a8cb32
 }
