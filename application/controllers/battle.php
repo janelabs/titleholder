@@ -2,6 +2,10 @@
 
 class Battle extends CI_Controller {
 
+    const AT = 5;
+    const DF = 5;
+    const HP = 10;
+
     public function __construct()
     {
         parent::__construct();
@@ -167,6 +171,19 @@ class Battle extends CI_Controller {
 
     public function allocate()
     {
-        print_r($this->input->post());
+        $post = $this->input->post();
+
+        if(!$post) {
+            $response = array('status' => 0,'error' => 'Wrong Method');
+
+            echo json_encode($response);
+            exit;
+        }
+
+        $total = $post['atk'] + $post['def'] + $post['hp'];
+
+        if($total  5) {
+            $response = array('status' => 0,'error' => 'Assigned points exceeded available AP.');
+        }
     }
 }

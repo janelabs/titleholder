@@ -44,5 +44,22 @@ $config = array(
             'label'   => 'Password',
             'rules'   => 'trim|required'
         )
+    ),
+    'attribute' => array(
+        array(
+            'field' => 'atk',
+            'label' => 'Attack',
+            'rules' => 'trim|is_numeric'
+        ),
+        array(
+            'field' => 'def',
+            'label' => 'Defense',
+            'rules' => 'trim|is_numeric'
+        ),
+        array(
+            'field' => 'hp',
+            'label' => 'HP',
+            'rules' => 'trim|is_numeric'
+        )
     )
 );
