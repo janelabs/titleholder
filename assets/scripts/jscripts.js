@@ -56,4 +56,78 @@ $(document).ready(function(){
         $(this).tab('show');
     })
 
+    // manual close button of battle modal
+    $('#close').click(function(e){
+        $('#battle').modal('hide');
+        Input.lock(rpg.canvas, true);
+    });
+
+    // battle module attack action
+    $('#atk').submit(function(e){
+        // temporary disable attack button while waiting for server response
+        $('#attack').attr('disabled','disabled');
+
+        var action = $(this).attr('action');
+        var param = $(this).serialize();
+
+        $.post(action,param,function(response){
+            $('#attack').removeAttr('disabled');
+
+            if(response.status) {
+                $('#debugger').html(JSON.stringify(response));
+
+                $('#player_hp_div').html(response.player.hp);
+                $('#enemy_hp_div').html(response.enemy.hp);
+
+                $('#player_hp').val(response.player.hp);
+                $('#enemy_hp').val(response.enemy.hp);
+
+                if(response.player.is_dead && response.result) {
+                    $('#result').html(response.result).fadeIn('fast');
+                }
+
+                if(response.enemy.is_dead && response.result) {
+                    $('#result').html(response.result).fadeIn('fast');
+                    $('#attack').hide();
+
+                    if(response.has_rank) {
+                        setTimeout(function(){
+                            $('#result').html('You gained the rank '+response.rank_name).hide().fadeIn('fast');
+                        },2000);
+                    }
+
+                    if(response.has_levelup) {
+                        setTimeout(function(){
+                            $('#ap_modal').modal('show');
+                            $('#battle').modal('hide');
+                            $('#result').html('You have level up').hide().fadeIn('fast');
+                        },2000);
+                    }
+
+                    setTimeout(function(){
+                        $('#result').fadeOut('fast',function(){
+                                $('#close').show();
+                            }
+                        );
+                    },2000);
+                }
+            }
+        },'json');
+
+        e.preventDefault();
+    });
+
+    // allocate attribute points
+    $('#ap_form').on('submit',function(e){
+
+        param = $(this).serialize();
+        action = $(this).attr('action');
+
+        $.post(action, param, function(data){
+            alert(JSON.stringify(data));
+        });
+
+        e.preventDefault();
+    });
+
 });

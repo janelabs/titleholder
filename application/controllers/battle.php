@@ -30,9 +30,11 @@ class Battle extends CI_Controller {
         $enemy_hp = $post['enemy_hp'];
         $player_id = $this->session->userdata('userid');
         $player_hp = $post['player_hp'];
+        $player_level = 0;
         $has_rank = false;
         $rank_name = null;
         $result = null;
+        $has_levelup = false;
 
         $enemy_data = $this->monsters->getMonsterData($enemy_id);
         $player_data = $this->users->get_userdata($player_id);
@@ -79,11 +81,21 @@ class Battle extends CI_Controller {
 
         // if player won
         if($exp_gain && $is_killed) {
+            $result = "You won the battle";
+
             $player_xp = $player_data->xp + $exp_gain->reward_xp;
+
+            $player_level = $this->users->get_userlevel($player_xp);
+
+            // if player has level up
+            if($player_level > $player_data->level) {
+                $has_levelup = true;
+            }
+            $has_levelup = true;
 
             $data = array(
                 'xp' => $player_xp,
-                'level' => $this->users->get_userlevel($player_xp),
+                'level' => $player_level,
             );
 
             // update level and experience
@@ -104,7 +116,7 @@ class Battle extends CI_Controller {
                 $rank_name = $rank->rank_name;
             }
 
-            $result = "You won the battle";
+
         }
 
         // if player lost
@@ -120,17 +132,21 @@ class Battle extends CI_Controller {
         $response['player']['is_dead'] = $is_dead;
         $response['has_rank'] = $has_rank;
         $response['rank_name'] = $rank_name;
+        $response['has_levelup'] = $has_levelup;
         $response['result'] = $result;
 
         echo json_encode($response);
         exit;
     }
 
-    public function index(){
+    public function index()
+    {
 
         $post = $this->input->post();
+        $post = true; // delete after testing
         if($post) {
             $enemy_id = $post['id'];
+            $enemy_id = 3; // delete after testing
             $enemy_data = $this->monsters->getMonsterData($enemy_id);
 
             $player_id = $this->session->userdata('userid');
@@ -147,5 +163,10 @@ class Battle extends CI_Controller {
                 $this->load->view('battle', $data);
             }
         }
+    }
+
+    public function allocate()
+    {
+        print_r($this->input->post());
     }
 }

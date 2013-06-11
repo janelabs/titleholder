@@ -1,8 +1,5 @@
 [
     {
-        "x": 29,
-        "y": 31,
-        "id": "2",
         "x": 25,
         "y": 32,
         "id": "1",
@@ -12,9 +9,9 @@
     [
         {
 
-            "character_hue": "m_002.gif","pattern": 2,
+            "character_hue": "s_01.png","pattern": 2,
             "trigger": "action_button",
-            "direction": "left",
+            "direction": "bottom",
             "frequence": 4,
             "type": "fixed",
             "through": false,
@@ -31,9 +28,9 @@
 
         {
             "conditions": {"self_switch": "A"},
-            "character_hue": "m_002.gif","pattern": 0,
+            "character_hue": "s_01.png","pattern": 0,
             "trigger": "action_button",
-            "direction": "left",
+            "direction": "bottom",
             "frequence": 4,
             "type": "fixed",
             "through": false,
@@ -43,7 +40,7 @@
             "alwaysOnTop": true,
             "speed": 4,
             "commands": [
-                "SHOW_TEXT: {'text': 'Say hello to your ancestors!'}",
+                "SHOW_TEXT: {'text': 'Do you think you can defeat me?'}",
                 "CALL: 'battle'"
             ]
         }

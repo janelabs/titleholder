@@ -52,7 +52,7 @@ $route['ranking'] = "rankings/index";
 
 // battle
 $route['battle'] = "battle/index";
-$route['battleview'] = "battle/view";
+$route['battle/fight'] = "battle/view";
 
 // logs
 $route['logs/(:num)'] = "logs/index/$1";

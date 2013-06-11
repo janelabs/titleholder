@@ -8,6 +8,7 @@
     </tr>
     </thead>
     <tbody>
+    <?php if($logs): ?>
     <?php foreach($logs as $log): ?>
         <tr>
             <td class="enemy_image"><img src="<?php echo base_url('assets/images/placeholder.jpg'); ?>" /></td><?php //echo $log['avatar'] ?>
@@ -15,5 +16,10 @@
             <td><?php echo $log['result'] ?></td>
         </tr>
     <?php endforeach; ?>
+    <?php else: ?>
+        <tr>
+            <td colspan="3" align="center">There are no logs</td>
+        </tr>
+    <?php endif; ?>
     </tbody>
 </table>
