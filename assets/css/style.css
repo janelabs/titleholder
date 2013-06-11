@@ -298,3 +298,6 @@ html,body {
 .ranklevel{
     float:right;
 }
+.msgcontainer{
+    visibility: hidden;
+}
