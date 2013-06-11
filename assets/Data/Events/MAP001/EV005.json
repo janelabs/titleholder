@@ -2,16 +2,16 @@
     {
         "x": 25,
         "y": 32,
-        "id": "5",
+        "id": "1",
         "name": "EV005"
     },
 
     [
         {
 
-            "character_hue": "s_05.png","pattern": 2,
+            "character_hue": "c_01.png","pattern": 2,
             "trigger": "action_button",
-            "direction": "top",
+            "direction": "right",
             "frequence": 4,
             "type": "fixed",
             "through": false,
@@ -21,16 +21,16 @@
             "alwaysOnTop": true,
             "speed": 4,
             "commands": [
-                "SHOW_TEXT: {'text': '...'}",
+                "SHOW_TEXT: {'text': 'You dared to challenge me?'}",
                 "SELF_SWITCH_ON: 'A'"
             ]
         },
 
         {
             "conditions": {"self_switch": "A"},
-            "character_hue": "s_05.png","pattern": 0,
+            "character_hue": "c_01.png","pattern": 0,
             "trigger": "action_button",
-            "direction": "bottom",
+            "direction": "left",
             "frequence": 4,
             "type": "fixed",
             "through": false,
@@ -40,7 +40,7 @@
             "alwaysOnTop": true,
             "speed": 4,
             "commands": [
-                "SHOW_TEXT: {'text': 'I'm busy..'}",
+                "SHOW_TEXT: {'text': 'You will never be the Title Holder!!'}",
                 "CALL: 'battle'"
             ]
         }

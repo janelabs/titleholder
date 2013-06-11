@@ -5,10 +5,10 @@
 
 <ul class="nav nav-tabs ul_nav" id="rankTab" style="width: 85%;">
     <li class="active" style="width: 50%;">
-        <a href="#title">By Title</a>
+        <a href="#title"><h5>Title</h5></a>
     </li>
     <li style="width: 50%;">
-        <a href="#level">By Level</a>
+        <a href="#level"><h5>Level</h5></a>
     </li>
 </ul>
 
