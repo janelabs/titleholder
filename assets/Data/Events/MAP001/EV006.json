@@ -1,15 +1,15 @@
 [
     {
-        "x": 19,
+        "x": 22,
         "y": 43,
-        "id": "2",
+        "id": "6",
         "name": "EV006"
     },
 
     [
         {
 
-            "character_hue": "s_04.png","pattern": 2,
+            "character_hue": "s_06.png","pattern": 2,
             "trigger": "action_button",
             "direction": "left",
             "frequence": 4,
@@ -21,16 +21,16 @@
             "alwaysOnTop": true,
             "speed": 4,
             "commands": [
-                "SHOW_TEXT: {'text': 'Let's get this over with'}",
+                "SHOW_TEXT: {'text': '!!!'}",
                 "SELF_SWITCH_ON: 'A'"
             ]
         },
 
         {
             "conditions": {"self_switch": "A"},
-            "character_hue": "s_04.png","pattern": 0,
+            "character_hue": "s_06.png","pattern": 0,
             "trigger": "action_button",
-            "direction": "bottom",
+            "direction": "right",
             "frequence": 4,
             "type": "fixed",
             "through": false,
@@ -40,7 +40,7 @@
             "alwaysOnTop": true,
             "speed": 4,
             "commands": [
-                "SHOW_TEXT: {'text': 'You will never be the Title Holder!!'}",
+                "SHOW_TEXT: {'text': 'Red Moon Kingdom is in North of this town'}",
                 "CALL: 'battle'"
             ]
         }

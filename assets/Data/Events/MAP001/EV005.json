@@ -5,16 +5,15 @@
         "id": "2",
         "x": 25,
         "y": 32,
-        "id": "1",
+        "id": "5",
         "name": "EV005"
     },
 
     [
         {
-
             "character_hue": "m_002.gif","pattern": 2,
             "trigger": "action_button",
-            "direction": "left",
+            "direction": "top",
             "frequence": 4,
             "type": "fixed",
             "through": false,
@@ -24,7 +23,7 @@
             "alwaysOnTop": true,
             "speed": 4,
             "commands": [
-                "SHOW_TEXT: {'text': 'Want my title huh?!?'}",
+                "SHOW_TEXT: {'text': 'Hello!?'}",
                 "SELF_SWITCH_ON: 'A'"
             ]
         },
@@ -33,7 +32,7 @@
             "conditions": {"self_switch": "A"},
             "character_hue": "m_002.gif","pattern": 0,
             "trigger": "action_button",
-            "direction": "left",
+            "direction": "right",
             "frequence": 4,
             "type": "fixed",
             "through": false,
