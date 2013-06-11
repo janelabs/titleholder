@@ -21,6 +21,8 @@ var Arena = {
                 rpg.player.setTypeMove("tile");
                 rpg.setScreenIn("Player");
 
+                rpg.setVolumeAudio(1);
+
                 rpg.onEventCall("battle", function(){
                     var enemy_id = $(this)[0].id;
                     Arena.battle(enemy_id);

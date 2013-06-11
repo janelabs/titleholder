@@ -2,16 +2,16 @@
     {
         "x": 22,
         "y": 43,
-        "id": "2",
+        "id": "6",
         "name": "EV006"
     },
 
     [
         {
 
-            "character_hue": "s_04.png","pattern": 2,
+            "character_hue": "s_06.png","pattern": 2,
             "trigger": "action_button",
-            "direction": "left",
+            "direction": "top",
             "frequence": 4,
             "type": "fixed",
             "through": false,
@@ -21,16 +21,16 @@
             "alwaysOnTop": true,
             "speed": 4,
             "commands": [
-                "SHOW_TEXT: {'text': 'Escape now while you have the time!'}",
+                "SHOW_TEXT: {'text': 'Hello!?'}",
                 "SELF_SWITCH_ON: 'A'"
             ]
         },
 
         {
             "conditions": {"self_switch": "A"},
-            "character_hue": "s_04.png","pattern": 0,
+            "character_hue": "s_06.png","pattern": 0,
             "trigger": "action_button",
-            "direction": "right",
+            "direction": "bottom",
             "frequence": 4,
             "type": "fixed",
             "through": false,
@@ -40,7 +40,7 @@
             "alwaysOnTop": true,
             "speed": 4,
             "commands": [
-                "SHOW_TEXT: {'text': 'Say hello to your ancestors!'}",
+                "SHOW_TEXT: {'text': 'Red Moon Kingdom is in North of this town'}",
                 "CALL: 'battle'"
             ]
         }

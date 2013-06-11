@@ -1,0 +1,12 @@
+.login {
+    margin: 50px auto;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    background-color: #fff;
+    padding: 2px;
+}
+
+.frm {
+    text-align: center;
+    font-weight: bold;
+}
