@@ -130,6 +130,7 @@ $(document).ready(function(){
 
                     if(response.has_levelup) {
                         setTimeout(function(){
+                            $('#attr_points').html(response.ap);
                             $('#ap_modal').modal('show');
                             $('#battle').modal('hide');
                             $('#result').html('You have level up').hide().fadeIn('fast');
@@ -145,19 +146,6 @@ $(document).ready(function(){
                 }
             }
         },'json');
-
-        e.preventDefault();
-    });
-
-    // allocate attribute points
-    $('#ap_form').on('submit',function(e){
-
-        param = $(this).serialize();
-        action = $(this).attr('action');
-
-        $.post(action, param, function(data){
-            alert(JSON.stringify(data));
-        });
 
         e.preventDefault();
     });

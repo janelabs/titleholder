@@ -20,7 +20,7 @@
     </div>
     <form action="<?php echo site_url('battle/allocate'); ?>" id="ap_form">
     <div class="modal-body">
-        <div>You have five (5) AP left</div>
+        <div>You have five (<span id="attr_points">0</span>) AP left</div>
         <div>
             <strong>Attack</strong>
             <input type="text" name="atk" value="0" class="input-small" id="atk" />
@@ -57,5 +57,18 @@ was originally in the battle/index view
 <script type="text/javascript">
     $(function(){
         Arena.initView();
+    });
+
+    // allocate attribute points
+    $('#ap_form').on('submit',function(e){
+
+        param = $(this).serialize();
+        action = $(this).attr('action');
+
+        $.post(action, param, function(data){
+            alert(JSON.stringify(data));
+        });
+
+        e.preventDefault();
     });
 </script>
