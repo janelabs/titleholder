@@ -88,6 +88,24 @@ $(document).ready(function(){
         $(this).tab('show');
     })
 
+
+    $('#sound').click(function() {
+        var bgm = $("#arenabgm");
+        if ($(this).hasClass("sound-play")) {
+            $(this).removeClass('sound-play');
+            $(this).addClass('sound-mute');
+            bgm.get(0).pause();
+
+        }
+        else {
+            $(this).removeClass('sound-mute');
+            $(this).addClass('sound-play');
+            bgm.get(0).play();
+        }
+
+        //setCookie("rpg-volume", val);
+    });
+
     // manual close button of battle modal
     $('#close').click(function(e){
         $('#battle').modal('hide');
