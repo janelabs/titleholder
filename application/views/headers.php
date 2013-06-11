@@ -16,7 +16,7 @@
             $('.back_to_main').on("click", function(){
                 var parent_div = $(this).parent('div').attr('id');
                 $('#' + parent_div).fadeOut("slow",function(){
-                    $("#div_main").fadeIn("slow");
+                    window.location = "<?php echo site_url(); ?>";
                 });
             });
         });

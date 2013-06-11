@@ -11,7 +11,7 @@
 
             "character_hue": "s_05.png","pattern": 2,
             "trigger": "action_button",
-            "direction": "left",
+            "direction": "top",
             "frequence": 4,
             "type": "fixed",
             "through": false,
@@ -21,7 +21,7 @@
             "alwaysOnTop": true,
             "speed": 4,
             "commands": [
-                "SHOW_TEXT: {'text': '...'}",
+                "SHOW_TEXT: {'text': 'Hello!?'}",
                 "SELF_SWITCH_ON: 'A'"
             ]
         },
@@ -30,7 +30,7 @@
             "conditions": {"self_switch": "A"},
             "character_hue": "s_05.png","pattern": 0,
             "trigger": "action_button",
-            "direction": "left",
+            "direction": "right",
             "frequence": 4,
             "type": "fixed",
             "through": false,
