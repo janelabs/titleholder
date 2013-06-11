@@ -18,7 +18,7 @@
             "stop_animation": false,
             "no_animation": false,
             "direction_fix": false,
-            "alwaysOnTop": true,
+            "alwaysOnTop": false,
             "speed": 4,
             "commands": [
                 "SHOW_TEXT: {'text': 'Hi! Do you know the Red Moon Kingdom?'}",

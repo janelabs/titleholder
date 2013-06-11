@@ -1,4 +1,4 @@
-<div id="logs_window" class="container" style="width: 640px; height: 480px"></div>
+<div id="logs_window" class="container2" style="width: 640px; height: 480px"></div>
 
 <script type="text/javascript">
     $(document).ready(function(){

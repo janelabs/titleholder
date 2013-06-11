@@ -79,5 +79,13 @@
 
             $('#logs_frame iframe').attr({src : "<?php echo site_url('logs'); ?>"});
         });
+
+        $('#btn_rank').on("click", function(){
+            $("#div_main").fadeOut("slow",function(){
+                $("#rank_frame").fadeIn("slow");
+            });
+
+            $('#rank_frame iframe').attr({src : "<?php echo site_url('ranking'); ?>"});
+        });
     });
 </script>

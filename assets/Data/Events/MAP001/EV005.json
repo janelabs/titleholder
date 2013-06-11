@@ -2,7 +2,7 @@
     {
         "x": 25,
         "y": 32,
-        "id": "1",
+        "id": "5",
         "name": "EV005"
     },
 
@@ -21,7 +21,7 @@
             "alwaysOnTop": true,
             "speed": 4,
             "commands": [
-                "SHOW_TEXT: {'text': 'Want my title huh?!?'}",
+                "SHOW_TEXT: {'text': '...'}",
                 "SELF_SWITCH_ON: 'A'"
             ]
         },
