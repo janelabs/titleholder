@@ -60,7 +60,7 @@ ORDER BY r DESC');
     public function getRankingsByLevel(){
         $rankings = $this->db->query('SELECT name, level, avatar_filename
 FROM `user_data`
-ORDER BY `user_data`.`level` DESC');
+ORDER BY `user_data`.`level` DESC LIMIT 5');
         if ($rankings->num_rows() > 0){
             return $rankings->result();
         }

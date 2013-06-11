@@ -192,7 +192,7 @@ html,body {
     left: 350px;
 }
 
-.container {
+.container2 {
     width: 640px;
     height: 480px;
     background-image: url('../images/menu_bg.jpg');
@@ -206,6 +206,22 @@ html,body {
 .log_txt {
     position: absolute;
     left: 460px;
+}
+
+.rank_txt {
+    position: absolute;
+    left: 435px;
+}
+
+.ul_nav {
+    position: absolute;
+    top: 60px;
+    left: 50px;
+}
+
+.tab_position {
+    position: absolute;
+    top: 55px;
 }
 
 /*==================================

@@ -1,43 +1,105 @@
+<div class="container2" width="80%">
+<h1 class="rank_txt">Rankings</h1>
 
+<div class="tbl" style="width: 542px; left: 50px; top: 65px; height: 370px;">&nbsp;</div> <!-- DON'T DELETE THIS DIV, used in bg -->
 
-<div class="container">
-    <div class="page-header">
-        <h1>Rankings</h1>
+<ul class="nav nav-tabs ul_nav" id="rankTab" style="width: 85%;">
+    <li class="active" style="width: 50%;">
+        <a href="#title">By Title</a>
+    </li>
+    <li style="width: 50%;">
+        <a href="#level">By Level</a>
+    </li>
+</ul>
+
+<div class="tab-content">
+    <!-- by title -->
+    <div class="tab-pane active tab_position" id="title" style="width: 100%;">
+        <table style="width: 85%;" cellpadding="5" cellspacing="0" border="0px" class="tbl_text tbl_position">
+            <thead>
+            <tr>
+                <th>Image</th>
+                <th>Name</th>
+                <th>Ranking</th>
+            </tr>
+            </thead>
+            <tbody>
+                <?php
+                    $i = 0;
+                    if ($ranks):
+                        foreach($ranks as $rank):
+                            $i++;
+                            ?>
+                            <tr>
+                                <td>
+                                    <!-- $rank->avatar_filename -->
+                                    <img width="40px" height="40px" src="<?php echo base_url('assets/images/placeholder.jpg'); ?>" />
+                                </td>
+                                <td>
+                                    <?php echo $rank->name; ?>
+                                </td>
+                                <td>
+                                    <?php echo $rank->r; ?>
+                                </td>
+                            </tr>
+                            <?php
+                        endforeach;
+                    else:
+                        ?>
+                        <tr colspan="3">
+                            <td>No record(s) found.</td>
+                        </tr>
+                        <?php
+                    endif;
+                ?>
+            </tbody>
+        </table>
     </div>
 
+    <!-- by level -->
 
-            <ul class="nav nav-tabs" id="rankTab">
-                <li class="active"><a href="#title">By Title</a></li>
-                <li><a href="#level">By Level</a></li>
-            </ul>
-
-            <div class="tab-content">
-                <div class="tab-pane active" id="title">
-                    <?php
-                    // FIXME: repeating code, enhance
-                    $i=0;
-                    foreach($ranks as $rank) {
-                        $i++;
-                        ?>
-                        <?php ?><div class="<?php echo $i==1?"toptitleholder":"titleholder"; ?>"><img src="<?php echo base_url('assets/Graphics/Characters/'.$rank->avatar_filename); ?>"><div class="rankname"><?php echo $rank->name; ?></div><div class="ranknumber"><?php echo $rank->r; ?></div></div>
-                    <?php
-                    }
+    <div class="tab-pane tab_position" id="level" style="width: 100%;">
+        <table style="width: 85%;" cellpadding="5" cellspacing="0" border="0px" class="tbl_text tbl_position">
+            <thead>
+            <tr>
+                <th>Image</th>
+                <th>Name</th>
+                <th>Ranking</th>
+            </tr>
+            </thead>
+            <tbody>
+            <?php
+            $i = 0;
+            if ($r_level):
+                foreach($r_level as $level):
+                    $i++;
                     ?>
-                </div>
-                <div class="tab-pane" id="level">
-                    <?php
-                    // FIXME: repeating code, enhance
-                    $i=0;
-                    foreach($r_level as $level) {
-                        $i++;
-                        ?>
-                        <?php ?><div class="<?php echo $i==1?"toptitleholder":"titleholder"; ?>"><img src="<?php echo base_url('assets/Graphics/Characters/'.$level->avatar_filename); ?>"><div class="rankname">
-                            <?php echo $level->name; ?></div><div> Lvl: <?php echo $level->level; ?></div></div>
-                    <?php
-                    }
-                    ?>
-                </div>
-
-            </div>
-
+                    <tr>
+                        <td>
+                            <!-- $level->avatar_filename -->
+                            <img width="40px" height="40px" src="<?php echo base_url('assets/images/placeholder.jpg'); ?>" />
+                        </td>
+                        <td>
+                            <?php echo $level->name; ?>
+                        </td>
+                        <td>
+                            <?php echo "Lvl: $level->level"; ?>
+                        </td>
+                    </tr>
+                <?php
+                endforeach;
+            else:
+                ?>
+                <tr colspan="3">
+                    <td>No record(s) found.</td>
+                </tr>
+            <?php
+            endif;
+            ?>
+            </tbody>
+        </table>
+    </div>
 </div>
+</div>
+</body>
+</html>

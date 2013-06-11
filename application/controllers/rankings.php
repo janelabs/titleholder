@@ -21,7 +21,6 @@ class Rankings extends CI_Controller {
 
         $this->load->view('headers');
         $this->load->view('ranks',$data);
-        $this->load->view('footers');
 	}
 }
 

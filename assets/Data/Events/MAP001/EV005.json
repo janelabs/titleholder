@@ -1,8 +1,5 @@
 [
     {
-        "x": 29,
-        "y": 31,
-        "id": "2",
         "x": 25,
         "y": 32,
         "id": "5",
@@ -11,7 +8,8 @@
 
     [
         {
-            "character_hue": "m_002.gif","pattern": 2,
+
+            "character_hue": "s_05.png","pattern": 2,
             "trigger": "action_button",
             "direction": "top",
             "frequence": 4,
@@ -23,16 +21,16 @@
             "alwaysOnTop": true,
             "speed": 4,
             "commands": [
-                "SHOW_TEXT: {'text': 'Hello!?'}",
+                "SHOW_TEXT: {'text': '...'}",
                 "SELF_SWITCH_ON: 'A'"
             ]
         },
 
         {
             "conditions": {"self_switch": "A"},
-            "character_hue": "m_002.gif","pattern": 0,
+            "character_hue": "s_05.png","pattern": 0,
             "trigger": "action_button",
-            "direction": "right",
+            "direction": "bottom",
             "frequence": 4,
             "type": "fixed",
             "through": false,
@@ -42,7 +40,7 @@
             "alwaysOnTop": true,
             "speed": 4,
             "commands": [
-                "SHOW_TEXT: {'text': 'Say hello to your ancestors!'}",
+                "SHOW_TEXT: {'text': 'I'm busy..'}",
                 "CALL: 'battle'"
             ]
         }
