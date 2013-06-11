@@ -11,7 +11,7 @@
 
             "character_hue": "s_04.png","pattern": 2,
             "trigger": "action_button",
-            "direction": "left",
+            "direction": "top",
             "frequence": 4,
             "type": "fixed",
             "through": false,
@@ -40,7 +40,7 @@
             "alwaysOnTop": true,
             "speed": 4,
             "commands": [
-                "SHOW_TEXT: {'text': 'Are you the title holder?'}",
+                "SHOW_TEXT: {'text': 'Do you think you can defeat me?'}",
                 "CALL: 'battle'"
             ]
         }

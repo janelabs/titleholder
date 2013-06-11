@@ -2,16 +2,24 @@
     {
         "x": 22,
         "y": 43,
+<<<<<<< HEAD
         "id": "3",
+=======
+        "id": "2",
+>>>>>>> ed63214af89f3adee3bbba37da36d816b8a8cb32
         "name": "EV006"
     },
 
     [
         {
 
+<<<<<<< HEAD
             "character_hue": "s_03.png","pattern": 2,
+=======
+            "character_hue": "s_04.png","pattern": 2,
+>>>>>>> ed63214af89f3adee3bbba37da36d816b8a8cb32
             "trigger": "action_button",
-            "direction": "right",
+            "direction": "left",
             "frequence": 4,
             "type": "fixed",
             "through": false,
@@ -30,7 +38,7 @@
             "conditions": {"self_switch": "A"},
             "character_hue": "s_03.png","pattern": 0,
             "trigger": "action_button",
-            "direction": "left",
+            "direction": "right",
             "frequence": 4,
             "type": "fixed",
             "through": false,
@@ -40,7 +48,7 @@
             "alwaysOnTop": true,
             "speed": 4,
             "commands": [
-                "SHOW_TEXT: {'text': 'Are you the title holder?'}",
+                "SHOW_TEXT: {'text': 'Say hello to your ancestors!'}",
                 "CALL: 'battle'"
             ]
         }

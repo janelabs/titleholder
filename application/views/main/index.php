@@ -55,10 +55,25 @@
     </div>
 
     <div class="div_child">
-        <a><i class="ui-icon-volume-on"></i></a>
+        <button class="music_toggle"><i class="icon-volume-up"></i></button>
+    </div>
+
+    <div class="div_child">
+        <button id="btn_logout" class="logout"><i class="icon-off"></i></button>
     </div>
 </div>
 </center>
+
+<div class="modal hide fade" role="dialog" id="logout" style="display: none;">
+    <div class="modal-body">
+        <span>Sure to logout?</span>
+    </div>
+
+    <div class="modal-footer">
+        <a class="btn btn-info" data-dismiss="modal">NO</a>
+        <a class="btn btn-danger" href="<?php echo site_url('logout'); ?>">YES</a>
+    </div>
+</div>
 </body>
 </html>
 
@@ -86,6 +101,10 @@
             });
 
             $('#rank_frame iframe').attr({src : "<?php echo site_url('ranking'); ?>"});
+        });
+
+        $('#btn_logout').on("click", function(){
+            $('#logout').modal();
         });
     });
 </script>

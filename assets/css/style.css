@@ -210,7 +210,8 @@ html,body {
 
 .rank_txt {
     position: absolute;
-    left: 435px;
+    top: 5px;
+    left: 398px;
 }
 
 .ul_nav {
@@ -222,6 +223,18 @@ html,body {
 .tab_position {
     position: absolute;
     top: 55px;
+}
+
+.logout {
+    position: absolute;
+    top: 270px;
+    left: 544px;
+}
+
+.music_toggle {
+    position: absolute;
+    top: 270px;
+    left: 500px;
 }
 
 /*==================================
@@ -327,6 +340,7 @@ html,body {
 .ranklevel{
     float:right;
 }
+<<<<<<< HEAD
 
 
 
@@ -346,4 +360,8 @@ html,body {
     text-align: center;
     text-shadow: 0 0 3px rgb(0,0,0);
     z-index: 10000;
+=======
+.msgcontainer{
+    visibility: hidden;
+>>>>>>> ed63214af89f3adee3bbba37da36d816b8a8cb32
 }

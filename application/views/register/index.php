@@ -84,7 +84,15 @@
 
         <div>
             <input type="submit" value="Create Account" class="btn" />
-            <span id="signup_message"></span>
+            <div class="msgcontainer">
+                <div class="alert alert-error fade in ">
+
+                    <span id="signup_message"></span>
+                    <a class="close" href="#">&times;</a>
+                </div>
+            </div>
+
+
         </div>
     </div>
 </form>
