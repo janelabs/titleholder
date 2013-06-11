@@ -330,3 +330,35 @@ html,body {
 .msgcontainer{
     visibility: hidden;
 }
+
+/*Arena related css*/
+#hoptions {
+    background: rgba(0, 0, 0, 0.5);
+    height: 22px;
+    width: 40px;
+    color: #fff;
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 10;
+    -webkit-border-bottom-left-radius: 15px;
+
+}
+
+#sound  {
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+    float: right;
+    margin-top: 3px;
+    margin-right: 8px;
+
+}
+
+.sound-play {
+    background: url('../images/sound_16.png');
+}
+
+.sound-mute {
+    background: url('../images/sound_mute_16.png');
+}

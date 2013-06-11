@@ -20,11 +20,11 @@ var Arena = {
             }, function () {
                 rpg.player.setTypeMove("tile");
                 rpg.setScreenIn("Player");
-
                 rpg.onEventCall("battle", function(){
                     var enemy_id = $(this)[0].id;
                     Arena.battle(enemy_id);
                 });
+
             });
 
             Input.lock(rpg.canvas, true);
@@ -53,4 +53,9 @@ var Arena = {
             }
         });
     }
+//    // mute is 0. on is 1
+//    toggleSound: function(val){
+//        Arena.setVolumeAudio(val);
+//    }
 };
+
