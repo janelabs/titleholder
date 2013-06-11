@@ -2,16 +2,16 @@
     {
         "x": 38,
         "y": 17,
-        "id": "3",
+        "id": "7",
         "name": "EV007"
     },
 
     [
         {
 
-            "character_hue": "s_03.png","pattern": 2,
+            "character_hue": "s_07.png","pattern": 2,
             "trigger": "action_button",
-            "direction": "bottom",
+            "direction": "left",
             "frequence": 4,
             "type": "fixed",
             "through": false,
@@ -21,14 +21,14 @@
             "alwaysOnTop": true,
             "speed": 4,
             "commands": [
-                "SHOW_TEXT: {'text': 'Let's get this over with'}",
+                "SHOW_TEXT: {'text': '!!!'}",
                 "SELF_SWITCH_ON: 'A'"
             ]
         },
 
         {
             "conditions": {"self_switch": "A"},
-            "character_hue": "s_03.png","pattern": 0,
+            "character_hue": "s_07.png","pattern": 0,
             "trigger": "action_button",
             "direction": "top",
             "frequence": 4,
@@ -40,7 +40,7 @@
             "alwaysOnTop": true,
             "speed": 4,
             "commands": [
-                "SHOW_TEXT: {'text': 'Ha!! Prepare to die!'}",
+                "SHOW_TEXT: {'text': 'Are you the title holder?'}",
                 "CALL: 'battle'"
             ]
         }

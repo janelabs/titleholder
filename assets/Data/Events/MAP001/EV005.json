@@ -2,14 +2,14 @@
     {
         "x": 25,
         "y": 32,
-        "id": "1",
+        "id": "5",
         "name": "EV005"
     },
 
     [
         {
 
-            "character_hue": "c_01.png","pattern": 2,
+            "character_hue": "s_05.png","pattern": 2,
             "trigger": "action_button",
             "direction": "left",
             "frequence": 4,
@@ -21,14 +21,14 @@
             "alwaysOnTop": true,
             "speed": 4,
             "commands": [
-                "SHOW_TEXT: {'text': 'Want my title huh?!?'}",
+                "SHOW_TEXT: {'text': '...'}",
                 "SELF_SWITCH_ON: 'A'"
             ]
         },
 
         {
             "conditions": {"self_switch": "A"},
-            "character_hue": "c_01.png","pattern": 0,
+            "character_hue": "s_05.png","pattern": 0,
             "trigger": "action_button",
             "direction": "left",
             "frequence": 4,
@@ -40,7 +40,7 @@
             "alwaysOnTop": true,
             "speed": 4,
             "commands": [
-                "SHOW_TEXT: {'text': 'Ha!! Prepare to die!'}",
+                "SHOW_TEXT: {'text': 'Red Moon Kingdom is in North of this town'}",
                 "CALL: 'battle'"
             ]
         }
