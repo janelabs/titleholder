@@ -45,7 +45,7 @@ class Login extends CI_Controller {
                     $data['status'] = 1;
                     $data['success'] = true;
                     $data['message'] = 'Login Successful! Redirecting...';
-                    $data['location'] = site_url('main');
+                    $data['location'] = site_url();
 
                 } else {
 

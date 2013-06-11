@@ -10,7 +10,7 @@ class Logs extends CI_Model {
             ->where('user_id',$user_id)
             ->where('log_type',$log_type)
             ->where('enemy_type',$enemy_type)
-            ->limit(10)
+            ->limit(5)
             ->order_by('log_id','desc');
 
         if($enemy_type == 1) {

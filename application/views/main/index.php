@@ -71,5 +71,13 @@
 
             $('#arena_frame iframe').attr({src : "<?php echo site_url('arena'); ?>"});
         });
+
+        $('#btn_log').on("click", function(){
+            $("#div_main").fadeOut("slow",function(){
+                $("#logs_frame").fadeIn("slow");
+            });
+
+            $('#logs_frame iframe').attr({src : "<?php echo site_url('logs'); ?>"});
+        });
     });
 </script>

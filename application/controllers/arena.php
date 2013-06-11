@@ -32,8 +32,10 @@ class Arena extends CI_Controller {
             }
 
             $monsters = $this->monsters->getByLevel($where);
+            if ($monsters) {
+                $this->generateEvents($monsters);
+            }
 
-            $this->generateEvents($monsters);
         }
 
         $data['user'] = $user;
@@ -47,6 +49,7 @@ class Arena extends CI_Controller {
         $file_name = "EV00";
         $ctr = 4; // 4 start of the count for there are default 4 events.
         $dataOptions = array();
+        $directions = array('top', 'bottom', 'left', 'right');
 
         $msg1 = array(
             'You dared to challenge me?',
@@ -71,21 +74,26 @@ class Arena extends CI_Controller {
                 $msg_key_1 = array_rand($msg1);
                 $msg_key_2 = array_rand($msg2);
 
+                $direction_key1 = array_rand($directions);
+                $direction_key2 = array_rand($directions);
+
                 $dataOptions['m_id'] = $m_info->monster_id;
                 $dataOptions['name'] = $f_name;
                 $dataOptions['avatar'] = $m_info->monster_avatar;
                 $dataOptions['msg1'] = $msg1[$msg_key_1];
                 $dataOptions['msg2'] = $msg2[$msg_key_2];
+                $dataOptions['directions_1'] = $directions[$direction_key1];
+                $dataOptions['directions_2'] = $directions[$direction_key2];
 
                 // set the X and Y position of characters
                 switch ($ctr) {
                     case 5:
-                        $dataOptions['x_pos'] = 29;
-                        $dataOptions['y_pos'] = 31;
+                        $dataOptions['x_pos'] = 25;
+                        $dataOptions['y_pos'] = 32;
                         break;
                     case 6:
                         $dataOptions['x_pos'] = 19;
-                        $dataOptions['y_pos'] = 41;
+                        $dataOptions['y_pos'] = 43;
                         break;
                     case 7:
                         $dataOptions['x_pos'] = 38;

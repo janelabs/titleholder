@@ -126,6 +126,31 @@ html,body {
     position: relative;
 }
 
+.tbl {
+    background-color: papayawhip;
+    opacity: 0.6;
+}
+
+.tbl_text {
+    color: #ffffff;
+    font-weight:bold;
+    font-size: 14px;
+    text-shadow: 1px 2px 4px #000000;
+    filter: dropshadow(color=#000000, offx=1, offy=2);
+    -webkit-text-stroke: 0.5px black;
+}
+
+.tbl_position {
+    position: absolute;
+    top: 60px;
+    left: 65px;
+}
+
+.enemy_image {
+    width: 60px;
+    height: 60px;
+}
+
 .user_stat {
     color: #ffffff;
     font-weight:bold;
@@ -153,10 +178,21 @@ html,body {
     border: 0px;
 }
 
-#back_to_main {
+.back_to_main {
     position: absolute;
-    top: 57px;
+    top: 68px;
     left: 350px;
+}
+
+.container {
+    width: 640px;
+    height: 480px;
+    background-image: url('../images/menu_bg.jpg');
+    background-repeat: no-repeat;
+    -webkit-box-shadow: inset 0px 0px 100px 5px rgba(100, 65, 10, 0.6);
+    box-shadow: inset 0px 0px 100px 5px rgba(100, 65, 10, 0.6);
+    opacity: 1;
+    outline: 2px solid #0f0e0f;
 }
 
 /*==================================

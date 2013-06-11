@@ -1,7 +1,7 @@
 [
     {
         "x": 19,
-        "y": 41,
+        "y": 43,
         "id": "2",
         "name": "EV006"
     },
@@ -13,15 +13,15 @@
             "trigger": "action_button",
             "direction": "left",
             "frequence": 4,
-            "type": "random",
+            "type": "fixed",
             "through": false,
             "stop_animation": false,
             "no_animation": false,
             "direction_fix": false,
-            "alwaysOnTop": false,
+            "alwaysOnTop": true,
             "speed": 4,
             "commands": [
-                "SHOW_TEXT: {'text': 'Want my title huh?!?'}",
+                "SHOW_TEXT: {'text': 'Let's get this over with'}",
                 "SELF_SWITCH_ON: 'A'"
             ]
         },
@@ -32,12 +32,12 @@
             "trigger": "action_button",
             "direction": "bottom",
             "frequence": 4,
-            "type": "random",
+            "type": "fixed",
             "through": false,
             "stop_animation": false,
             "no_animation": false,
             "direction_fix": false,
-            "alwaysOnTop": false,
+            "alwaysOnTop": true,
             "speed": 4,
             "commands": [
                 "SHOW_TEXT: {'text': 'You will never be the Title Holder!!'}",
