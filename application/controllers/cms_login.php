@@ -10,15 +10,15 @@ class Cms_login extends CI_Controller {
     {
         parent::__construct();
 
-        if ($this->session->userdata('logged')) {
-            redirect(site_url('cms/main'));
-        }
-
         $this->key = $this->config->item('encryption_key');
     }
 
     public function index()
     {
+        if ($this->session->userdata('aid') > 0) {
+            redirect(site_url('cms/main'));
+        }
+
         $data = array();
         $this->load->view('cms/login', $data);
     }
@@ -64,8 +64,13 @@ class Cms_login extends CI_Controller {
 
     public function logout()
     {
-        $this->session->destroy();
-        redirect('cms/login');
+        $logged_account = array(
+            'aid' => 0,
+            'logged' => false
+        );
+        $this->session->unset_userdata($logged_account);
+        $this->session->sess_destroy();
+        $this->index();
     }
 }
 
