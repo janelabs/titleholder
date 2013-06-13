@@ -213,6 +213,13 @@ class Battle extends CI_Controller {
             exit;
         }
 
+        if(!$player_data->points) {
+            $response['message'] = 'You do not have AP to allocate';
+
+            echo json_encode($response);
+            exit;
+        }
+
         if($total > $player_data->points) {
             $response['message'] = 'Input values exceeded total AP';
 
