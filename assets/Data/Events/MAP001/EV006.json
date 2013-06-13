@@ -1,0 +1,48 @@
+[
+    {
+        "x": 22,
+        "y": 43,
+        "id": "3",
+        "name": "EV006"
+    },
+
+    [
+        {
+
+            "character_hue": "s_03.png","pattern": 2,
+            "trigger": "action_button",
+            "direction": "left",
+            "frequence": 4,
+            "type": "fixed",
+            "through": false,
+            "stop_animation": false,
+            "no_animation": false,
+            "direction_fix": false,
+            "alwaysOnTop": true,
+            "speed": 4,
+            "commands": [
+                "SHOW_TEXT: {'text': 'Escape now while you have the time!'}",
+                "SELF_SWITCH_ON: 'A'"
+            ]
+        },
+
+        {
+            "conditions": {"self_switch": "A"},
+            "character_hue": "s_03.png","pattern": 0,
+            "trigger": "action_button",
+            "direction": "top",
+            "frequence": 4,
+            "type": "fixed",
+            "through": false,
+            "stop_animation": false,
+            "no_animation": false,
+            "direction_fix": false,
+            "alwaysOnTop": true,
+            "speed": 4,
+            "commands": [
+                "SHOW_TEXT: {'text': 'Say hello to your ancestors!'}",
+                "CALL: 'battle'"
+            ]
+        }
+    ]
+]
