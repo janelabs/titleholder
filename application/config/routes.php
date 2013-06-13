@@ -66,6 +66,8 @@ $route['cms/login'] = 'cms_login';
 $route['cms/main'] = 'cms_admin';
 $route['cms/authenticate'] = 'cms_login/authenticate';
 $route['cms/logout'] = 'cms_login/logout';
+$route['cms/users'] = 'cms_users';
+$route['cms/users/all'] = 'cms_users/fetchUsers';
 
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */

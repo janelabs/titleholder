@@ -19,7 +19,7 @@ html,body {
     height: 60px;
 }
 #footer {
-    background-color: #f5f5f5;
+    background-color: #fafafa;
 }
 
 @media (max-width: 767px) {
