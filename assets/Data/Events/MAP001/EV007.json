@@ -1,0 +1,48 @@
+[
+    {
+        "x": 38,
+        "y": 17,
+        "id": "4",
+        "name": "EV007"
+    },
+
+    [
+        {
+
+            "character_hue": "s_04.png","pattern": 2,
+            "trigger": "action_button",
+            "direction": "right",
+            "frequence": 4,
+            "type": "fixed",
+            "through": false,
+            "stop_animation": false,
+            "no_animation": false,
+            "direction_fix": false,
+            "alwaysOnTop": true,
+            "speed": 4,
+            "commands": [
+                "SHOW_TEXT: {'text': 'Let's get this over with'}",
+                "SELF_SWITCH_ON: 'A'"
+            ]
+        },
+
+        {
+            "conditions": {"self_switch": "A"},
+            "character_hue": "s_04.png","pattern": 0,
+            "trigger": "action_button",
+            "direction": "top",
+            "frequence": 4,
+            "type": "fixed",
+            "through": false,
+            "stop_animation": false,
+            "no_animation": false,
+            "direction_fix": false,
+            "alwaysOnTop": true,
+            "speed": 4,
+            "commands": [
+                "SHOW_TEXT: {'text': 'Ha!! Prepare to die!'}",
+                "CALL: 'battle'"
+            ]
+        }
+    ]
+]

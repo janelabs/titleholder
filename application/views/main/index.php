@@ -3,6 +3,9 @@
 ?>
 
 <div id="div_main">
+    <div id="hoptions" style="position: relative; float: right">
+        <div id="sound" class="sound-play"></div>
+    </div>
     <!-- avatar -->
     <div class="div_child">
         <img id="user_dp" src="<?php echo base_url('assets/images/dummy.png'); ?>" />
@@ -63,6 +66,10 @@
     </div>
 </div>
 </center>
+<audio id="arenabgm" autoplay loop>
+    <source src="<?php echo base_url('assets/Audio/BGM/arena.mp3'); ?>">
+    <source src="<?php echo base_url('assets/Audio/BGM/arena.ogg'); ?>">
+</audio>
 
 <div class="modal hide fade" role="dialog" id="logout" style="display: none;">
     <div class="modal-body">

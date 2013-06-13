@@ -100,8 +100,13 @@ class Battle extends CI_Controller {
                 $data['points'] =$attr_points;
             }
 
+            // remove after testing
+            // $has_levelup = true;
+            // $attr_points = $player_data->points + self::AP;
+
             $data['xp'] = $player_xp;
             $data['level'] = $player_level;
+            $data['points'] = $attr_points;
 
             // update level and experience
             $this->users->updateUser($data,$player_data->id);
@@ -171,10 +176,11 @@ class Battle extends CI_Controller {
 
     public function allocate()
     {
+        sleep(3);
         $post = $this->input->post();
 
         if(!$post) {
-            $response = array('status' => 0,'error' => 'Wrong Method');
+            $response['message'] = 'Wrong Method';
 
             echo json_encode($response);
             exit;
@@ -182,7 +188,7 @@ class Battle extends CI_Controller {
 
         // if there is no at least 1 attribute input
         if(!$post['atk'] && !$post['def'] && !$post['hp']) {
-            $response = array('status' => 0,'error' => 'You did not assign points to any attribute');
+            $response['message'] = 'You did not assign points to any attribute';
 
             echo json_encode($response);
             exit;
@@ -190,7 +196,7 @@ class Battle extends CI_Controller {
 
         // if any of the attribute has invalid value
         if(!is_numeric($post['atk']) || !is_numeric($post['def']) || !is_numeric($post['hp'])) {
-            $response = array('status' => 0,'error' => 'Invalid Input');
+            $response['message'] = 'Invalid Input';
 
             echo json_encode($response);
             exit;
@@ -202,14 +208,14 @@ class Battle extends CI_Controller {
         $player_data = $this->users->get_userdata($player_id);
 
         if(!$player_data) {
-            $response = array('status' => 0,'error' => 'User not found');
+            $response['message'] = 'User not found';
 
             echo json_encode($response);
             exit;
         }
 
         if($total > $player_data->points) {
-            $response = array('status' => 0,'error' => 'Input values exceeded total AP');
+            $response['message'] = 'Input values exceeded total AP';
 
             echo json_encode($response);
             exit;
@@ -230,7 +236,7 @@ class Battle extends CI_Controller {
             $is_updated = $this->users->updateUser($data, $player_id);
 
             if($is_updated) {
-                $response = array('status' => 0,'error' => 'AP allocation successful');
+                $response['message'] = 'AP allocation successful';
                 echo json_encode($response);
             }
         }
