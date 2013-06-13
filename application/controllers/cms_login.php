@@ -10,9 +10,6 @@ class Cms_login extends CI_Controller {
     {
         parent::__construct();
 
-        $this->header = $this->load->view('cms/headers', null, true);
-        $this->footer = $this->load->view('cms/footers', null, true);
-
         if ($this->session->userdata('logged')) {
             redirect(site_url('cms/main'));
         }
@@ -23,8 +20,6 @@ class Cms_login extends CI_Controller {
     public function index()
     {
         $data = array();
-        $data['header'] = $this->header;
-        $data['footer'] = $this->footer;
         $this->load->view('cms/login', $data);
     }
 
@@ -65,6 +60,12 @@ class Cms_login extends CI_Controller {
             );
             $this->session->set_userdata($logged_account);
         }
+    }
+
+    public function logout()
+    {
+        $this->session->destroy();
+        redirect('cms/login');
     }
 }
 

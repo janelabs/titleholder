@@ -20,13 +20,13 @@
             <div class="navbar-inner">
                 <a class="brand" href="#">TitleHolder</a>
                 <ul class="nav">
-                    <li class=" active"><a href="#">Admin</a></li>
-                    <li class=""><a href="#">Users</a></li>
-                    <li class=""><a href="#">Avatars</a></li>
-                    <li class=""><a href="#">Pets</a></li>
-                    <li class=""><a href="#">Monsters</a></li>
-                    <li class=""><a href="#">Titles</a></li>
-                    <li class=""><a href="#">Logout</a></li>
+                    <li class="<?php echo ($active == 'admin') ? 'active' : ''; ?>"><a href="#">Admin</a></li>
+                    <li class="<?php echo ($active == 'user') ? 'active' : ''; ?>"><a href="#">Users</a></li>
+                    <li class="<?php echo ($active == 'avatar') ? 'active' : ''; ?>"><a href="#">Avatars</a></li>
+                    <li class="<?php echo ($active == 'pet') ? 'active' : ''; ?>"><a href="#">Pets</a></li>
+                    <li class="<?php echo ($active == 'monster') ? 'active' : ''; ?>"><a href="#">Monsters</a></li>
+                    <li class="<?php echo ($active == 'title') ? 'active' : ''; ?>"><a href="#">Titles</a></li>
+                    <li class=""><a href="<?php echo site_url('cms/logout'); ?>">Logout</a></li>
                 </ul>
             </div>
         </div>

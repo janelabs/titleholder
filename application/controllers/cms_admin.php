@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Cms_main extends CI_Controller {
+class Cms_admin extends CI_Controller {
 
     public $header;
     public $footer;
@@ -9,7 +9,8 @@ class Cms_main extends CI_Controller {
     {
         parent::__construct();
 
-        $this->header = $this->load->view('cms/headers', null, true);
+        $header_option = array('active' => 'admin');
+        $this->header = $this->load->view('cms/headers', $header_option, true);
         $this->footer = $this->load->view('cms/footers', null, true);
 
         if (!$this->session->userdata('logged')) {
@@ -27,5 +28,5 @@ class Cms_main extends CI_Controller {
 
 }
 
-/* End of file cms_login.php */
-/* Location: ./application/controllers/cms_login.php */
+/* End of file cms_admin.php */
+/* Location: ./application/controllers/cms_admin.php */
