@@ -9,13 +9,14 @@ class Cms_admin extends CI_Controller {
     {
         parent::__construct();
 
+        if ($this->session->userdata('logged') == false) {
+            redirect(site_url('cms/login'));
+        }
+
         $header_option = array('active' => 'admin');
         $this->header = $this->load->view('cms/headers', $header_option, true);
         $this->footer = $this->load->view('cms/footers', null, true);
 
-        if (!$this->session->userdata('logged')) {
-            redirect(site_url('cms/login'));
-        }
     }
 
     public function index()
