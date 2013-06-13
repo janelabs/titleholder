@@ -13,6 +13,17 @@
     <body style="margin: 0; background-color: rgb(221, 221, 221);">
         <div class="row-fluid">
             <div class="span4 offset4 login">
+
+                <?php
+                    if ($this->session->flashdata('login_error')):
+                        ?>
+                        <div class="alert alert-error">
+                            <strong>Error: </strong><?php echo $this->session->flashdata('login_error'); ?>
+                        </div>
+                    <?php
+                    endif;
+                ?>
+
                 <form name="login" method="post" action="<?php echo site_url('cms/authenticate'); ?>" class="form-actions frm">
                     <div class="controls-row">
                         <span class="span3"><label for="username">Username: </label></span>

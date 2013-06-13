@@ -4,6 +4,7 @@ class Cms_login extends CI_Controller {
 
     public $header;
     public $footer;
+    private $key;
 
     public function __construct()
     {
@@ -11,6 +12,8 @@ class Cms_login extends CI_Controller {
 
         $this->header = $this->load->view('cms/headers', null, true);
         $this->footer = $this->load->view('cms/footers', null, true);
+
+        $this->key = $this->config->item('encryption_key');
     }
 
     public function index()
