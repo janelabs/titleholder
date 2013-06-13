@@ -17,7 +17,6 @@
 
 <div class="modal hide fade in" id="ap_modal">
     <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
         <h3>Attribute Points</h3>
     </div>
     <form action="<?php echo site_url('battle/allocate'); ?>" id="ap_form">
@@ -37,8 +36,8 @@
         </div>
     </div>
     <div class="modal-footer">
-        <a href="#" class="btn" class="close" data-dismiss="modal" aria-hidden="true">Close</a>
-        <input type="submit" class="btn btn-primary" id="allocate_ap" value="Assign" />
+        <button type="button" class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+        <button type="submit" class="btn btn-primary" id="allocate_ap">Assign</button>
     </div>
     </form>
 </div>
@@ -63,12 +62,16 @@ was originally in the battle/index view
     // allocate attribute points
     $('#ap_form').on('submit',function(e){
 
+        // disable buttons while waiting for server response
+        $('#ap_form .btn').addClass('disabled').attr('disabled','disabled');
+
         param = $(this).serialize();
         action = $(this).attr('action');
 
         $.post(action, param, function(data){
-            alert(JSON.stringify(data));
-        });
+            $('#ap_form .btn').removeClass('disabled').removeAttr('disabled');
+            alert(data.message);
+        },'json');
 
         e.preventDefault();
     });
