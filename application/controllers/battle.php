@@ -176,7 +176,6 @@ class Battle extends CI_Controller {
 
     public function allocate()
     {
-        sleep(3);
         $post = $this->input->post();
 
         if(!$post) {
