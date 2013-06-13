@@ -30,7 +30,7 @@
             "conditions": {"self_switch": "A"},
             "character_hue": "s_04.png","pattern": 0,
             "trigger": "action_button",
-            "direction": "left",
+            "direction": "top",
             "frequence": 4,
             "type": "fixed",
             "through": false,
