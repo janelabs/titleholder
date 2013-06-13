@@ -1,14 +1,14 @@
 var CmsUsers = {
     initView: function(){
         var site_url = $('#site_url').html();
-    },
 
-    gridComplete: function() {
-        var ids = $("#u_list").jqGrid('getDataIDs');
-        for (var i = 0; i < ids.length; i++) {
-            var cl = ids[i];
-            checkout = "<input style='height:22px;width:75px;' type='button' value='Check Out' onclick=\" ??? \"  />";
-            jQuery("#east-grid").jqGrid('setRowData', ids[i], { action: checkout });
-        }
-    },
+        $("#delete").click(function(){
+            var gr = $("#u_list").jqGrid('getGridParam','selrow');
+
+            var ans = confirm("Are you sure you want to delete selected user?");
+            if (ans) {
+                window.location = site_url + 'cms/users/delete/' + gr;
+            }
+        });
+    }
 };

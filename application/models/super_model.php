@@ -25,7 +25,7 @@ class Super_model extends CI_Model {
      * @param null $tbl_name
      * @return bool
      */
-    public function getAllRecords($tbl_name = null, $paramArr = array())
+    public function getAllRecords($tbl_name = null, $paramArr = array(), $joinArr = array() )
     {
         $start = isset($paramArr['start']) ? $paramArr['start'] : NULL;
         $limit = isset($paramArr['limit']) ? $paramArr['start'] : NULL;
@@ -47,9 +47,14 @@ class Super_model extends CI_Model {
             $whereClause = "where true $whereParam";
         }
 
-        $SQL = "SELECT * FROM $tbl_name $whereClause order by $sortField $sortOrder $optLimit";
+        $SQL = "SELECT * FROM $tbl_name";
+        $JOIN = null;
+        if (count($joinArr) > 0) {
+            $JOIN = " LEFT JOIN {$joinArr['tbl']} {$joinArr['on']}";
+        }
+        $WHERE = " $whereClause order by $sortField $sortOrder $optLimit";
 
-        $result = $this->db->query($SQL);
+        $result = $this->db->query($SQL . $JOIN . $WHERE);
 
         if($result->num_rows() > 0) {
             $list = $result->result();
@@ -57,5 +62,23 @@ class Super_model extends CI_Model {
         } else {
             return null;
         }
+    }
+
+    /**
+     * Delete specific row
+     *
+     * @param null $tbl_name
+     * @param array $where
+     * @return bool
+     */
+    public function deleteRow($tbl_name = null, $where = array())
+    {
+        $query = false;
+
+        if ($tbl_name && count($where) > 0) {
+            $query = $this->db->delete($tbl_name, $where);
+        }
+
+        return $query;
     }
 }

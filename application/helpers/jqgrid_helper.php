@@ -65,7 +65,7 @@
      return $jqGrid->buildGrid();
   }
 
-  function buildGridData( $aData, $tbl_name ){
+  function buildGridData( $aData, $tbl_name, $joinArr ){
       $CI =& get_instance();
       $isSearch         		= $CI->input->get('_search');
       $searchField      		= $CI->input->get('searchField');
@@ -89,7 +89,7 @@
 	  */
       if( isset( $aData['method'] ) && isset( $aData['model'] ) ){
          $CI->load->model( $aData['model'] );
-         $aDataList = $CI->$aData['model']->$aData['method']($tbl_name, $paramArr);
+         $aDataList = $CI->$aData['model']->$aData['method']($tbl_name, $paramArr, $joinArr);
          $count = count($aDataList);
          if( $count > 0 ) {
              $total_pages = ceil($count/$limit);
@@ -109,7 +109,7 @@
          $paramArr['sortOrder']  = $sord;
          $paramArr['whereParam'] = $whereParam;
          $paramArr['reload']     = TRUE;
-         $aDataList = $CI->$aData['model']->$aData['method']($tbl_name, $paramArr);
+         $aDataList = $CI->$aData['model']->$aData['method']($tbl_name, $paramArr, $joinArr);
 
          $i=0;
          if( isset( $aData['columns'] ) ){

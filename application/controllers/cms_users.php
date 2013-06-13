@@ -53,8 +53,8 @@ class Cms_users extends CI_Controller {
                     'size' => 10
                 ),
                 array(
-                    'label' => 'Action',
-                    'name' => 'action',
+                    'label' => 'Pet Name',
+                    'name' => 'pet_name',
                     'width' => 100,
                     'size' => 10
                 )
@@ -64,7 +64,7 @@ class Cms_users extends CI_Controller {
             'sort_name' => 'name',
             'add_url' => '#',
             'edit_url' => '#',
-            'delete_url' => '#',
+            'delete_url' => site_url('cms/users/delGridRow'),
             'caption' => '',
             'primary_key' => 'id',
             'grid_height' => 300
@@ -82,11 +82,28 @@ class Cms_users extends CI_Controller {
                 'model' => 'super_model',
                 'method' => 'getAllRecords',
                 'pkid' => 'id',
-                'columns' => array( 'id','name','email', 'level' )
+                'columns' => array( 'id','name','email', 'level', 'pet_name')
             ),
-            self::TABLE_NAME
+            self::TABLE_NAME,
+            array(
+                'tbl' => 'pets',
+                'on' => "ON " . self::TABLE_NAME . ".pid = pets.pet_id"
+            )
         );
 
+    }
+
+    public function deleteUser($uid = 0)
+    {
+        if ($uid > 0) {
+            $where = array('id' => $uid);
+            $info = $this->super_model->deleteRow(self::TABLE_NAME, $where);
+
+            if (!$info) {
+                $this->session->set_flashdata('error', 'Something went wrong while deleting user\'s account. Please try again');
+            }
+        }
+        redirect(site_url('cms/users'));
     }
 }
 

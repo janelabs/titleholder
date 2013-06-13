@@ -68,6 +68,7 @@ $route['cms/authenticate'] = 'cms_login/authenticate';
 $route['cms/logout'] = 'cms_login/logout';
 $route['cms/users'] = 'cms_users';
 $route['cms/users/all'] = 'cms_users/fetchUsers';
+$route['cms/users/delete/(:num)'] = 'cms_users/deleteUser/$1';
 
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */
