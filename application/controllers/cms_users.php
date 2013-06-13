@@ -96,6 +96,10 @@ class Cms_users extends CI_Controller {
 
     public function deleteUser($uid = 0)
     {
+        if ($this->session->userdata('logged') == false) {
+            redirect(site_url('cms/login'));
+        }
+
         if ($uid > 0) {
             $where = array('id' => $uid);
             $info = $this->super_model->deleteRow(self::TABLE_NAME, $where);
@@ -121,6 +125,10 @@ class Cms_users extends CI_Controller {
 
     private function emailPassword($email = null, $password = null)
     {
+        if ($this->session->userdata('logged') == false) {
+            redirect(site_url('cms/login'));
+        }
+
         if ($email) {
             $config['protocol'] = 'sendmail';
             $config['mailtype'] = 'html';
@@ -141,6 +149,10 @@ class Cms_users extends CI_Controller {
 
     public function editUser()
     {
+        if ($this->session->userdata('logged') == false) {
+            redirect(site_url('cms/login'));
+        }
+
         $name = $this->input->post('uname', true);
         $password = $this->input->post('password', true);
         $uid = $this->input->post('uid', true);

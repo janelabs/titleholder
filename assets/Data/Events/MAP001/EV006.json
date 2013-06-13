@@ -11,7 +11,7 @@
 
             "character_hue": "s_03.png","pattern": 2,
             "trigger": "action_button",
-            "direction": "top",
+            "direction": "left",
             "frequence": 4,
             "type": "fixed",
             "through": false,
@@ -21,7 +21,7 @@
             "alwaysOnTop": true,
             "speed": 4,
             "commands": [
-                "SHOW_TEXT: {'text': 'Want my title huh?!?'}",
+                "SHOW_TEXT: {'text': 'Escape now while you have the time!'}",
                 "SELF_SWITCH_ON: 'A'"
             ]
         },
@@ -40,7 +40,7 @@
             "alwaysOnTop": true,
             "speed": 4,
             "commands": [
-                "SHOW_TEXT: {'text': 'You will never be the Title Holder!!'}",
+                "SHOW_TEXT: {'text': 'Say hello to your ancestors!'}",
                 "CALL: 'battle'"
             ]
         }

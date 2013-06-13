@@ -11,7 +11,7 @@
 
             "character_hue": "s_04.png","pattern": 2,
             "trigger": "action_button",
-            "direction": "right",
+            "direction": "left",
             "frequence": 4,
             "type": "fixed",
             "through": false,
@@ -21,7 +21,7 @@
             "alwaysOnTop": true,
             "speed": 4,
             "commands": [
-                "SHOW_TEXT: {'text': 'Let's get this over with'}",
+                "SHOW_TEXT: {'text': 'Want my title huh?!?'}",
                 "SELF_SWITCH_ON: 'A'"
             ]
         },
@@ -30,7 +30,7 @@
             "conditions": {"self_switch": "A"},
             "character_hue": "s_04.png","pattern": 0,
             "trigger": "action_button",
-            "direction": "top",
+            "direction": "left",
             "frequence": 4,
             "type": "fixed",
             "through": false,
@@ -40,7 +40,7 @@
             "alwaysOnTop": true,
             "speed": 4,
             "commands": [
-                "SHOW_TEXT: {'text': 'Ha!! Prepare to die!'}",
+                "SHOW_TEXT: {'text': 'Say hello to your ancestors!'}",
                 "CALL: 'battle'"
             ]
         }
