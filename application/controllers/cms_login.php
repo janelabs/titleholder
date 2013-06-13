@@ -64,7 +64,7 @@ class Cms_login extends CI_Controller {
 
     public function logout()
     {
-        $this->session->destroy();
+        $this->session->sess_destroy();
         redirect('cms/login');
     }
 }
