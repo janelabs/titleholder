@@ -14,8 +14,8 @@
 </div>
 <div id="battle" role="dialog" class="modal hide"></div>
 
-class="modal hide fade in"
-<div id="ap_modal">
+
+<div id="ap_modal" class="modal hide fade in">
     <div class="modal-header">
         <h3>Attribute Points</h3>
     </div>
