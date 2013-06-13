@@ -13,7 +13,7 @@
     <body style="margin: 0; background-color: rgb(221, 221, 221);">
         <div class="row-fluid">
             <div class="span4 offset4 login">
-
+                <h1>&nbsp;Admin Login</h1>
                 <?php
                     if ($this->session->flashdata('login_error')):
                         ?>
