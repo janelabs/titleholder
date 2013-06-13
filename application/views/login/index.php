@@ -9,7 +9,7 @@
     <input type="submit" id="login-btn"  class="btn btn-primary" data-loading-text="Processing..." value="Login" autocomplete="off" />
     <!--<input type="submit" value="login">-->
     <div class="msgcontainer">
-    <div class="alert alert-error fade in ">
+    <div id="msgc" class="alert  fade in ">
 
     <span id="login_message"></span>
         <a class="close" href="#">&times;</a>

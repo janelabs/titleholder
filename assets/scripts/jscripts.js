@@ -59,6 +59,11 @@ $(document).ready(function(){
             } else {
                 $('#'+form+'_message').html(data.message);
                 $(".msgcontainer").css("visibility","visible");
+                if(data.success){
+                    $("#msgc").addClass('alert-success');
+                }else{
+                $("#msgc").addClass('alert-error');
+                }
                 $('.alert').show();
                 btn.button('reset');
                 if(data.success) {
