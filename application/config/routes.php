@@ -61,7 +61,10 @@ $route['logs/battle/players'] = "history/players";
 $route['logs/battle/monsters'] = "history/monsters";
 $route['logs/quest'] = "history/quests";
 
-
+// cms
+$route['cms/login'] = 'cms_login';
+$route['cms/main'] = 'cms_main';
+$route['cms/authenticate'] = 'cms_login/authenticate';
 
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */
