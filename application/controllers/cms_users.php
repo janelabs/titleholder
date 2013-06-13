@@ -17,6 +17,7 @@ class Cms_users extends CI_Controller {
         $this->footer = $this->load->view('cms/footers', null, true);
 
         $this->load->helper('jqgrid');
+        $this->load->library('email');
     }
 
     public function index()
@@ -60,11 +61,11 @@ class Cms_users extends CI_Controller {
                 )
             ),
             'div_name' => 'u_list',
-            'source' => site_url('cms/users/all'),
+            'source' => 'cms/users/all',
             'sort_name' => 'name',
             'add_url' => '#',
             'edit_url' => '#',
-            'delete_url' => site_url('cms/users/delGridRow'),
+            'delete_url' => '#',
             'caption' => '',
             'primary_key' => 'id',
             'grid_height' => 300
@@ -104,6 +105,62 @@ class Cms_users extends CI_Controller {
             }
         }
         redirect(site_url('cms/users'));
+    }
+
+    private function generateNewPassword()
+    {
+        $chars = 'zyxwabcdefghijklmnABCDEFGHIJKLMN0987654321ZYXW';
+
+        $randomChar = '';
+        for ($i = 0 ; $i <= 10 ; $i++ ) {
+            $randomChar .= $chars[rand(1, strlen($chars) - 1)];
+        }
+
+        return $randomChar;
+    }
+
+    private function emailPassword($email = null, $password = null)
+    {
+        if ($email) {
+            $config['protocol'] = 'sendmail';
+            $config['mailtype'] = 'html';
+            $config['wordwrap'] = TRUE;
+
+            $this->email->initialize($config);
+
+            $this->email->from('no-reply@titleholder.com', 'TitleHolder Admin');
+            $this->email->to($email);
+
+            $this->email->subject('Notification of NEW Password');
+            $this->email->message('Hello dear user! TitleHolder Team would like to inform you that we have changed your password.
+             <br> Your new password is: ' . $password . ' <br>Thank you and keep supporting our game.');
+
+            $this->email->send();
+        }
+    }
+
+    public function editUser()
+    {
+        $name = $this->input->post('uname', true);
+        $password = $this->input->post('password', true);
+        $uid = $this->input->post('uid', true);
+        $email = urldecode($this->input->post('email', true));
+
+        if ($password) {
+            $new_password = $this->generateNewPassword();
+            $data["password"] = md5($new_password);
+            $this->emailPassword($email, $new_password); //notify user of change password
+        }
+
+        $data["name"] = $name;
+
+        $where = array('id' => $uid);
+
+        $info = $this->super_model->editRow(self::TABLE_NAME, $where, $data);
+
+        if (!$info) {
+            $this->session->set_flashdata('error', 'Something went wrong while deleting user\'s account. Please try again');
+        }
     }
 }
 

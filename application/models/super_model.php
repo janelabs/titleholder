@@ -81,4 +81,24 @@ class Super_model extends CI_Model {
 
         return $query;
     }
+
+    /**
+     * Update specific row
+     *
+     * @param null $tbl_name
+     * @param array $where
+     * @param array $data
+     * @return bool
+     */
+    public function editRow($tbl_name = null, $where = array(), $data = array())
+    {
+        $query = false;
+
+        if ($tbl_name && count($where) > 0 && count($data) > 0) {
+            $query = $this->db->where($where)
+                ->update($tbl_name, $data);
+        }
+
+        return $query;
+    }
 }
