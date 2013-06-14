@@ -86,6 +86,7 @@
         $('#btn_arena').on("click", function(){
             $("#div_main").fadeOut("slow",function(){
                 $("#arena_frame").fadeIn("slow");
+                changeBGM();
             });
 
             $('#arena_frame iframe').attr({src : "<?php echo site_url('arena'); ?>"});
@@ -110,5 +111,6 @@
         $('#btn_logout').on("click", function(){
             $('#logout').modal();
         });
+
     });
 </script>

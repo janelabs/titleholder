@@ -93,20 +93,29 @@ $(document).ready(function(){
 
     $('#sound').click(function() {
         var bgm = $("#arenabgm");
+        var val = 1;
         if ($('#soundicon').hasClass("icon-volume-up")) {
             $('#soundicon').removeClass('icon-volume-up');
             $('#soundicon').addClass('icon-volume-off');
             bgm.get(0).pause();
+            val = 0;
 
         }
         else {
             $('#soundicon').removeClass('icon-volume-off');
             $('#soundicon').addClass('icon-volume-up');
             bgm.get(0).play();
+            val = 1;
         }
 
-        //setCookie("rpg-volume", val);
+        setCookie("rpg-volume", val);
     });
+
+    var cookie = getCookie();
+    if (cookie['rpg-volume'] == 0) {
+        $('#sound').trigger("click");
+    }
+
 
     // manual close button of battle modal
     $('#close').click(function(e){
@@ -170,4 +179,50 @@ $(document).ready(function(){
         e.preventDefault();
     });
 
+
+    var cookie = getCookie();
+    if (cookie == 0) {
+        $('#sound').trigger("click");
+    }
+
 });
+
+function setCookie (name, value) {
+    var expire = new Date() ;
+    expire.setTime(new Date().getTime() + 60*60*24*14);
+    document.cookie = name + "=" + value + ";expires=" + expire.toGMTString();
+}
+function getCookie()
+{
+    var c_name = 'rpg-volume'
+    var c_value = document.cookie;
+    var c_start = c_value.indexOf(" " + c_name + "=");
+    if (c_start == -1)
+    {
+        c_start = c_value.indexOf(c_name + "=");
+    }
+    if (c_start == -1)
+    {
+        c_value = null;
+    }
+    else
+    {
+        c_start = c_value.indexOf("=", c_start) + 1;
+        var c_end = c_value.indexOf(";", c_start);
+        if (c_end == -1)
+        {
+            c_end = c_value.length;
+        }
+        c_value = unescape(c_value.substring(c_start,c_end));
+    }
+    return c_value;
+}
+
+function changeBGM(sound){
+    var src="/assets/Audio/BGM/" + sound;
+    audio_core_ogg=$('#arenabgm').attr('src', src + '.ogg')[1]
+    audio_core_ogg.play();
+
+    audio_core_mp3=$('#arenabgm').attr('src', src + '.mp3')[0]
+    audio_core_mp3.play();
+}

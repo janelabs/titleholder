@@ -21,7 +21,7 @@
             "alwaysOnTop": true,
             "speed": 4,
             "commands": [
-                "SHOW_TEXT: {'text': 'Escape now while you have the time!'}",
+                "SHOW_TEXT: {'text': 'Want my title huh?!?'}",
                 "SELF_SWITCH_ON: 'A'"
             ]
         },
@@ -40,7 +40,7 @@
             "alwaysOnTop": true,
             "speed": 4,
             "commands": [
-                "SHOW_TEXT: {'text': 'Say hello to your ancestors!'}",
+                "SHOW_TEXT: {'text': 'Do you think you can defeat me?'}",
                 "CALL: 'battle'"
             ]
         }
