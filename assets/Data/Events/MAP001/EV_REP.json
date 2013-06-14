@@ -1,17 +1,17 @@
 [
     {
-        "x": 22,
-        "y": 43,
-        "id": "3",
-        "name": "EV006"
+        "x": 25,
+        "y": 32,
+        "id": "2",
+        "name": "EV005"
     },
 
     [
         {
 
-            "character_hue": "s_03.png","pattern": 2,
+            "character_hue": "s_02.png","pattern": 2,
             "trigger": "action_button",
-            "direction": "left",
+            "direction": "bottom",
             "frequence": 4,
             "type": "fixed",
             "through": false,
@@ -21,16 +21,16 @@
             "alwaysOnTop": true,
             "speed": 4,
             "commands": [
-                "SHOW_TEXT: {'text': 'Escape now while you have the time!'}",
+                "SHOW_TEXT: {'text': 'You dared to challenge me?'}",
                 "SELF_SWITCH_ON: 'A'"
             ]
         },
 
         {
             "conditions": {"self_switch": "A"},
-            "character_hue": "s_03.png","pattern": 0,
+            "character_hue": "s_02.png","pattern": 0,
             "trigger": "action_button",
-            "direction": "top",
+            "direction": "bottom",
             "frequence": 4,
             "type": "fixed",
             "through": false,
@@ -40,7 +40,7 @@
             "alwaysOnTop": true,
             "speed": 4,
             "commands": [
-                "SHOW_TEXT: {'text': 'Say hello to your ancestors!'}",
+                "SHOW_TEXT: {'text': 'You will never be the Title Holder!!'}",
                 "CALL: 'battle'"
             ]
         }

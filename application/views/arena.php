@@ -66,6 +66,13 @@
     </form>
 </div>
 
+<?php //for event generate
+    for ($i = 0 ; $i < count($events) ; $i++) {
+        ?>
+        <input class="events" type="text" id="events_<?php echo $i; ?>" value="<?php echo $events[$i]; ?>" disabled="true" />
+        <?php
+    }
+?>
 
 <div id="result">
 <!--
@@ -81,67 +88,8 @@ was originally in the battle/index view
 <script type="text/javascript">
     $(function(){
         Arena.initView();
+        Arena.battleInitView();
     });
-
-    // allocate attribute points
-    $('#ap_form').on('submit',function(e){
-
-        // disable buttons while waiting for server response
-        $('#ap_form .btn').addClass('disabled').attr('disabled','disabled');
-
-        param = $(this).serialize();
-        action = $(this).attr('action');
-
-        $.post(action, param, function(data){
-            $('#ap_form .btn').removeClass('disabled').removeAttr('disabled');
-            alert(data.message);
-        },'json');
-
-        e.preventDefault();
-    });
-
-    // if input is not numeric, change to 0
-    $('#atk, #def, #hp').on('keyup',function(){
-        var input = $(this).val();
-        var is_numeric = $.isNumeric(input);
-        if (!is_numeric) {
-            $(this).val(0);
-        }
-    });
-
-    // plus-minus function for those who don't like to use the keyboard
-    $('#atk-p, #def-p, #hp-p, #atk-m, #def-m, #hp-m').on('click',function(event){
-
-        var value = 0;
-        var btns = event.target.id;
-        var btn = btns.split('-');
-        var total_ap = parseInt($('#attr_points').text());
-        var txt_val = $('#'+btn[0]).val();
-
-        // if method is plus
-        if (btn[1] == 'p') {
-            if(total_ap) {
-                value = parseInt(txt_val) + 1;
-                total_ap = total_ap - 1;
-
-                $('#'+btn[0]).val(value);
-            }
-        }
-
-        // if method is minus
-        if (btn[1] == 'm') {
-            if(txt_val > 0) {
-                value = parseInt(txt_val) - 1;
-                total_ap = total_ap + 1;
-            }
-
-            $('#'+btn[0]).val(value);
-        }
-
-        $('#attr_points').text(total_ap);
-
-    });
-
 </script>
 
     </body>

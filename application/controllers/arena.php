@@ -18,6 +18,7 @@ class Arena extends CI_Controller {
         $data = array();
         $monsters = null;
         $user = null;
+        $events = array();
         $user_id = $this->session->userdata('userid');
         $user_data = $this->users->get_userdata($user_id);
 
@@ -27,18 +28,20 @@ class Arena extends CI_Controller {
 
             $where = "monster_level BETWEEN {$user_data->level} AND {$user_data->level} + 5";
 
-            if ($user_data->level >= 5) {
-                $where = "monster_level BETWEEN {$user_data->level} - 5 AND {$user_data->level} + 5";
-            }
-
             $monsters = $this->monsters->getByLevel($where);
 
             if ($monsters && count($monsters) > 0) {
-                $this->generateEnemyEvents($monsters);
+                $events = $this->generateEnemyEvents($monsters);
             } else {
-                $this->generateDefaultEvent();
+                $events = $this->generateDefaultEvent();
             }
 
+        }
+
+        if (count($events) > 0) {
+            $data['events'] = $events;
+        } else {
+            $data['events'] = array('null');
         }
 
         $data['user'] = $user;
@@ -48,6 +51,7 @@ class Arena extends CI_Controller {
 
     private function generateEnemyEvents($monsters = array())
     {
+        $events = array();
         $file_path =  getcwd() . '/assets/Data/Events/MAP001/'; //will be changed, used in prod
         $file_name = "EV00";
         $ctr = 4; // 4 start of the count for there are default 4 events.
@@ -74,6 +78,8 @@ class Arena extends CI_Controller {
                 $ctr++;
                 $f_name = $file_name.$ctr;
 
+                $events[] = $f_name;
+
                 $msg_key_1 = array_rand($msg1);
                 $msg_key_2 = array_rand($msg2);
 
@@ -87,6 +93,7 @@ class Arena extends CI_Controller {
                 $dataOptions['msg2'] = $msg2[$msg_key_2];
                 $dataOptions['directions_1'] = $directions[$direction_key1];
                 $dataOptions['directions_2'] = $directions[$direction_key2];
+                $dataOptions['eventCall'] = ",\"CALL: 'battle'\"";
 
                 // set the X and Y position of characters
                 switch ($ctr) {
@@ -113,10 +120,12 @@ class Arena extends CI_Controller {
                 fclose($fp);
             }
         }
+        return $events;
     }
 
     private function generateDefaultEvent()
     {
+        $events = array();
         $file_path =  getcwd() . '/assets/Data/Events/MAP001/'; //will be changed, used in prod
         $file_name = "EV00";
         $dataOptions = array();
@@ -126,11 +135,11 @@ class Arena extends CI_Controller {
             'Hello!?',
             '??',
             '!!!',
-            '...'
+            ' '
         );
 
         $msg2 = array(
-            'I\'m busy..',
+            'I\'m busy',
             'Are you the title holder?',
             'Red Moon Kingdom is in North of this town',
             'Get all the titles!'
@@ -138,6 +147,7 @@ class Arena extends CI_Controller {
 
         for ($ctr = 5 ; $ctr < 8 ; $ctr++) {
             $f_name = $file_name.$ctr;
+            $events[] = $f_name;
 
             $msg_key_1 = array_rand($msg1);
             $msg_key_2 = array_rand($msg2);
@@ -152,6 +162,7 @@ class Arena extends CI_Controller {
             $dataOptions['msg2'] = $msg2[$msg_key_2];
             $dataOptions['directions_1'] = $directions[$direction_key1];
             $dataOptions['directions_2'] = $directions[$direction_key2];
+            $dataOptions['eventCall'] = null;
 
             // set the X and Y position of characters
             switch ($ctr) {
@@ -176,6 +187,29 @@ class Arena extends CI_Controller {
                 echo "File not written \n";
             }
             fclose($fp);
+        }
+        return $events;
+    }
+
+    public function generateEventReplacement()
+    {
+        $user_id = $this->session->userdata('userid');
+        $user_data = $this->users->get_userdata($user_id);
+
+        // get monsters / enemies
+        if ($user_data) {
+            $user = $user_data;
+
+            $where = "monster_level BETWEEN {$user_data->level} AND {$user_data->level} + 5";
+
+            $monsters = $this->monsters->getByLevel($where);
+
+            if ($monsters && count($monsters) > 0) {
+                $events = $this->generateEnemyEvents($monsters);
+            } else {
+                $events = $this->generateDefaultEvent();
+            }
+
         }
     }
 }

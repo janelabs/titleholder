@@ -40,8 +40,8 @@
             "alwaysOnTop": true,
             "speed": 4,
             "commands": [
-                "SHOW_TEXT: {'text': '<?php echo $msg2; ?>'}",
-                "CALL: 'battle'"
+                "SHOW_TEXT: {'text': '<?php echo $msg2; ?>'}"
+                <?php echo $eventCall; ?>
             ]
         }
     ]
