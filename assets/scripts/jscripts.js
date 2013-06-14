@@ -58,6 +58,8 @@ $(document).ready(function(){
             } else {
                 $('#'+form+'_message').html(data.message);
                 $(".msgcontainer").css("visibility","visible");
+                if(data.success) {$("#msg").addClass('alert-success');}else{$("#msg").addClass('alert-error');}
+
                 $('.alert').show();
                 btn.button('reset');
                 if(data.success) {
