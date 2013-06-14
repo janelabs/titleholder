@@ -15,13 +15,13 @@
 <div id="battle" role="dialog" class="modal hide"></div>
 
 
-<div id="ap_modal" class="modal hide fade in">
+<div id="ap_modal" class="modal hide fade in" data-backdrop="static">
     <div class="modal-header">
         <h3>Attribute Points</h3>
     </div>
     <form action="<?php echo site_url('battle/allocate'); ?>" id="ap_form" class="form-horizontal">
         <div class="modal-body">
-            <div>You have five (<span id="attr_points">10</span>) AP left</div>
+            <div>You have five (<span id="attr_points">0</span>) AP left</div>
             <div class="control-group pull-left">
                 <label class="control-label" for="atk">Attack</label>
                 <div class="controls">
@@ -29,7 +29,7 @@
                     <button type="button" class="btn btn-inverse" id="atk-p">
                         <i class="icon-white icon-plus-sign"></i>
                     </button>
-                    <button type="button" class="btn btn-inverse" id="atk-m" >
+                    <button type="button" class="btn btn-inverse" id="atk-m">
                         <i class="icon-white icon-minus-sign"></i>
                     </button>
                 </div>
@@ -112,11 +112,10 @@ was originally in the battle/index view
     // plus-minus function for those who don't like to use the keyboard
     $('#atk-p, #def-p, #hp-p, #atk-m, #def-m, #hp-m').on('click',function(event){
 
-        var value = 0;
         var btns = event.target.id;
         var btn = btns.split('-');
         var total_ap = parseInt($('#attr_points').text());
-        var txt_val = $('#'+btn[0]).val();
+        var txt_val = ($('#'+btn[0]).val()) ? $('#'+btn[0]).val() : 0;
 
         // if method is plus
         if (btn[1] == 'p') {

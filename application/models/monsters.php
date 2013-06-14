@@ -18,6 +18,7 @@ class Monsters extends CI_Model {
     public function getMonsterData($monster_id){
         $monster = $this->db
             ->select("monster_id as id", false)
+            ->select("monster_avatar as avatar", false)
             ->select("monster_name as name", false)
             ->select("monster_attack as attack", false)
             ->select("monster_defense as defense", false)

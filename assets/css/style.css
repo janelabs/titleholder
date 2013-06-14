@@ -394,3 +394,8 @@ html,body {
 .sound-mute {
     background: url('../images/sound_mute_16.png');
 }
+
+/* bootstrap progress bar */
+.progress {
+    height: 5px;
+}

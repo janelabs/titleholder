@@ -77,7 +77,7 @@ $(document).ready(function(){
     $('.log_nav').click(function(e){
         action = $(this).attr('href');
 
-        $('#logs_window').html('Loading content...')
+        $('#logs_window').html('Loading content...');
         $.get(action,function(data){
             $('#logs_window').html(data);
         });
@@ -88,7 +88,7 @@ $(document).ready(function(){
     $('#rankTab a').click(function (e) {
         e.preventDefault();
         $(this).tab('show');
-    })
+    });
 
 
     $('#sound').click(function() {
@@ -111,6 +111,7 @@ $(document).ready(function(){
     // manual close button of battle modal
     $('#close').click(function(e){
         $('#battle').modal('hide');
+        $('#result').hide();
         Input.lock(rpg.canvas, true);
     });
 
@@ -126,7 +127,7 @@ $(document).ready(function(){
             $('#attack').removeAttr('disabled');
 
             if(response.status) {
-                $('#debugger').html(JSON.stringify(response));
+                //$('#debugger').html(JSON.stringify(response));
 
                 $('#player_hp_div').html(response.player.hp);
                 $('#enemy_hp_div').html(response.enemy.hp);
@@ -134,8 +135,19 @@ $(document).ready(function(){
                 $('#player_hp').val(response.player.hp);
                 $('#enemy_hp').val(response.enemy.hp);
 
+                updateHPBars('player_bar',response.player.hp_percent);
+                updateHPBars('enemy_bar',response.enemy.hp_percent);
+
                 if(response.player.is_dead && response.result) {
                     $('#result').html(response.result).fadeIn('fast');
+                    $('#attack').hide();
+
+                    setTimeout(function(){
+                        $('#result').fadeOut('fast',function(){
+                                $('#close').show();
+                            }
+                        );
+                    },2000);
                 }
 
                 if(response.enemy.is_dead && response.result) {
@@ -151,7 +163,7 @@ $(document).ready(function(){
                     if(response.has_levelup) {
                         setTimeout(function(){
                             $('#attr_points').html(response.ap);
-                            $('#ap_modal').modal('show');
+                            $('#ap_modal').removeData("modal").modal({backdrop: 'static', keyboard: false})
                             $('#battle').modal('hide');
                             $('#result').html('You have level up').hide().fadeIn('fast');
                         },2000);
@@ -171,3 +183,16 @@ $(document).ready(function(){
     });
 
 });
+
+function updateHPBars(pbar_id,percent_to) {
+
+    // get width in percentage, will result in n%
+    var str = $('#'+pbar_id+' .bar')[0].style.width;
+
+    var percent_from = str.slice(0,-1);
+
+    while(percent_from > percent_to) {
+        percent_from--;
+        $('#'+pbar_id+' .bar').css('width',percent_from+'%');
+    }
+}
