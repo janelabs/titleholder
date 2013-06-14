@@ -3,7 +3,6 @@
 ?>
 
 <div id="div_main">
-
     <!-- avatar -->
     <div class="div_child">
         <img id="user_dp" src="<?php echo base_url('assets/images/dummy.png'); ?>" />
@@ -56,14 +55,29 @@
     </div>
 
     <div class="div_child">
-        <a><i class="ui-icon-volume-on"></i></a>
+        <button id="sound" class="music_toggle"><i id="soundicon" class="icon-volume-up"></i></button>
+    </div>
+
+    <div class="div_child">
+        <button id="btn_logout" class="logout"><i class="icon-off"></i></button>
     </div>
 </div>
 </center>
 <audio id="arenabgm" autoplay loop>
-    <source src="<?php echo base_url('assets/Audio/BGM/arena.mp3'); ?>">
-    <source src="<?php echo base_url('assets/Audio/BGM/arena.ogg'); ?>">
+    <source src="<?php echo base_url('assets/Audio/BGM/char-main.mp3'); ?>">
+    <source src="<?php echo base_url('assets/Audio/BGM/char-main.ogg'); ?>">
 </audio>
+
+<div class="modal hide fade" role="dialog" id="logout" style="display: none;">
+    <div class="modal-body">
+        <span>Sure to logout?</span>
+    </div>
+
+    <div class="modal-footer">
+        <a class="btn btn-info" data-dismiss="modal">NO</a>
+        <a class="btn btn-danger" href="<?php echo site_url('logout'); ?>">YES</a>
+    </div>
+</div>
 </body>
 </html>
 
@@ -91,6 +105,10 @@
             });
 
             $('#rank_frame iframe').attr({src : "<?php echo site_url('ranking'); ?>"});
+        });
+
+        $('#btn_logout').on("click", function(){
+            $('#logout').modal();
         });
     });
 </script>
