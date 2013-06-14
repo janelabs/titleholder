@@ -11,7 +11,7 @@
 
             "character_hue": "s_04.png","pattern": 2,
             "trigger": "action_button",
-            "direction": "top",
+            "direction": "left",
             "frequence": 4,
             "type": "fixed",
             "through": false,
@@ -30,7 +30,7 @@
             "conditions": {"self_switch": "A"},
             "character_hue": "s_04.png","pattern": 0,
             "trigger": "action_button",
-            "direction": "top",
+            "direction": "bottom",
             "frequence": 4,
             "type": "fixed",
             "through": false,
@@ -40,7 +40,7 @@
             "alwaysOnTop": true,
             "speed": 4,
             "commands": [
-                "SHOW_TEXT: {'text': 'You will never be the Title Holder!!'}",
+                "SHOW_TEXT: {'text': 'Ha!! Prepare to die!'}",
                 "CALL: 'battle'"
             ]
         }

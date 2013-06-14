@@ -11,7 +11,7 @@
 
             "character_hue": "s_01.png","pattern": 2,
             "trigger": "action_button",
-            "direction": "top",
+            "direction": "bottom",
             "frequence": 4,
             "type": "fixed",
             "through": false,
@@ -21,7 +21,7 @@
             "alwaysOnTop": true,
             "speed": 4,
             "commands": [
-                "SHOW_TEXT: {'text': 'You dared to challenge me?'}",
+                "SHOW_TEXT: {'text': 'Let's get this over with'}",
                 "SELF_SWITCH_ON: 'A'"
             ]
         },
@@ -30,7 +30,7 @@
             "conditions": {"self_switch": "A"},
             "character_hue": "s_01.png","pattern": 0,
             "trigger": "action_button",
-            "direction": "bottom",
+            "direction": "top",
             "frequence": 4,
             "type": "fixed",
             "through": false,
