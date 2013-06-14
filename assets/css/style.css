@@ -377,20 +377,4 @@ html,body {
 
 }
 
-#sound  {
-    width: 16px;
-    height: 16px;
-    cursor: pointer;
-    float: right;
-    margin-top: 3px;
-    margin-right: 8px;
 
-}
-
-.sound-play {
-    background: url('../images/sound_16.png');
-}
-
-.sound-mute {
-    background: url('../images/sound_mute_16.png');
-}
