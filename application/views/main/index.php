@@ -56,13 +56,13 @@
     </div>
 
     <div class="div_child">
-        <a><i  id="sound" class="ui-icon-volume-on"></i></a>
+        <a><i class="ui-icon-volume-on"></i></a>
     </div>
 </div>
 </center>
 <audio id="arenabgm" autoplay loop>
-    <source src="<?php echo base_url('assets/Audio/BGM/char-main.mp3'); ?>">
-    <source src="<?php echo base_url('assets/Audio/BGM/char-main.ogg'); ?>">
+    <source src="<?php echo base_url('assets/Audio/BGM/arena.mp3'); ?>">
+    <source src="<?php echo base_url('assets/Audio/BGM/arena.ogg'); ?>">
 </audio>
 </body>
 </html>

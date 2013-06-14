@@ -45,6 +45,7 @@ class Main extends CI_Controller {
                 'user_atk' => $user->attack,
                 'user_def' => $user->defense,
                 'user_lvl' => $user->level,
+                'user_ap' => $user->points,
                 'needed_xp' => $needed_xp,
                 'prev_xp' => $prev_xp,
                 'pet_id' => $user->pet_id,

@@ -52,7 +52,7 @@ $route['ranking'] = "rankings/index";
 
 // battle
 $route['battle'] = "battle/index";
-$route['battleview'] = "battle/view";
+$route['battle/fight'] = "battle/view";
 
 // logs
 $route['logs/(:num)'] = "logs/index/$1";
@@ -61,7 +61,15 @@ $route['logs/battle/players'] = "history/players";
 $route['logs/battle/monsters'] = "history/monsters";
 $route['logs/quest'] = "history/quests";
 
-
+// cms
+$route['cms/login'] = 'cms_login';
+$route['cms/main'] = 'cms_admin';
+$route['cms/authenticate'] = 'cms_login/authenticate';
+$route['cms/logout'] = 'cms_login/logout';
+$route['cms/users'] = 'cms_users';
+$route['cms/users/all'] = 'cms_users/fetchUsers';
+$route['cms/users/delete/(:num)'] = 'cms_users/deleteUser/$1';
+$route['cms/users/edit'] = 'cms_users/editUser';
 
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */

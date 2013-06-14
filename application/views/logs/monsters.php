@@ -17,7 +17,7 @@
                 <td><?php echo $log['name'] ?></td>
                 <td><?php echo $log['result'] ?></td>
             </tr>
-        <?php endforeach;
+    <?php endforeach;
     else:
         ?>
         <tr>

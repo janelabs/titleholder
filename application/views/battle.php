@@ -1,4 +1,4 @@
-<div id="player" style="display: block">
+<div id="player" style="display: block;">
     <h3><?php echo $player->name ?></h3>
     <div>
         <strong>HP: </strong>
@@ -20,56 +20,18 @@
     </div>
 </div>
 
-<form action="<?php echo site_url('battle/view') ?>" id="atk" method="post">
+<form action="<?php echo site_url('battle/fight') ?>" id="atk" method="post">
     <input type="hidden" name="player_hp" id="player_hp" placeholder="player hp" value="<?php echo $player->hp ?>" />
 
     <input type="hidden" name="enemy_id" id="enemy_id" value="<?php echo $enemy->id; ?>"  />
     <input type="hidden" name="enemy_hp" id="enemy_hp" placeholder="enemy hp"  value="<?php echo $enemy->hp ?>" />
 
-    <div style="display: block; text-align: center;">
+    <div style="display: block; text-align: center;" id="button_placeholder">
         <input type="submit" id="attack" value="Attack!" />
+        <input type="button" id="close" value="Back to Arena" style="display: none;" />
     </div>
 </form>
 
-    <div id="result"></div>
 
-<script type="text/javascript">
-$('#atk').submit(function(e){
-    // temporary disable attack button while waiting for server response
-    $('#attack').attr('disabled','disabled');
+    <div id="debugger"></div>
 
-    var action = $(this).attr('action');
-    var param = $(this).serialize();
-
-    $.post(action,param,function(response){
-        $('#attack').removeAttr('disabled');
-
-        if(response.status) {
-            $('#result').html(JSON.stringify(response));
-
-            $('#player_hp_div').html(response.player.hp);
-            $('#enemy_hp_div').html(response.enemy.hp);
-
-            $('#player_hp').val(response.player.hp);
-            $('#enemy_hp').val(response.enemy.hp);
-
-            if(response.player.is_dead && response.result) {
-                $('#result').html(response.result);
-            }
-
-            if(response.enemy.is_dead && response.result) {
-                $('#result').html(response.result);
-            }
-
-            if(response.has_rank) {
-                $('#result').append('<br> You gained the rank '+response.rank_name);
-            }
-        }
-    },'json');
-
-    e.preventDefault();
-});
-</script>
-
-</body>
-</html>

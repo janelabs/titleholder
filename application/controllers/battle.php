@@ -2,6 +2,11 @@
 
 class Battle extends CI_Controller {
 
+    const AT = 5;       // attack multiplier
+    const DF = 5;       // defense multiplier
+    const HP = 10;      // hp multiplier
+    const AP = 5;       // default attribute points to gain per level up
+
     public function __construct()
     {
         parent::__construct();
@@ -30,9 +35,12 @@ class Battle extends CI_Controller {
         $enemy_hp = $post['enemy_hp'];
         $player_id = $this->session->userdata('userid');
         $player_hp = $post['player_hp'];
+        $player_level = 0;
         $has_rank = false;
         $rank_name = null;
         $result = null;
+        $has_levelup = false;
+        $attr_points = 0;
 
         $enemy_data = $this->monsters->getMonsterData($enemy_id);
         $player_data = $this->users->get_userdata($player_id);
@@ -79,12 +87,26 @@ class Battle extends CI_Controller {
 
         // if player won
         if($exp_gain && $is_killed) {
+            $result = "You won the battle";
+
             $player_xp = $player_data->xp + $exp_gain->reward_xp;
 
-            $data = array(
-                'xp' => $player_xp,
-                'level' => $this->users->get_userlevel($player_xp),
-            );
+            $player_level = $this->users->get_userlevel($player_xp);
+
+            // if player has level up
+            if($player_level > $player_data->level) {
+                $has_levelup = true;
+                $attr_points = $player_data->points + self::AP;
+                $data['points'] =$attr_points;
+            }
+
+            // remove after testing
+            // $has_levelup = true;
+            // $attr_points = $player_data->points + self::AP;
+
+            $data['xp'] = $player_xp;
+            $data['level'] = $player_level;
+            $data['points'] = $attr_points;
 
             // update level and experience
             $this->users->updateUser($data,$player_data->id);
@@ -104,7 +126,7 @@ class Battle extends CI_Controller {
                 $rank_name = $rank->rank_name;
             }
 
-            $result = "You won the battle";
+
         }
 
         // if player lost
@@ -120,13 +142,16 @@ class Battle extends CI_Controller {
         $response['player']['is_dead'] = $is_dead;
         $response['has_rank'] = $has_rank;
         $response['rank_name'] = $rank_name;
+        $response['has_levelup'] = $has_levelup;
         $response['result'] = $result;
+        $response['ap'] = $attr_points;
 
         echo json_encode($response);
         exit;
     }
 
-    public function index(){
+    public function index()
+    {
 
         $post = $this->input->post();
         if($post) {
@@ -147,5 +172,81 @@ class Battle extends CI_Controller {
                 $this->load->view('battle', $data);
             }
         }
+    }
+
+    public function allocate()
+    {
+        $post = $this->input->post();
+
+        if(!$post) {
+            $response['message'] = 'Wrong Method';
+
+            echo json_encode($response);
+            exit;
+        }
+
+        // if there is no at least 1 attribute input
+        if(!$post['atk'] && !$post['def'] && !$post['hp']) {
+            $response['message'] = 'You did not assign points to any attribute';
+
+            echo json_encode($response);
+            exit;
+        }
+
+        // if any of the attribute has invalid value
+        if(!is_numeric($post['atk']) || !is_numeric($post['def']) || !is_numeric($post['hp'])) {
+            $response['message'] = 'Invalid Input';
+
+            echo json_encode($response);
+            exit;
+        }
+
+        $total = $post['atk'] + $post['def'] + $post['hp'];
+
+        $player_id = $this->session->userdata('userid');
+        $player_data = $this->users->get_userdata($player_id);
+
+        if(!$player_data) {
+            $response['message'] = 'User not found';
+
+            echo json_encode($response);
+            exit;
+        }
+
+        if(!$player_data->points) {
+            $response['message'] = 'You do not have AP to allocate';
+
+            echo json_encode($response);
+            exit;
+        }
+
+        if($total > $player_data->points) {
+            $response['message'] = 'Input values exceeded total AP';
+
+            echo json_encode($response);
+            exit;
+        }
+
+
+        if($player_data) {
+
+            $atk_increase = self::AT * $post['atk'];
+            $def_increase = self::DF * $post['def'];
+            $hp_increase = self::HP * $post['hp'];
+
+            $data['attack'] = $player_data->attack + $atk_increase;
+            $data['defense'] = $player_data->defense + $def_increase;
+            $data['hp'] = $player_data->hp + $hp_increase;
+            $data['points'] = $player_data->points - $total;
+
+            $is_updated = $this->users->updateUser($data, $player_id);
+
+            if($is_updated) {
+                $response['message'] = 'AP allocation successful';
+                echo json_encode($response);
+            }
+        }
+
+
     }
 }
