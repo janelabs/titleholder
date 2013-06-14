@@ -203,7 +203,7 @@ function getCookie()
     }
     if (c_start == -1)
     {
-        c_value = null;
+        c_value = 1;
     }
     else
     {
@@ -221,8 +221,8 @@ function getCookie()
 function changeBGM(sound){
     var src="/assets/Audio/BGM/" + sound;
     audio_core_ogg=$('#arenabgm').attr('src', src + '.ogg')[1]
-    audio_core_ogg.play();
+        audio_core_ogg.play();
 
     audio_core_mp3=$('#arenabgm').attr('src', src + '.mp3')[0]
-    audio_core_mp3.play();
+        audio_core_mp3.play();
 }

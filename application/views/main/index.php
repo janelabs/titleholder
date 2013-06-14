@@ -83,11 +83,15 @@
 
 <script type="text/javascript">
     $(function(){
+        var soundToggle = getCookie();
+
         $('#btn_arena').on("click", function(){
             $("#div_main").fadeOut("slow",function(){
                 $("#arena_frame").fadeIn("slow");
-                changeBGM();
             });
+            if (soundToggle == 1) {
+                changeBGM('arena');
+            }
 
             $('#arena_frame iframe').attr({src : "<?php echo site_url('arena'); ?>"});
         });
@@ -96,6 +100,9 @@
             $("#div_main").fadeOut("slow",function(){
                 $("#logs_frame").fadeIn("slow");
             });
+            if (soundToggle == 1) {
+                changeBGM('menus');
+            }
 
             $('#logs_frame iframe').attr({src : "<?php echo site_url('logs'); ?>"});
         });
@@ -104,6 +111,9 @@
             $("#div_main").fadeOut("slow",function(){
                 $("#rank_frame").fadeIn("slow");
             });
+            if (soundToggle == 1) {
+                changeBGM('menus');
+            }
 
             $('#rank_frame iframe').attr({src : "<?php echo site_url('ranking'); ?>"});
         });
