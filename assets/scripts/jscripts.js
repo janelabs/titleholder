@@ -97,15 +97,15 @@ $(document).ready(function(){
 
     $('#sound').click(function() {
         var bgm = $("#arenabgm");
-        if ($(this).hasClass("sound-play")) {
-            $(this).removeClass('sound-play');
-            $(this).addClass('sound-mute');
+        if ($(this).hasClass("ui-icon-volume-on")) {
+            $(this).removeClass('ui-icon-volume-on');
+            $(this).addClass('ui-icon-volume-off');
             bgm.get(0).pause();
 
         }
         else {
-            $(this).removeClass('sound-mute');
-            $(this).addClass('sound-play');
+            $(this).removeClass('ui-icon-volume-off');
+            $(this).addClass('ui-icon-volume-on');
             bgm.get(0).play();
         }
 

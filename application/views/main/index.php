@@ -3,9 +3,7 @@
 ?>
 
 <div id="div_main">
-    <div id="hoptions" style="position: relative; float: right">
-        <div id="sound" class="sound-play"></div>
-    </div>
+
     <!-- avatar -->
     <div class="div_child">
         <img id="user_dp" src="<?php echo base_url('assets/images/dummy.png'); ?>" />
@@ -58,7 +56,7 @@
     </div>
 
     <div class="div_child">
-        <a><i class="ui-icon-volume-on"></i></a>
+        <a><i  id="sound" class="ui-icon-volume-on"></i></a>
     </div>
 </div>
 </center>
