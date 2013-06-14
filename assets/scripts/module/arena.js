@@ -29,6 +29,8 @@ var Arena = {
 
                 rpg.onEventCall("battle", function(){
                     var enemy_id = $(this)[0].id;
+                    rpg.removeEvent(enemy_id);
+
                     $.ajax({
                         url: site_url + 'battle',
                         type: 'POST',
@@ -42,15 +44,17 @@ var Arena = {
                             }
                         }
                     });
-                    rpg.removeEvent(enemy_id);
-                    rpg.addEventAjax('EV_REP', function(){
-                        $.post(site_url + "arena/replaceevent", function(data){
-                            return data;
-                        });
+
+//                    $.ajax({
+//                        url: site_url + "arena/replaceevent",
+//                        type: 'POST',
+//
+//                    });
+                    rpg.refreshMap();
+                    $.post(site_url + "arena/replaceevent", {id: enemy_id}, function(){
+                        rpg.addEventAjax('MAP001/EVREP/EV_REP_'+enemy_id);
                     });
                 });
-
-                rpg.refreshMap();
             });
 
             Input.lock(rpg.canvas, true);
@@ -58,6 +62,9 @@ var Arena = {
     },
 
     battleInitView: function() {
+        $('#close').on("click", function(){
+            Input.lock($('#canvas_rpg'));
+        });
         // allocate attribute points
         $('#ap_form').on('submit',function(e){
 

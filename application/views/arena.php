@@ -1,7 +1,7 @@
 <?php
     echo $header;
 ?>
-<div id="arena_div" xmlns="http://www.w3.org/1999/html">
+<div id="arena_div">
 <script type="text/javascript" src="<?php echo base_url('assets/scripts/module/arena.js'); ?>"></script>
     <canvas id="canvas_rpg" width="640px" height="480px" style="margin-top: 10;"></canvas>
     <div id="hoptions">
@@ -69,7 +69,7 @@
 <?php //for event generate
     for ($i = 0 ; $i < count($events) ; $i++) {
         ?>
-        <input class="events" type="text" id="events_<?php echo $i; ?>" value="<?php echo $events[$i]; ?>" disabled="true" />
+        <input class="events" type="hidden" id="events_<?php echo $i; ?>" value="<?php echo $events[$i]; ?>" disabled="true" />
         <?php
     }
 ?>
@@ -85,6 +85,7 @@ was originally in the battle/index view
     <source src="<?php echo base_url('assets/Audio/BGM/arena.mp3'); ?>">
     <source src="<?php echo base_url('assets/Audio/BGM/arena.ogg'); ?>">
 </audio>
+
 <script type="text/javascript">
     $(function(){
         Arena.initView();

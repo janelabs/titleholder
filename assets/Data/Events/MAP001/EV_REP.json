@@ -1,15 +1,14 @@
 [
     {
-        "x": 25,
-        "y": 32,
-        "id": "2",
-        "name": "EV005"
+        "x": 4,
+        "y": 19,
+        "id": "02",
+        "name": "EV_REP"
     },
-
     [
         {
-
-            "character_hue": "s_02.png","pattern": 2,
+            "character_hue": "s_02.png",
+            "pattern": 2,
             "trigger": "action_button",
             "direction": "bottom",
             "frequence": 4,
@@ -18,29 +17,11 @@
             "stop_animation": false,
             "no_animation": false,
             "direction_fix": false,
-            "alwaysOnTop": true,
+            "alwaysOnTop": false,
             "speed": 4,
-            "commands": [
-                "SHOW_TEXT: {'text': 'You dared to challenge me?'}",
-                "SELF_SWITCH_ON: 'A'"
-            ]
-        },
-
-        {
-            "conditions": {"self_switch": "A"},
-            "character_hue": "s_02.png","pattern": 0,
-            "trigger": "action_button",
-            "direction": "bottom",
-            "frequence": 4,
-            "type": "fixed",
-            "through": false,
-            "stop_animation": false,
-            "no_animation": false,
-            "direction_fix": false,
-            "alwaysOnTop": true,
-            "speed": 4,
-            "commands": [
-                "SHOW_TEXT: {'text': 'You will never be the Title Holder!!'}",
+            "commands":
+            [
+                "SHOW_TEXT: {'text': 'Want my title? Say hello first to your ancestors!'}",
                 "CALL: 'battle'"
             ]
         }

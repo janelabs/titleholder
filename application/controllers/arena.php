@@ -58,18 +58,11 @@ class Arena extends CI_Controller {
         $dataOptions = array();
         $directions = array('top', 'bottom', 'left', 'right');
 
-        $msg1 = array(
-            'You dared to challenge me?',
-            'Want my title huh?!?',
-            'Let\'s get this over with',
-            'Escape now while you have the time!'
-        );
-
-        $msg2 = array(
-            'Do you think you can defeat me?',
-            'Ha!! Prepare to die!',
-            'You will never be the Title Holder!!',
-            'Say hello to your ancestors!'
+        $msg = array(
+            "You dared to challenge me? Prepare to die!",
+            "Want my title? Say hello first to your ancestors!",
+            "Do you think you can defeat me? Let's get this over with",
+            "You will never be the Title Holder!"
         );
 
         if (count($monsters) > 0) {
@@ -80,20 +73,11 @@ class Arena extends CI_Controller {
 
                 $events[] = $f_name;
 
-                $msg_key_1 = array_rand($msg1);
-                $msg_key_2 = array_rand($msg2);
-
-                $direction_key1 = array_rand($directions);
-                $direction_key2 = array_rand($directions);
-
                 $dataOptions['m_id'] = $m_info->monster_id;
                 $dataOptions['name'] = $f_name;
                 $dataOptions['avatar'] = $m_info->monster_avatar;
-                $dataOptions['msg1'] = $msg1[$msg_key_1];
-                $dataOptions['msg2'] = $msg2[$msg_key_2];
-                $dataOptions['directions_1'] = $directions[$direction_key1];
-                $dataOptions['directions_2'] = $directions[$direction_key2];
-                $dataOptions['eventCall'] = ",\"CALL: 'battle'\"";
+                $dataOptions['msg'] = $msg[array_rand($msg)];
+                $dataOptions['direction'] = $directions[array_rand($directions)];
 
                 // set the X and Y position of characters
                 switch ($ctr) {
@@ -132,17 +116,10 @@ class Arena extends CI_Controller {
         $directions = array('top', 'bottom', 'left', 'right');
 
         $msg1 = array(
-            'Hello!?',
-            '??',
-            '!!!',
-            ' '
-        );
-
-        $msg2 = array(
-            'I\'m busy',
+            'Hello!? Get all the titles!',
+            'I am busy',
             'Are you the title holder?',
-            'Red Moon Kingdom is in North of this town',
-            'Get all the titles!'
+            'Red Moon Kingdom is in North of this town'
         );
 
         for ($ctr = 5 ; $ctr < 8 ; $ctr++) {
@@ -150,7 +127,6 @@ class Arena extends CI_Controller {
             $events[] = $f_name;
 
             $msg_key_1 = array_rand($msg1);
-            $msg_key_2 = array_rand($msg2);
 
             $direction_key1 = array_rand($directions);
             $direction_key2 = array_rand($directions);
@@ -159,10 +135,8 @@ class Arena extends CI_Controller {
             $dataOptions['name'] = $f_name;
             $dataOptions['avatar'] = "s_0" . $ctr . ".png";
             $dataOptions['msg1'] = $msg1[$msg_key_1];
-            $dataOptions['msg2'] = $msg2[$msg_key_2];
             $dataOptions['directions_1'] = $directions[$direction_key1];
             $dataOptions['directions_2'] = $directions[$direction_key2];
-            $dataOptions['eventCall'] = null;
 
             // set the X and Y position of characters
             switch ($ctr) {
@@ -180,7 +154,7 @@ class Arena extends CI_Controller {
                     break;
             }
 
-            $event = $this->load->view('battle_event_format', $dataOptions, true);
+            $event = $this->load->view('default_event_format', $dataOptions, true);
 
             $fp = fopen($file_path . $f_name . '.json', 'w+');
             if (!fwrite($fp, $event)) {
@@ -193,23 +167,54 @@ class Arena extends CI_Controller {
 
     public function generateEventReplacement()
     {
+        $id = $this->input->post('id', true);
         $user_id = $this->session->userdata('userid');
         $user_data = $this->users->get_userdata($user_id);
 
+        $file_path =  getcwd() . '/assets/Data/Events/MAP001/EVREP/';
+        $f_name = "EV_REP_" . $id;
+        $dataOptions = array();
+        $directions = array('top', 'bottom', 'left', 'right');
+
+        $msg = array(
+            "You dared to challenge me? Prepare to die!",
+            "Want my title? Say hello first to your ancestors!",
+            "Do you think you can defeat me? Let's get this over with",
+            "You will never be the Title Holder!"
+        );
+
         // get monsters / enemies
         if ($user_data) {
-            $user = $user_data;
-
             $where = "monster_level BETWEEN {$user_data->level} AND {$user_data->level} + 5";
-
             $monsters = $this->monsters->getByLevel($where);
 
-            if ($monsters && count($monsters) > 0) {
-                $events = $this->generateEnemyEvents($monsters);
-            } else {
-                $events = $this->generateDefaultEvent();
-            }
+            if (count($monsters) > 0) {
+                $dataOptions['m_id'] = '0'.$monsters[0]->monster_id;
+                $dataOptions['name'] = $f_name;
+                $dataOptions['avatar'] = $monsters[0]->monster_avatar;
+                $dataOptions['msg'] = $msg[array_rand($msg)];
+                $dataOptions['direction'] = $directions[array_rand($directions)];
 
+                $coordinates = array(
+                    array('x' => 24, 'y' => 19),
+                    array('x' => 4, 'y' => 19)
+                );
+
+                $position = array_rand($coordinates);
+
+                // set the X and Y position of characters
+                $dataOptions['x_pos'] = $coordinates[$position]['x'];
+                $dataOptions['y_pos'] = $coordinates[$position]['y'];
+
+                $event = $this->load->view('battle_event_format', $dataOptions, true);
+
+                $fp = fopen($file_path . $f_name . '.json', 'w+');
+                if (!fwrite($fp, $event)) {
+                    echo "File not written \n";
+                }
+                fclose($fp);
+                echo $event;
+            }
         }
     }
 }
