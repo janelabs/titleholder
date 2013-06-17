@@ -20,7 +20,7 @@
             <tr>
                 <th>Image</th>
                 <th>Name</th>
-                <th>Ranking</th>
+                <th>Titles</th>
             </tr>
             </thead>
             <tbody>
@@ -47,7 +47,7 @@
                     else:
                         ?>
                         <tr colspan="3">
-                            <td>No record(s) found.</td>
+                            <td>No result!</td>
                         </tr>
                         <?php
                     endif;
@@ -64,7 +64,7 @@
             <tr>
                 <th>Image</th>
                 <th>Name</th>
-                <th>Ranking</th>
+                <th>Level</th>
             </tr>
             </thead>
             <tbody>
@@ -83,7 +83,7 @@
                             <?php echo $level->name; ?>
                         </td>
                         <td>
-                            <?php echo "Lvl: $level->level"; ?>
+                            <?php echo $level->level; ?>
                         </td>
                     </tr>
                 <?php
@@ -91,7 +91,7 @@
             else:
                 ?>
                 <tr colspan="3">
-                    <td>No record(s) found.</td>
+                    <td>No result!</td>
                 </tr>
             <?php
             endif;

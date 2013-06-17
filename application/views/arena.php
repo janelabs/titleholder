@@ -19,15 +19,29 @@
     </div>
     <form action="<?php echo site_url('battle/allocate'); ?>" id="ap_form" class="form-horizontal">
         <div class="modal-body">
+
             <div>You have five (<span id="attr_points">0</span>) AP left</div>
+
             <div class="control-group pull-left">
-                <label class="control-label" for="atk">Attack</label>
+                <label class="control-label" for="hp">HP</label>
                 <div class="controls">
-                    <input type="text" class="span1" name="atk" id="atk" value="0">
-                    <button type="button" class="btn btn-inverse" id="atk-p">
+                    <input type="text" class="span1" name="hp" id="hp" value="0">
+                    <button type="button" class="btn btn-inverse" id="hp-p">
                         <i class="icon-white icon-plus-sign"></i>
                     </button>
-                    <button type="button" class="btn btn-inverse" id="atk-m">
+                    <button type="button" class="btn btn-inverse" id="hp-m">
+                        <i class="icon-white icon-minus-sign"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="control-group pull-left">
+                <label class="control-label" for="attk">Attack</label>
+                <div class="controls">
+                    <input type="text" class="span1" name="attk"  id="attk" value="0">
+                    <button type="button" class="btn btn-inverse" id="attk-p">
+                        <i class="icon-white icon-plus-sign"></i>
+                    </button>
+                    <button type="button" class="btn btn-inverse" id="attk-m">
                         <i class="icon-white icon-minus-sign"></i>
                     </button>
                 </div>
@@ -43,18 +57,6 @@
                         <i class="icon-white icon-minus-sign"></i>
                     </button>
                 </div>
-            </div>
-            <div class="control-group pull-left">
-                <label class="control-label" for="hp">HP</label>
-                <div class="controls">
-                    <input type="text" class="span1" name="hp" id="hp" value="0">
-                    <button type="button" class="btn btn-inverse" id="hp-p">
-                        <i class="icon-white icon-plus-sign"></i>
-                    </button>
-                    <button type="button" class="btn btn-inverse" id="hp-m">
-                        <i class="icon-white icon-minus-sign"></i>
-                    </button>
-                 </div>
             </div>
         </div>
         <div class="modal-footer">
@@ -89,13 +91,14 @@ was originally in the battle/index view
         $.post(action, param, function(data){
             $('#ap_form .btn').removeClass('disabled').removeAttr('disabled');
             alert(data.message);
+            $('#attk, #def, #hp').val(0);
         },'json');
 
         e.preventDefault();
     });
 
     // if input is not numeric, change to 0
-    $('#atk, #def, #hp').on('keyup',function(){
+    $('#attk, #def, #hp').on('keyup',function(){
         var input = $(this).val();
         var is_numeric = $.isNumeric(input);
         if (!is_numeric) {
@@ -104,12 +107,13 @@ was originally in the battle/index view
     });
 
     // plus-minus function for those who don't like to use the keyboard
-    $('#atk-p, #def-p, #hp-p, #atk-m, #def-m, #hp-m').on('click',function(event){
+    $('#attk-p, #def-p, #hp-p, #attk-m, #def-m, #hp-m').on('click',function(event){
 
         var btns = event.target.id;
         var btn = btns.split('-');
         var total_ap = parseInt($('#attr_points').text());
         var txt_val = ($('#'+btn[0]).val()) ? $('#'+btn[0]).val() : 0;
+        var value = 0;
 
         // if method is plus
         if (btn[1] == 'p') {

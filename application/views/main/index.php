@@ -28,7 +28,7 @@
             <tr><td></td></tr>
             <tr>
                 <td>Experience: </td>
-                <td class="td_elem"><?php echo $user['prev_xp']; ?></td>
+                <td class="td_elem"><?php echo $user['user_xp']; ?></td>
             </tr>
             <tr><td></td></tr>
             <tr>
@@ -101,15 +101,12 @@
             $("#div_main").fadeOut("slow",function(){
                 $("#logs_frame").fadeIn("slow");
             });
-            if (soundToggle == 1) {
-                changeBGM('menus');
-            }
 
             $('#logs_frame iframe').attr({src : "<?php echo site_url('logs'); ?>"});
+
             if (soundToggle == 1) {
                 changeBGM('menus');
             }
-
         });
 
         $('#btn_rank').on("click", function(){
@@ -117,8 +114,8 @@
                 $("#rank_frame").fadeIn("slow");
             });
 
-
             $('#rank_frame iframe').attr({src : "<?php echo site_url('ranking'); ?>"});
+
             if (soundToggle == 1) {
                 changeBGM('menus');
             }
