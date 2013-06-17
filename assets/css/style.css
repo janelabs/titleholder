@@ -377,4 +377,16 @@ html,body {
 
 }
 
+.sound-play {
+    background: url('../images/sound_16.png');
+}
+
+.sound-mute {
+    background: url('../images/sound_mute_16.png');
+}
+
+/* bootstrap progress bar */
+.progress {
+    height: 5px;
+}
 
