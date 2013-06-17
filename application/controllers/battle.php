@@ -100,8 +100,10 @@ class Battle extends CI_Controller {
                 $data['points'] =$attr_points;
             }
 
-            // remove after testing
+            // for testing
             // $has_levelup = true;
+            // $has_rank = true;
+            // $rank_name = 'Something';
             // $attr_points = $player_data->points + self::AP;
 
             $data['xp'] = $player_xp;
@@ -193,7 +195,7 @@ class Battle extends CI_Controller {
         }
 
         // if there is no at least 1 attribute input
-        if(!$post['atk'] && !$post['def'] && !$post['hp']) {
+        if(!$post['attk'] && !$post['def'] && !$post['hp']) {
             $response['message'] = 'You did not assign points to any attribute';
 
             echo json_encode($response);
@@ -201,14 +203,14 @@ class Battle extends CI_Controller {
         }
 
         // if any of the attribute has invalid value
-        if(!is_numeric($post['atk']) || !is_numeric($post['def']) || !is_numeric($post['hp'])) {
+        if(!is_numeric($post['attk']) || !is_numeric($post['def']) || !is_numeric($post['hp'])) {
             $response['message'] = 'Invalid Input';
 
             echo json_encode($response);
             exit;
         }
 
-        $total = $post['atk'] + $post['def'] + $post['hp'];
+        $total = $post['attk'] + $post['def'] + $post['hp'];
 
         $player_id = $this->session->userdata('userid');
         $player_data = $this->users->get_userdata($player_id);
@@ -237,7 +239,7 @@ class Battle extends CI_Controller {
 
         if($player_data) {
 
-            $atk_increase = self::AT * $post['atk'];
+            $atk_increase = self::AT * $post['attk'];
             $def_increase = self::DF * $post['def'];
             $hp_increase = self::HP * $post['hp'];
 
