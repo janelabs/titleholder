@@ -390,3 +390,19 @@ html,body {
     height: 5px;
 }
 
+.skill{
+    background: transparent url(../images/hit2.png) 0 0 no-repeat;
+    position: absolute;
+    top:20px;
+    width: 192px;
+    height: 192px;
+    visibility: hidden;
+}
+.damage{
+    color: #F00;
+    position: absolute;
+    font-weight: bold;
+    font-size: 25px;
+    margin: 25px;
+    text-align: center;
+}

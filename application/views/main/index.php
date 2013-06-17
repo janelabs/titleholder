@@ -89,11 +89,12 @@
             $("#div_main").fadeOut("slow",function(){
                 $("#arena_frame").fadeIn("slow");
             });
+
+            $('#arena_frame iframe').attr({src : "<?php echo site_url('arena'); ?>"});
+
             if (soundToggle == 1) {
                 changeBGM('arena');
             }
-
-            $('#arena_frame iframe').attr({src : "<?php echo site_url('arena'); ?>"});
         });
 
         $('#btn_log').on("click", function(){
@@ -105,17 +106,22 @@
             }
 
             $('#logs_frame iframe').attr({src : "<?php echo site_url('logs'); ?>"});
+            if (soundToggle == 1) {
+                changeBGM('menus');
+            }
+
         });
 
         $('#btn_rank').on("click", function(){
             $("#div_main").fadeOut("slow",function(){
                 $("#rank_frame").fadeIn("slow");
             });
+
+
+            $('#rank_frame iframe').attr({src : "<?php echo site_url('ranking'); ?>"});
             if (soundToggle == 1) {
                 changeBGM('menus');
             }
-
-            $('#rank_frame iframe').attr({src : "<?php echo site_url('ranking'); ?>"});
         });
 
         $('#btn_logout').on("click", function(){
