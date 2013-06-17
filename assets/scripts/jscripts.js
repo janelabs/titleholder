@@ -121,19 +121,21 @@ $(document).ready(function(){
     $('#close').click(function(e){
         $('#battle').modal('hide');
         $('#result').hide();
+
+        // return focus on the arena
         Input.lock(rpg.canvas, true);
     });
 
     // battle module attack action
     $('#atk').submit(function(e){
         // temporary disable attack button while waiting for server response
-        $('#attack').attr('disabled','disabled');
+        $('#attack').addClass('disabled').attr('disabled','disabled');
 
         var action = $(this).attr('action');
         var param = $(this).serialize();
 
         $.post(action,param,function(response){
-            $('#attack').removeAttr('disabled');
+            $('#attack').removeClass('disabled').removeAttr('disabled');
 
             if(response.status) {
                 //$('#debugger').html(JSON.stringify(response));
@@ -148,8 +150,8 @@ $(document).ready(function(){
                 updateHPBars('enemy_bar',response.enemy.hp_percent);
 
                 if(response.player.is_dead && response.result) {
-                    $('#result').html(response.result).fadeIn('fast');
                     $('#attack').hide();
+                    $('#result').html(response.result).fadeIn('fast');
 
                     setTimeout(function(){
                         $('#result').fadeOut('fast',function(){
@@ -160,30 +162,60 @@ $(document).ready(function(){
                 }
 
                 if(response.enemy.is_dead && response.result) {
-                    $('#result').html(response.result).fadeIn('fast');
-                    $('#attack').hide();
+                    $('#result')
+                    .html(response.result)
+                    .fadeIn('fast',function(){
+                        $('#attack').hide();
+                    })
+                    .delay(1000)
+                    .fadeOut('fast',function(){
 
-                    if(response.has_rank) {
-                        setTimeout(function(){
-                            $('#result').html('You gained the rank '+response.rank_name).hide().fadeIn('fast');
-                        },2000);
-                    }
+                        if(response.has_levelup && response.has_rank) {
 
-                    if(response.has_levelup) {
-                        setTimeout(function(){
-                            $('#attr_points').html(response.ap);
-                            $('#ap_modal').removeData("modal").modal({backdrop: 'static', keyboard: false})
-                            $('#battle').modal('hide');
-                            $('#result').html('You have level up').hide().fadeIn('fast');
-                        },2000);
-                    }
+                            $('#result')
+                            .html('You gained the rank '+response.rank_name)
+                            .fadeIn('fast')
+                            .delay(2000)
+                            .fadeOut('fast',function(){
+                                $('#result')
+                                .html('You have level up!')
+                                .fadeIn('fast')
+                                .delay(2000)
+                                .fadeOut(function(){
+                                    $('#attr_points').html(response.ap);
+                                    $('#ap_modal').removeData("modal").modal({backdrop: 'static', keyboard: false})
+                                    $('#battle').modal('hide');
+                                });
+                            });
 
-                    setTimeout(function(){
-                        $('#result').fadeOut('fast',function(){
+                        } else if(response.has_levelup) {
+
+                            $('#result').html('You have level up!')
+                            .fadeIn('fast')
+                            .delay(2000)
+                            .fadeOut(function(){
+                                $('#attr_points').html(response.ap);
+                                $('#ap_modal').removeData("modal").modal({backdrop: 'static', keyboard: false})
+                                $('#battle').modal('hide');
+                            });
+
+                        } else if(response.has_rank) {
+
+                            $('#result')
+                            .html('You gained the rank '+response.rank_name)
+                            .fadeIn('fast')
+                            .delay(2000)
+                            .fadeOut('fast',function(){
                                 $('#close').show();
-                            }
-                        );
-                    },2000);
+                            });
+
+                        } else {
+
+                            $('#close').show();
+
+                        }
+
+                    });
                 }
             }
         },'json');
@@ -200,7 +232,6 @@ $(document).ready(function(){
 
 });
 
-
 function updateHPBars(pbar_id,percent_to) {
 
     // get width in percentage, will result in n%
@@ -211,6 +242,14 @@ function updateHPBars(pbar_id,percent_to) {
     while(percent_from > percent_to) {
         percent_from--;
         $('#'+pbar_id+' .bar').css('width',percent_from+'%');
+
+        if(percent_from <= 50 && percent_from > 30) {
+            $('#'+pbar_id+' .bar').removeClass('bar-info').addClass('bar-warning');
+        }
+
+        if(percent_from <= 30) {
+            $('#'+pbar_id+' .bar').removeClass('bar-warning').addClass('bar-danger');
+        }
     }
 }
 
