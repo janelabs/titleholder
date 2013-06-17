@@ -146,9 +146,6 @@ $(document).ready(function(){
                 $('#player_hp').val(response.player.hp);
                 $('#enemy_hp').val(response.enemy.hp);
 
-                updateHPBars('player_bar',response.player.hp_percent);
-                updateHPBars('enemy_bar',response.enemy.hp_percent);
-
                 // TODO: make skill effect random from hit1.png to hit3 png see style.css
 
                   setTimeout(function(){
@@ -175,7 +172,7 @@ $(document).ready(function(){
                     on_last_frame: function(obj) {
                         $("#enemy_img .skill").css('visibility','hidden');
                         $("#enemy_img .skill").destroy();
-                        damageAnim("enemy", response.player.damage );
+                        damageAnim("enemy", response.enemy.damage );
                     }
                 });
 
@@ -272,15 +269,10 @@ $(document).ready(function(){
 
 });
 
-
-});
-
 function updateHPBars(pbar_id,percent_to) {
 
     // get width in percentage, will result in n%
     var str = $('#'+pbar_id+'_bar .bar')[0].style.width;
-
-
 
     var percent_from = str.slice(0,-1);
 
