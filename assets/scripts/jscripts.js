@@ -209,8 +209,11 @@ $(document).ready(function(){
                                 $('#close').show();
                             });
 
-                        }
+                        } else {
 
+                            $('#close').show();
+
+                        }
 
                     });
                 }
@@ -239,6 +242,14 @@ function updateHPBars(pbar_id,percent_to) {
     while(percent_from > percent_to) {
         percent_from--;
         $('#'+pbar_id+' .bar').css('width',percent_from+'%');
+
+        if(percent_from <= 50 && percent_from > 30) {
+            $('#'+pbar_id+' .bar').removeClass('bar-info').addClass('bar-warning');
+        }
+
+        if(percent_from <= 30) {
+            $('#'+pbar_id+' .bar').removeClass('bar-warning').addClass('bar-danger');
+        }
     }
 }
 
