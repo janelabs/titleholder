@@ -135,11 +135,18 @@ class Battle extends CI_Controller {
             $result = "You were killed!";
         }
 
+        $player_percentage = $this->users->xp_percentage($player_return_hp,$player_data->hp,0);
+        $enemy_percentage = $this->users->xp_percentage($enemy_return_hp,$enemy_data->hp,0);
+
         $response['status'] = 1;
         $response['enemy']['hp'] = $enemy_return_hp;
         $response['enemy']['is_dead'] = $is_killed;
+        $response['enemy']['damage'] = $enemy_dmg_rcv;
+        $response['enemy']['hp_percent'] = $enemy_percentage;
         $response['player']['hp'] = $player_return_hp;
         $response['player']['is_dead'] = $is_dead;
+        $response['player']['damage'] = $player_dmg_rcv;
+        $response['player']['hp_percent'] = $player_percentage;
         $response['has_rank'] = $has_rank;
         $response['rank_name'] = $rank_name;
         $response['has_levelup'] = $has_levelup;
