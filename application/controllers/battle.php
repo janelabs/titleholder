@@ -100,8 +100,10 @@ class Battle extends CI_Controller {
                 $data['points'] =$attr_points;
             }
 
-            // remove after testing
+            // for testing
             // $has_levelup = true;
+            // $has_rank = true;
+            // $rank_name = 'Something';
             // $attr_points = $player_data->points + self::AP;
 
             $data['xp'] = $player_xp;
@@ -135,11 +137,18 @@ class Battle extends CI_Controller {
             $result = "You were killed!";
         }
 
+        $player_percentage = $this->users->xp_percentage($player_return_hp,$player_data->hp,0);
+        $enemy_percentage = $this->users->xp_percentage($enemy_return_hp,$enemy_data->hp,0);
+
         $response['status'] = 1;
         $response['enemy']['hp'] = $enemy_return_hp;
         $response['enemy']['is_dead'] = $is_killed;
+        $response['enemy']['damage'] = $enemy_dmg_rcv;
+        $response['enemy']['hp_percent'] = $enemy_percentage;
         $response['player']['hp'] = $player_return_hp;
         $response['player']['is_dead'] = $is_dead;
+        $response['player']['damage'] = $player_dmg_rcv;
+        $response['player']['hp_percent'] = $player_percentage;
         $response['has_rank'] = $has_rank;
         $response['rank_name'] = $rank_name;
         $response['has_levelup'] = $has_levelup;
@@ -186,7 +195,7 @@ class Battle extends CI_Controller {
         }
 
         // if there is no at least 1 attribute input
-        if(!$post['atk'] && !$post['def'] && !$post['hp']) {
+        if(!$post['attk'] && !$post['def'] && !$post['hp']) {
             $response['message'] = 'You did not assign points to any attribute';
 
             echo json_encode($response);
@@ -194,14 +203,14 @@ class Battle extends CI_Controller {
         }
 
         // if any of the attribute has invalid value
-        if(!is_numeric($post['atk']) || !is_numeric($post['def']) || !is_numeric($post['hp'])) {
+        if(!is_numeric($post['attk']) || !is_numeric($post['def']) || !is_numeric($post['hp'])) {
             $response['message'] = 'Invalid Input';
 
             echo json_encode($response);
             exit;
         }
 
-        $total = $post['atk'] + $post['def'] + $post['hp'];
+        $total = $post['attk'] + $post['def'] + $post['hp'];
 
         $player_id = $this->session->userdata('userid');
         $player_data = $this->users->get_userdata($player_id);
@@ -230,7 +239,7 @@ class Battle extends CI_Controller {
 
         if($player_data) {
 
-            $atk_increase = self::AT * $post['atk'];
+            $atk_increase = self::AT * $post['attk'];
             $def_increase = self::DF * $post['def'];
             $hp_increase = self::HP * $post['hp'];
 

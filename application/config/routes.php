@@ -61,6 +61,9 @@ $route['logs/battle/players'] = "history/players";
 $route['logs/battle/monsters'] = "history/monsters";
 $route['logs/quest'] = "history/quests";
 
+//arena
+$route['arena/replaceevent'] = "arena/generateEventReplacement";
+
 // cms
 $route['cms/login'] = 'cms_login';
 $route['cms/main'] = 'cms_admin';

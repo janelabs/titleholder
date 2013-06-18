@@ -77,7 +77,7 @@ $(document).ready(function(){
     $('.log_nav').click(function(e){
         action = $(this).attr('href');
 
-        $('#logs_window').html('Loading content...')
+        $('#logs_window').html('Loading content...');
         $.get(action,function(data){
             $('#logs_window').html(data);
         });
@@ -88,7 +88,7 @@ $(document).ready(function(){
     $('#rankTab a').click(function (e) {
         e.preventDefault();
         $(this).tab('show');
-    })
+    });
 
 
     $('#sound').click(function() {
@@ -120,22 +120,25 @@ $(document).ready(function(){
     // manual close button of battle modal
     $('#close').click(function(e){
         $('#battle').modal('hide');
+        $('#result').hide();
+
+        // return focus on the arena
         Input.lock(rpg.canvas, true);
     });
 
     // battle module attack action
     $('#atk').submit(function(e){
         // temporary disable attack button while waiting for server response
-        $('#attack').attr('disabled','disabled');
+        $('#attack').addClass('disabled').attr('disabled','disabled');
 
         var action = $(this).attr('action');
         var param = $(this).serialize();
 
         $.post(action,param,function(response){
-            $('#attack').removeAttr('disabled');
+            $('#attack').removeClass('disabled').removeAttr('disabled');
 
             if(response.status) {
-                $('#debugger').html(JSON.stringify(response));
+                //$('#debugger').html(JSON.stringify(response));
 
                 $('#player_hp_div').html(response.player.hp);
                 $('#enemy_hp_div').html(response.enemy.hp);
@@ -143,28 +146,39 @@ $(document).ready(function(){
                 $('#player_hp').val(response.player.hp);
                 $('#enemy_hp').val(response.enemy.hp);
 
+                // TODO: make skill effect random from hit1.png to hit3 png see style.css
+
+                  setTimeout(function(){
+                      updateHPBars('player',response.player.hp_percent);
+
+                      $("#player_img .skill").css('visibility','visible');
+                      $("#player_img .skill").sprite({
+                          fps: 9,
+                          no_of_frames: 5,
+                          on_last_frame: function(obj) {
+                              $("#player_img .skill").css('visibility','hidden');
+                              $("#player_img .skill").destroy();
+                              damageAnim("player", response.player.damage );
+                          }
+                      });
+                  }, 1000);
+
+                updateHPBars('enemy',response.enemy.hp_percent);
+
+                $("#enemy_img .skill").css('visibility','visible');
+                $("#enemy_img .skill").sprite({
+                    fps: 9,
+                    no_of_frames: 5,
+                    on_last_frame: function(obj) {
+                        $("#enemy_img .skill").css('visibility','hidden');
+                        $("#enemy_img .skill").destroy();
+                        damageAnim("enemy", response.enemy.damage );
+                    }
+                });
+
                 if(response.player.is_dead && response.result) {
-                    $('#result').html(response.result).fadeIn('fast');
-                }
-
-                if(response.enemy.is_dead && response.result) {
-                    $('#result').html(response.result).fadeIn('fast');
                     $('#attack').hide();
-
-                    if(response.has_rank) {
-                        setTimeout(function(){
-                            $('#result').html('You gained the rank '+response.rank_name).hide().fadeIn('fast');
-                        },2000);
-                    }
-
-                    if(response.has_levelup) {
-                        setTimeout(function(){
-                            $('#attr_points').html(response.ap);
-                            $('#ap_modal').modal('show');
-                            $('#battle').modal('hide');
-                            $('#result').html('You have level up').hide().fadeIn('fast');
-                        },2000);
-                    }
+                    $('#result').html(response.result).fadeIn('fast');
 
                     setTimeout(function(){
                         $('#result').fadeOut('fast',function(){
@@ -173,12 +187,80 @@ $(document).ready(function(){
                         );
                     },2000);
                 }
+
+                if(response.enemy.is_dead && response.result) {
+                    $('#result')
+                    .html(response.result)
+                    .fadeIn('fast',function(){
+                        $('#attack').hide();
+                    })
+                    .delay(1000)
+                    .fadeOut('fast',function(){
+
+                        if(response.has_levelup && response.has_rank) {
+
+                            $('#result')
+                            .html('You gained the rank '+response.rank_name)
+                            .fadeIn('fast')
+                            .delay(2000)
+                            .fadeOut('fast',function(){
+                                $('#result')
+                                .html('You have level up!')
+                                .fadeIn('fast')
+                                .delay(2000)
+                                .fadeOut(function(){
+                                    $('#attr_points').html(response.ap);
+                                    $('#ap_modal').removeData("modal").modal({backdrop: 'static', keyboard: false})
+                                    $('#battle').modal('hide');
+                                });
+                            });
+
+                        } else if(response.has_levelup) {
+
+                            $('#result').html('You have level up!')
+                            .fadeIn('fast')
+                            .delay(2000)
+                            .fadeOut(function(){
+                                $('#attr_points').html(response.ap);
+                                $('#ap_modal').removeData("modal").modal({backdrop: 'static', keyboard: false})
+                                $('#battle').modal('hide');
+                            });
+
+                        } else if(response.has_rank) {
+
+                            $('#result')
+                            .html('You gained the rank '+response.rank_name)
+                            .fadeIn('fast')
+                            .delay(2000)
+                            .fadeOut('fast',function(){
+                                $('#close').show();
+                            });
+
+                        } else {
+
+                            $('#close').show();
+
+                        }
+
+                    });
+                }
+
+                if(!response.player.is_dead && !response.enemy.is_dead){
+                    setTimeout(function(){
+                        $("#atk").submit();
+                    }, 3000);
+                }
             }
         },'json');
 
         e.preventDefault();
     });
 
+    function damageAnim(char, value){
+        $("#"+char+"_img .damage").text("-"+value);
+        $("#"+char+"_img .damage").fadeIn().fadeOut();
+
+    }
 
     var cookie = getCookie();
     if (cookie == 0) {
@@ -186,6 +268,28 @@ $(document).ready(function(){
     }
 
 });
+
+function updateHPBars(pbar_id,percent_to) {
+
+    // get width in percentage, will result in n%
+    var str = $('#'+pbar_id+'_bar .bar')[0].style.width;
+
+    var percent_from = str.slice(0,-1);
+
+    while(percent_from > percent_to) {
+        percent_from--;
+        $('#'+pbar_id+' .bar').css('width',percent_from+'%');
+
+        if(percent_from <= 50 && percent_from > 30) {
+            $('#'+pbar_id+' .bar').removeClass('bar-info').addClass('bar-warning');
+        }
+
+        if(percent_from <= 30) {
+            $('#'+pbar_id+' .bar').removeClass('bar-warning').addClass('bar-danger');
+        }
+    }
+}
+
 
 function setCookie (name, value) {
     var expire = new Date() ;
@@ -221,8 +325,8 @@ function getCookie()
 function changeBGM(sound){
     var src="/assets/Audio/BGM/" + sound;
     audio_core_ogg=$('#arenabgm').attr('src', src + '.ogg')[1]
-        audio_core_ogg.play();
+    audio_core_ogg.play();
 
     audio_core_mp3=$('#arenabgm').attr('src', src + '.mp3')[0]
-        audio_core_mp3.play();
+    audio_core_mp3.play();
 }

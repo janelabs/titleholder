@@ -3,12 +3,14 @@
 <html>
 <head>
     <title>TitleHolder</title>
+    <meta HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
 
     <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/scripts/bootstrap/css/bootstrap.min.css'); ?>" />
     <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/style.css'); ?>" />
 
 
     <script type="text/javascript" src="<?php echo base_url('assets/scripts/jquery.js'); ?>"></script>
+    <script type="text/javascript" src="<?php echo base_url('assets/scripts/jquery.spritely-0.6.js'); ?>"></script>
     <script type="text/javascript" src="<?php echo base_url('assets/scripts/bootstrap/js/bootstrap.min.js'); ?>"></script>
     <script type="text/javascript" src="<?php echo base_url('assets/scripts/jscripts.js'); ?>"></script>
     <script type="text/javascript" src="<?php echo base_url('assets/scripts/rpgJs/rpg-beta-2.js'); ?>"></script>

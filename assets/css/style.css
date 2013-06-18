@@ -377,4 +377,32 @@ html,body {
 
 }
 
+.sound-play {
+    background: url('../images/sound_16.png');
+}
 
+.sound-mute {
+    background: url('../images/sound_mute_16.png');
+}
+
+/* bootstrap progress bar */
+.progress {
+    height: 5px;
+}
+
+.skill{
+    background: transparent url(../images/hit2.png) 0 0 no-repeat;
+    position: absolute;
+    top:20px;
+    width: 192px;
+    height: 192px;
+    visibility: hidden;
+}
+.damage{
+    color: #F00;
+    position: absolute;
+    font-weight: bold;
+    font-size: 25px;
+    margin: 25px;
+    text-align: center;
+}

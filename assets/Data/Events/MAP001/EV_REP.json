@@ -1,16 +1,16 @@
 [
     {
-        "x": <?php echo $x_pos; ?>,
-        "y": <?php echo $y_pos; ?>,
-        "id": "<?php echo $m_id; ?>",
-        "name": "<?php echo $name; ?>"
+        "x": 4,
+        "y": 19,
+        "id": "02",
+        "name": "EV_REP"
     },
     [
         {
-            "character_hue": "<?php echo $avatar; ?>",
+            "character_hue": "s_02.png",
             "pattern": 2,
             "trigger": "action_button",
-            "direction": "<?php echo $direction; ?>",
+            "direction": "bottom",
             "frequence": 4,
             "type": "fixed",
             "through": false,
@@ -21,7 +21,7 @@
             "speed": 4,
             "commands":
             [
-                "SHOW_TEXT: {'text': '<?php echo $msg; ?>'}",
+                "SHOW_TEXT: {'text': 'Want my title? Say hello first to your ancestors!'}",
                 "CALL: 'battle'"
             ]
         }

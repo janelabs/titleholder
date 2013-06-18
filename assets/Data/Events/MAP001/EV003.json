@@ -1,8 +1,8 @@
 [
     {
-        "x": 28,
-        "y": 4,
-        "id": "2",
+        "x": 23,
+        "y": 20,
+        "id": "303",
         "name": "EV003"
     },
 
@@ -40,8 +40,7 @@
             "alwaysOnTop": false,
             "speed": 4,
             "commands": [
-                "SHOW_TEXT: {'text': 'You must be..'}",
-                "CALL: 'sample'"
+                "SHOW_TEXT: {'text': 'You must be..'}"
             ]
         }
     ]
