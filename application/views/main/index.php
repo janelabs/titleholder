@@ -5,12 +5,21 @@
 <div id="div_main">
     <!-- avatar -->
     <div class="div_child">
-        <img id="user_dp" src="<?php echo base_url('assets/images/dummy.png'); ?>" />
+        <?php
+            $left = '0px';
+            if ($user['avatar_image'] == 'c_01.png') {
+                $left = '-2px';
+            }
+            if ($user['avatar_image'] == 'c_04.png') {
+                $left = '-55px';
+            }
+        ?>
+        <img style="left: <?php echo $left; ?> !important;" id="user_dp" src="<?php echo base_url('assets/images/'.$user['avatar_image']); ?>" />
     </div>
 
     <!-- pet -->
     <div class="div_child">
-        <img id="user_pet" src="<?php echo base_url('assets/images/p_01.gif'); ?>" />
+        <img id="user_pet" src="<?php echo base_url('assets/pets/'.$user['pet_image']); ?>" />
     </div>
 
     <!-- stats -->
