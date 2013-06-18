@@ -66,6 +66,6 @@ class Login extends CI_Controller {
     {
         $auth = array('userid' => '','username' => '','auth' => '');
         $this->session->unset_userdata($auth);
-        redirect(site_url() . 'login');
+        redirect(site_url() . 'startup');
     }
 }

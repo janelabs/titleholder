@@ -59,7 +59,7 @@ class Register extends CI_Controller {
                         $data['status'] = 1;
                         $data['success'] = true;
                         $data['message'] = 'Registration successful! Redirecting';
-                        $data['location'] = site_url('login');
+                        $data['location'] = site_url();
                     } else {
                         $data['status'] = 1;
                         $data['success'] = false;
