@@ -3,7 +3,7 @@ $(document).ready(function(){
     // hide radio on registration
     $('.options input:radio').addClass('radio_hidden');
 
-    $('.options').click(function() {
+    $('.options li').click(function() {
         $(this).addClass('opt_selected').siblings().removeClass('opt_selected');
     });
     $('.close').click(function() {
@@ -18,26 +18,34 @@ $(document).ready(function(){
 
         $('.vspan').empty();
         // TODO: use each
-        var regex = /^([a-zA-Z0-9_\.\-\+])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
-        if($("input[name=email]").val() == ""){
 
-            $("input[name=email]").tooltip({
-                title: "Please provide valid email",
-                placement: "right",
-                trigger: "manual"
-            });
-            $("input[name=email]").tooltip('show');
+        if(e.target.id == 'login') {
+            var regex = /^([a-zA-Z0-9_\.\-\+])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+            if($("input[name=email]").val() == ""){
 
-        } else if($("input[name=password]").val() == ""){
+                $("input[name=email]").tooltip({
+                    title: "Please provide valid email",
+                    placement: "right",
+                    trigger: "manual"
+                });
+                $("input[name=email]").tooltip('show');
 
-            $("input[name=password]").tooltip({
-                title: "Please provide password",
-                placement: "right",
-                trigger: "manual"
-            });
-            $("input[name=password]").tooltip('show');
+                return false;
 
-        }else{
+            }
+
+            if($("input[name=password]").val() == ""){
+
+                $("input[name=password]").tooltip({
+                    title: "Please provide password",
+                    placement: "right",
+                    trigger: "manual"
+                });
+                $("input[name=password]").tooltip('show');
+
+                return false;
+            }
+        }
 
         $.post(action,param,function(data){
             var btn = $('#login-btn');
@@ -45,12 +53,12 @@ $(document).ready(function(){
             if(!data.status) {
                 $('#'+form+'_message').empty();
                 $.each(data.errors,function(key,val){
-                    $("input[name=" + key + "]").tooltip({
+                    $("#" + key).tooltip({
                         title: val,
                         placement: "right",
                         trigger: "manual"
                     });
-                    $("input[name=" + key + "]").tooltip('show');
+                    $("#" + key).tooltip('show');
                 });
 
                 btn.button('reset');
@@ -70,9 +78,20 @@ $(document).ready(function(){
             }
         },'json');
 
-        }
         e.preventDefault();
     });
+
+
+    $('.options li').each(function() {
+        var $this = $(this);
+        $this.tooltip({
+            trigger: 'hover',
+            placement: 'right',
+            html: true,
+            title: $this.find('div').html()
+        });
+    });
+
 
     $('.log_nav').click(function(e){
         action = $(this).attr('href');
@@ -293,3 +312,5 @@ function changeBGM(sound){
     audio_core_mp3=$('#arenabgm').attr('src', src + '.mp3')[0]
     audio_core_mp3.play();
 }
+
+
