@@ -33,7 +33,7 @@
                             <tr>
                                 <td>
                                     <!-- $rank->avatar_filename -->
-                                    <img width="40px" height="40px" src="<?php echo base_url('assets/images/placeholder.jpg'); ?>" />
+                                    <img width="40px" height="40px" src="<?php echo base_url('assets/images/'.$rank->avatar_filename); ?>" />
                                 </td>
                                 <td>
                                     <?php echo $rank->name; ?>
@@ -77,7 +77,7 @@
                     <tr>
                         <td>
                             <!-- $level->avatar_filename -->
-                            <img width="40px" height="40px" src="<?php echo base_url('assets/images/placeholder.jpg'); ?>" />
+                            <img width="40px" height="40px" src="<?php echo base_url('assets/images/'.$level->avatar_filename); ?>" />
                         </td>
                         <td>
                             <?php echo $level->name; ?>
