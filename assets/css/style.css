@@ -38,6 +38,22 @@ html,body {
     display: none;
 }
 
+.tooltip span {
+    display: block;
+    text-align: justify;
+    font-family: Verdana;
+    font-size: 12px;
+    background-color: #222;
+    padding: 3px;
+    margin: 1px 0;
+}
+
+.tooltip span strong {
+    display: inline-block;
+    min-width: 50px;
+    color: #FFFA86;
+}
+
 .radio_hidden {
     position: absolute;
     left: -9999px;
@@ -50,11 +66,10 @@ html,body {
 .options {
     padding: 0;
     margin: 0;
-    display: inline-block;
 }
 
 .options li {
-    display: block;
+    display: inline-block;
     cursor: pointer;
     font-size: 0;
 
@@ -247,11 +262,11 @@ html,body {
     margin: 50px auto;
     box-shadow: 0 0 15px rgba(0,0,0,0.5);
     border: 1px solid #444;
-    background: #dbc59e url('http://localhost/scene01.jpg');
+    background-image: url('../images/menu_bg.jpg');
 }
 
 .inner_div {
-    margin: 20px 50px;
+    margin: 10px 50px;
     color: #FFF;
     text-shadow: 0 0 10px rgb(0,0,0);
 }
@@ -264,7 +279,7 @@ html,body {
 
 
 .input_div {
-    margin: 5px;
+    margin: 3px;
 }
 
 .input_div label {

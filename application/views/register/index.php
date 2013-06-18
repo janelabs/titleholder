@@ -9,81 +9,72 @@
 
     <div class="input_div">
         <label>Username</label>
-        <input type="text" name="username" class="tbox" />
-        <span id="username" class="vspan"></span>
+        <input type="text" name="username" class="tbox" id="username" />
+        <span class="vspan"></span>
     </div>
     <div class="input_div">
         <label>Password</label>
-        <input type="password" name="password" class="tbox" />
-        <span id="password" class="vspan"></span>
+        <input type="password" name="password" class="tbox" id="password" />
+        <span class="vspan"></span>
     </div>
     <div class="input_div">
         <label>Confirm Password</label>
-        <input type="password" name="pwordconf" class="tbox" />
-        <span id="pwordconf" class="vspan"></span>
+        <input type="password" name="pwordconf" class="tbox" id="pwordconf" />
+        <span class="vspan"></span>
     </div>
     <div class="input_div">
         <label>Email Address</label>
-        <input type="text" name="email" class="tbox" />
-        <span id="email" class="vspan"></span>
+        <input type="text" name="email" class="tbox" id="email" />
+        <span class="vspan"></span>
     </div>
 
     <div style="text-align: center;">
 
         <h4>Choose a Character</h4>
-        <span id="avatar"></span>
         <?php if($avatars): ?>
+        <ul class="options" id="avatar">
             <?php foreach($avatars as $avatar): ?>
-
-            <ul class="options">
                 <li>
                     <input type="radio" name="avatar" id="av<?php echo $avatar->avatar_id ?>" value="<?php echo $avatar->avatar_id ?>" />
                     <label for="av<?php echo $avatar->avatar_id ?>">
                         <img src="http://127.0.0.1/images.jpeg"  alt="<?php echo $avatar->avatar_filename ?>" />
                     </label>
+                    <div class="desc" id="avatar_<?php echo $avatar->avatar_id ?>">
+                        <span><strong>ATK:</strong> <?php echo $avatar->avatar_attack ?></span>
+                        <span><strong>DEF:</strong> <?php echo $avatar->avatar_defense ?></span>
+                        <span><strong>HP:</strong> <?php echo $avatar->avatar_hp ?></span>
+                        <span><strong>EXP:</strong> <?php echo $avatar->avatar_exp ?></span>
+                        <span><?php echo $avatar->avatar_description ?></span>
+                    </div>
                 </li>
-            </ul>
-
-            <div class="desc" id="avatar_<?php echo $avatar->avatar_id ?>">
-                ATK: <?php echo $avatar->avatar_attack ?>
-                DEF: <?php echo $avatar->avatar_defense ?>
-                HP: <?php echo $avatar->avatar_hp ?>
-                EXP: <?php echo $avatar->avatar_exp ?>
-                <?php echo $avatar->avatar_description ?>
-            </div>
-
             <?php endforeach; ?>
+        </ul>
         <?php endif; ?>
 
 
         <h4>Choose a Pet</h4>
-        <span id="pet"></span>
         <?php if($pets): ?>
-
+        <ul class="options" id="pet">
             <?php foreach($pets as $pet): ?>
-
-            <ul class="options">
                 <li>
                     <input type="radio" name="pet" id="pet<?php echo $pet->pet_id ?>" value="<?php echo $pet->pet_id ?>" />
                     <label for="pet<?php echo $pet->pet_id ?>">
                         <img src="http://127.0.0.1/images.jpeg"  alt="<?php echo $pet->pet_image ?>" />
                     </label>
+                    <div class="desc" id="pet_<?php echo $pet->pet_id ?>">
+                        <span><strong>ATK:</strong> <?php echo $pet->pet_attack ?></span>
+                        <span><strong>DEF:</strong> <?php echo $pet->pet_defense ?></span>
+                        <span><strong>HP:</strong> <?php echo $pet->pet_hp ?></span>
+                        <span><strong>EXP:</strong> <?php echo $pet->pet_xp ?></span>
+                        <span><?php echo $pet->pet_description ?></span>
+                    </div>
                 </li>
-            </ul>
-
-            <div class="desc" id="pet_<?php echo $pet->pet_id ?>">
-                ATK: <?php echo $pet->pet_attack ?>
-                DEF: <?php echo $pet->pet_defense ?>
-                HP: <?php echo $pet->pet_hp ?>
-                EXP: <?php echo $pet->pet_xp ?>
-                <?php echo $pet->pet_description ?>
-            </div>
-
             <?php endforeach; ?>
+        </ul>
         <?php endif; ?>
 
         <div>
-            <input type="submit" value="Create Account" class="btn" />
+            <input type="submit" value="Create Account" class="btn btn-inverse" />
             <div class="msgcontainer">
                 <div class="alert alert-error fade in ">
 
