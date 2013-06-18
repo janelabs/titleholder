@@ -141,8 +141,9 @@ $(document).ready(function(){
         $('#battle').modal('hide');
         $('#result').hide();
 
+        $('button .back_to_main').show();
         // return focus on the arena
-        Input.lock(rpg.canvas, true);
+        Input.lock($('#canvas_rpg'), true);
     });
 
     // battle module attack action
