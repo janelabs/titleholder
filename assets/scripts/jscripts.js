@@ -155,32 +155,30 @@ $(document).ready(function(){
 
         $.post(action,param,function(response){
             $('#attack').removeClass('disabled').removeAttr('disabled');
-
+            $('#attack').hide();
             if(response.status) {
                 //$('#debugger').html(JSON.stringify(response));
-
-                $('#player_hp_div').html(response.player.hp);
-                $('#enemy_hp_div').html(response.enemy.hp);
 
                 $('#player_hp').val(response.player.hp);
                 $('#enemy_hp').val(response.enemy.hp);
 
                 // TODO: make skill effect random from hit1.png to hit3 png see style.css
 
-                  setTimeout(function(){
-                      updateHPBars('player',response.player.hp_percent);
+                setTimeout(function(){
+                    updateHPBars('player',response.player.hp_percent);
 
-                      $("#player_img .skill").css('visibility','visible');
-                      $("#player_img .skill").sprite({
-                          fps: 9,
-                          no_of_frames: 5,
-                          on_last_frame: function(obj) {
-                              $("#player_img .skill").css('visibility','hidden');
-                              $("#player_img .skill").destroy();
-                              damageAnim("player", response.player.damage );
-                          }
-                      });
-                  }, 1000);
+                    $("#player_img .skill").css('visibility','visible');
+                    $("#player_img .skill").sprite({
+                        fps: 9,
+                        no_of_frames: 5,
+                        on_last_frame: function(obj) {
+                            $("#player_img .skill").css('visibility','hidden');
+                            $("#player_img .skill").destroy();
+                            damageAnim("player", response.player.damage );
+                            $('#player_hp_div').html(response.player.hp);
+                        }
+                    });
+                }, 1000);
 
                 updateHPBars('enemy',response.enemy.hp_percent);
 
@@ -192,19 +190,21 @@ $(document).ready(function(){
                         $("#enemy_img .skill").css('visibility','hidden');
                         $("#enemy_img .skill").destroy();
                         damageAnim("enemy", response.enemy.damage );
+                        $('#enemy_hp_div').html(response.enemy.hp);
                     }
                 });
 
                 if(response.player.is_dead && response.result) {
-                    $('#attack').hide();
-                    $('#result').html(response.result).fadeIn('fast');
 
-                    setTimeout(function(){
-                        $('#result').fadeOut('fast',function(){
-                                $('#close').show();
-                            }
-                        );
-                    },2000);
+                    $('#result')
+                    .html(response.result)
+                    .delay(2000)
+                    .fadeIn('fast')
+                    .delay(2000)
+                    .fadeOut('fast',function(){
+                            $('#close').show();
+                        }
+                    );
                 }
 
                 if(response.enemy.is_dead && response.result) {
