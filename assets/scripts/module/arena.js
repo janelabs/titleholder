@@ -41,7 +41,7 @@ var Arena = {
                         success: function(result) {
                             if (result) {
                                 $('#battle').html(result);
-                                $('#battle').modal();
+                                $('#battle').modal({backdrop: 'static', keyboard: false})
                             }
                         }
                     });
