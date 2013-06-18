@@ -252,6 +252,21 @@ html,body {
     left: 500px;
 }
 
+.nav-tabs li a {
+    color: #FFF;
+    text-shadow: 1px 2px 4px #000;
+}
+
+.nav-tabs li.active a {
+    color: #000;
+    text-shadow: none;
+}
+
+.nav-tabs li a:hover {
+    color: #000;
+    text-shadow: 1px 2px 4px #FFF;
+}
+
 /*==================================
 *   sign-up
 *=================================*/

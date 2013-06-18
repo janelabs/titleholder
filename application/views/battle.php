@@ -55,5 +55,6 @@
             <input type="button" id="close" value="Back to Arena" style="display: none;" class="btn btn-inverse" />
         </div>
     </form>
+    <div id="debugger"></div>
 </div>
 
