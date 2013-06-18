@@ -28,21 +28,22 @@ class Arena extends CI_Controller {
 
             $where = "monster_level BETWEEN {$user_data->level} AND {$user_data->level} + 5";
 
-            $monsters = $this->monsters->getByLevel($where);
+            // commented out for viewing purpose
+            //$monsters = $this->monsters->getByLevel($where);
 
-            if ($monsters && count($monsters) > 0) {
-                $events = $this->generateEnemyEvents($monsters);
-            } else {
-                $events = $this->generateDefaultEvent();
-            }
+//            if ($monsters && count($monsters) > 0) {
+//                $events = $this->generateEnemyEvents($monsters);
+//            } else {
+//                $events = $this->generateDefaultEvent();
+//            }
 
         }
 
-        if (count($events) > 0) {
-            $data['events'] = $events;
-        } else {
-            $data['events'] = array('null');
-        }
+//        if (count($events) > 0) {
+//            $data['events'] = $events;
+//        } else {
+//            $data['events'] = array('null');
+//        }
 
         $data['user'] = $user;
         $data['header'] = $this->load->view('headers', null, true);
@@ -157,7 +158,7 @@ class Arena extends CI_Controller {
             $event = $this->load->view('default_event_format', $dataOptions, true);
 
             $fp = fopen($file_path . $f_name . '.json', 'w+');
-            if (!fwrite($fp, $event)) {
+            if (!fwrite($fp,json_encode($event))) {
                 echo "File not written \n";
             }
             fclose($fp);
@@ -209,7 +210,7 @@ class Arena extends CI_Controller {
                 $event = $this->load->view('battle_event_format', $dataOptions, true);
 
                 $fp = fopen($file_path . $f_name . '.json', 'w+');
-                if (!fwrite($fp, $event)) {
+                if (!fwrite($fp, json_encode($event))) {
                     echo "File not written \n";
                 }
                 fclose($fp);

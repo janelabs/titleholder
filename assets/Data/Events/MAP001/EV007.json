@@ -1,16 +1,16 @@
 [
     {
-        "x": <?php echo $x_pos ? $x_pos:0; ?>,
-        "y": <?php echo $y_pos ? $y_pos:0; ?>,
-        "id": "<?php echo $m_id ? $m_id:0; ?>",
-        "name": "<?php echo $name ? $name:'null'; ?>"
+        "x": 38,
+        "y": 17,
+        "id": "4",
+        "name": "EV007"
     },
     [
         {
-            "character_hue": "<?php echo $avatar ? $avatar:null; ?>",
+            "character_hue": "s_04.png",
             "pattern": 2,
             "trigger": "action_button",
-            "direction": "<?php echo $direction ? $direction:'bottom'; ?>",
+            "direction": "bottom",
             "frequence": 4,
             "type": "fixed",
             "through": false,
@@ -21,7 +21,7 @@
             "speed": 4,
             "commands":
             [
-                "SHOW_TEXT: {'text': '<?php echo $msg ? $msg:null; ?>'}",
+                "SHOW_TEXT: {'text': 'You dared to challenge me? Prepare to die!'}",
                 "CALL: 'battle'"
             ]
         }
