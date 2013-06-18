@@ -14,7 +14,7 @@
                 $left = '-55px';
             }
         ?>
-        <img style="left: <?php echo $left; ?> !important;" id="user_dp" src="<?php echo base_url('assets/images/'.$user['avatar_image']); ?>" />
+        <img style="left: <?php echo $left; ?> !important;" id="user_dp" src="<?php echo base_url('assets/images/char-main/'.$user['avatar_image']); ?>" />
     </div>
 
     <!-- pet -->
