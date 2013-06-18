@@ -11,7 +11,7 @@ $(document).ready(function(){
     })
 
     $('#signup,#login').submit(function(e){
-        $('input').tooltip('destroy');
+        $('input, #pet, #avatar').tooltip('destroy');
         var form = e.target.id;
         var param = $(this).serialize();
         var action = $(this).attr('action');
