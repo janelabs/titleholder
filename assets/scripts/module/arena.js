@@ -17,7 +17,8 @@ var Arena = {
 
             rpg.loadMap('MAP001', {
                 tileset: 'tilea1.png',
-                events: ['EV001', 'EV002'].concat(battle_events),
+                //events: ['EV001', 'EV002'].concat(battle_events),
+                events: ['EV001', 'EV002', 'EV005', 'EV006', 'EV007'],
                 player:  {
                     x: 26,
                     y: 19,
@@ -40,7 +41,7 @@ var Arena = {
                         success: function(result) {
                             if (result) {
                                 $('#battle').html(result);
-                                $('#battle').modal();
+                                $('#battle').modal({backdrop: 'static', keyboard: false})
                             }
                         }
                     });

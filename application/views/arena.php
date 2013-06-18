@@ -66,20 +66,6 @@
     </form>
 </div>
 
-<?php //for event generate
-    if ($events):
-        for ($i = 0 ; $i < count($events) ; $i++) {
-            ?>
-            <input class="events" type="hidden" id="events_<?php echo $i; ?>" value="<?php echo $events[$i]; ?>" disabled="true" />
-            <?php
-        }
-    else:
-        ?>
-        <input class="events" type="hidden" id="events_0" value="0" disabled="true" />
-        <?php
-    endif;
-?>
-
 <div id="result">
 <!--
 for the battle result
