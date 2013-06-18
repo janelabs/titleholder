@@ -13,8 +13,8 @@
         <div id="player_img" style="margin: 10px auto;">
             <div class="skill"></div>
             <div class="damage"></div>
-            <!--<img src="<?php// echo site_url('assets/Graphics/Characters/'.$player->avatar_filename) ?>" />-->
-            <img src="http://localhost/images.jpeg">
+            <img src="<?php echo site_url('assets/images/'.$player->avatar_filename) ?>" />
+            <!--<img src="http://localhost/images.jpeg">-->
         </div>
     </div>
 
@@ -36,7 +36,7 @@
         <div id="enemy_img" style="margin: 10px auto;">
             <div class="skill"></div>
             <div class="damage"></div>
-            <img src="http://localhost/images.jpeg">
+            <img src="http://localhost/images.jpeg" wi>
             <!--<img src="<?php // echo site_url('assets/Graphics/Characters/'.$enemy->avatar) ?>" /> -->
         </div>
     </div>
