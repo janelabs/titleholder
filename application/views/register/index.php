@@ -59,7 +59,7 @@
                 <li>
                     <input type="radio" name="pet" id="pet<?php echo $pet->pet_id ?>" value="<?php echo $pet->pet_id ?>" />
                     <label for="pet<?php echo $pet->pet_id ?>">
-                        <img src="http://127.0.0.1/images.jpeg"  alt="<?php echo $pet->pet_image ?>" />
+                        <img src="<?php echo base_url('assets/pets/'.$pet->pet_image); ?>"  alt="<?php echo $pet->pet_image ?>" />
                     </label>
                     <div class="desc" id="pet_<?php echo $pet->pet_id ?>">
                         <span><strong>ATK:</strong> <?php echo $pet->pet_attack ?></span>
