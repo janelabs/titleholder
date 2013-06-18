@@ -69,19 +69,31 @@ var Arena = {
 
             $.post(action, param, function(data){
                 $('#ap_form .btn').removeClass('disabled').removeAttr('disabled');
-                alert(data.message);
                 $('#attk, #def, #hp').val(0);
+                alert(data.message);
+                $('#ap_modal').modal('hide');
             },'json');
 
             e.preventDefault();
         });
 
         // if input is not numeric, change to 0
-        $('#attk, #def, #hp').on('keyup',function(){
+        $('#attk, #def, #hp').on('change',function(){
             var input = $(this).val();
             var is_numeric = $.isNumeric(input);
-            if (!is_numeric) {
+            var total_ap = parseInt($('#ap_hide').val());
+            var total = 0;
+            $('#attk,#def,#hp').each(function(k,v){
+                total = total + parseInt($(this).val());
+            });
+            if(!total_ap || !is_numeric || (input > total_ap) || (total > total_ap)) {
                 $(this).val(0);
+                var attr_points = total_ap - total;
+                attr_points = (attr_points < 0) ? 0 : attr_points;
+                $('#attr_points').text();
+            } else {
+                var attr_points = total_ap - total;
+                $('#attr_points').text(attr_points);
             }
         });
 

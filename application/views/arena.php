@@ -19,7 +19,7 @@
     </div>
     <form action="<?php echo site_url('battle/allocate'); ?>" id="ap_form" class="form-horizontal">
         <div class="modal-body">
-
+            <input type="hidden" id="ap_hide" />
             <div>You have five (<span id="attr_points">0</span>) AP left</div>
 
             <div class="control-group pull-left">
