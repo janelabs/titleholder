@@ -37,7 +37,7 @@
                 <li>
                     <input type="radio" name="avatar" id="av<?php echo $avatar->avatar_id ?>" value="<?php echo $avatar->avatar_id ?>" />
                     <label for="av<?php echo $avatar->avatar_id ?>">
-                        <img src="http://127.0.0.1/images.jpeg"  alt="<?php echo $avatar->avatar_filename ?>" />
+                        <img src="<?php echo base_url('assets/images').'/'.$avatar->avatar_filename?>"  alt="<?php echo $avatar->avatar_filename ?>" />
                     </label>
                     <div class="desc" id="avatar_<?php echo $avatar->avatar_id ?>">
                         <span><strong>ATK:</strong> <?php echo $avatar->avatar_attack ?></span>
@@ -59,7 +59,7 @@
                 <li>
                     <input type="radio" name="pet" id="pet<?php echo $pet->pet_id ?>" value="<?php echo $pet->pet_id ?>" />
                     <label for="pet<?php echo $pet->pet_id ?>">
-                        <img src="http://127.0.0.1/images.jpeg"  alt="<?php echo $pet->pet_image ?>" />
+                        <img src="<?php echo base_url('assets/pets/'.$pet->pet_image); ?>"  alt="<?php echo $pet->pet_image ?>" />
                     </label>
                     <div class="desc" id="pet_<?php echo $pet->pet_id ?>">
                         <span><strong>ATK:</strong> <?php echo $pet->pet_attack ?></span>
@@ -75,6 +75,8 @@
 
         <div>
             <input type="submit" value="Create Account" class="btn btn-inverse" />
+            <a class="btn" href="<?php echo site_url(); ?>">Back</a>
+
             <div class="msgcontainer">
                 <div class="alert alert-error fade in ">
 
@@ -82,13 +84,8 @@
                     <a class="close" href="#">&times;</a>
                 </div>
             </div>
-
-
         </div>
     </div>
 </form>
-
         </div> <!-- end: inner div -->
-
-
 </div> <!-- end: main container -->

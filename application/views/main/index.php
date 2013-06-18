@@ -3,6 +3,11 @@
 ?>
 
 <div id="div_main">
+    <div class="div_child">
+        <h1 style="position: absolute; left: 50px; top: 0px; color: white; -webkit-text-stroke: 0.5px black; text-shadow: 1px 2px 4px #000000;">
+            <?php echo $user['user_name']; ?></h1>
+    </div>
+
     <!-- avatar -->
     <div class="div_child">
         <?php
@@ -14,7 +19,7 @@
                 $left = '-55px';
             }
         ?>
-        <img style="left: <?php echo $left; ?> !important;" id="user_dp" src="<?php echo base_url('assets/images/'.$user['avatar_image']); ?>" />
+        <img style="left: <?php echo $left; ?> !important;" id="user_dp" src="<?php echo base_url('assets/images/wb/'.$user['avatar_image']); ?>" />
     </div>
 
     <!-- pet -->
