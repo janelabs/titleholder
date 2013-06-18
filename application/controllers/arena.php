@@ -28,22 +28,21 @@ class Arena extends CI_Controller {
 
             $where = "monster_level BETWEEN {$user_data->level} AND {$user_data->level} + 5";
 
-            // commented out for viewing purpose
-            //$monsters = $this->monsters->getByLevel($where);
+            $monsters = $this->monsters->getByLevel($where);
 
-//            if ($monsters && count($monsters) > 0) {
-//                $events = $this->generateEnemyEvents($monsters);
-//            } else {
-//                $events = $this->generateDefaultEvent();
-//            }
+            if ($monsters && count($monsters) > 0) {
+                $events = $this->generateEnemyEvents($monsters);
+            } else {
+                $events = $this->generateDefaultEvent();
+            }
 
         }
 
-//        if (count($events) > 0) {
-//            $data['events'] = $events;
-//        } else {
-//            $data['events'] = array('null');
-//        }
+        if (count($events) > 0) {
+            $data['events'] = $events;
+        } else {
+            $data['events'] = array('null');
+        }
 
         $data['user'] = $user;
         $data['header'] = $this->load->view('headers', null, true);
@@ -60,10 +59,10 @@ class Arena extends CI_Controller {
         $directions = array('top', 'bottom', 'left', 'right');
 
         $msg = array(
-            "You dared to challenge me? Prepare to die!",
-            "Want my title? Say hello first to your ancestors!",
-            "Do you think you can defeat me? Let's get this over with",
-            "You will never be the Title Holder!"
+            "You dared to challenge me?",
+            "Want my title? Say hello first to your ancestors",
+            "Do you think you can defeat me?",
+            "You will never be the Title Holder"
         );
 
         if (count($monsters) > 0) {
@@ -158,7 +157,7 @@ class Arena extends CI_Controller {
             $event = $this->load->view('default_event_format', $dataOptions, true);
 
             $fp = fopen($file_path . $f_name . '.json', 'w+');
-            if (!fwrite($fp,json_encode($event))) {
+            if (!fwrite($fp,$event)) {
                 echo "File not written \n";
             }
             fclose($fp);
@@ -178,10 +177,10 @@ class Arena extends CI_Controller {
         $directions = array('top', 'bottom', 'left', 'right');
 
         $msg = array(
-            "You dared to challenge me? Prepare to die!",
-            "Want my title? Say hello first to your ancestors!",
-            "Do you think you can defeat me? Let's get this over with",
-            "You will never be the Title Holder!"
+            "You dared to challenge me? Prepare to die",
+            "Want my title? Say hello first to your ancestors",
+            "Do you think you can defeat me?",
+            "You will never be the Title Holder"
         );
 
         // get monsters / enemies
@@ -198,7 +197,12 @@ class Arena extends CI_Controller {
 
                 $coordinates = array(
                     array('x' => 24, 'y' => 19),
-                    array('x' => 4, 'y' => 19)
+                    array('x' => 4, 'y' => 19),
+                    array('x' => 21, 'y' => 33),
+                    array('x' => 7, 'y' => 33),
+                    array('x' => 37, 'y' => 33),
+                    array('x' => 28, 'y' => 48),
+                    array('x' => 26, 'y' => 16)
                 );
 
                 $position = array_rand($coordinates);
@@ -210,7 +214,7 @@ class Arena extends CI_Controller {
                 $event = $this->load->view('battle_event_format', $dataOptions, true);
 
                 $fp = fopen($file_path . $f_name . '.json', 'w+');
-                if (!fwrite($fp, json_encode($event))) {
+                if (!fwrite($fp, $event)) {
                     echo "File not written \n";
                 }
                 fclose($fp);
