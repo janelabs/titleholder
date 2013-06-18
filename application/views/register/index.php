@@ -1,7 +1,10 @@
 
 <div class="main_container"> <!-- start: main container -->
+    <a class="btn btn-danger" href="<?php echo site_url(); ?>" style="position: relative; top: 15px; left: 15px; float: left;">Back</a>
 
     <div class="inner_div"> <!-- start: inner div -->
+
+
 
 <form action="<?php echo site_url('signup') ?>" method="post" id="signup">
 
@@ -73,9 +76,8 @@
         </ul>
         <?php endif; ?>
 
-        <div>
+        <div style="margin: 3px;">
             <input type="submit" value="Create Account" class="btn btn-inverse" />
-            <a class="btn" href="<?php echo site_url(); ?>">Back</a>
 
             <div class="msgcontainer">
                 <div class="alert alert-error fade in ">
