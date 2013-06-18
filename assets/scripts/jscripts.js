@@ -253,6 +253,7 @@ $(document).ready(function(){
                             .fadeOut(function(){
                                 $('#attr_points').html(response.ap);
                                 $('#ap_modal').removeData("modal").modal({backdrop: 'static', keyboard: false})
+                                $('#ap_hide').val(response.ap);
                                 $('#battle').modal('hide');
                             });
 
