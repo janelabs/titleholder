@@ -5,12 +5,12 @@
 <div id="div_main" style="background-image: url('<?php echo base_url('assets/images/splash.png'); ?>') !important;">
     <!-- login -->
     <div class="div_child">
-        <button id="login_btn">LOGIN</button>
+        <button id="login_btn" class="btn">LOGIN</button>
     </div>
 
     <!-- signup -->
     <div class="div_child">
-        <button id="signup_btn">SIGN UP</button>
+        <button id="signup_btn" class="btn">SIGN UP</button>
     </div>
 </div>
 </center>
@@ -42,7 +42,7 @@
 <script type="text/javascript">
     $(function(){
         $('#login_btn').on("click", function(){
-            $('#login_div   ').modal();
+            $('#login_div').modal();
         });
 
         $('#signup_btn').click(function(){

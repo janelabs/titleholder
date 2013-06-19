@@ -10,7 +10,7 @@
 
     <input type="hidden" id="site_url" value="<?php echo site_url(); ?>" />
 </div>
-<div id="battle" role="dialog" class="modal hide"></div>
+<div id="battle" role="dialog" class="modal hide" style="position: absolute; left: 280px; width: 638px; height: 370px; background: url('<?php echo base_url('assets/images/battle.jpg'); ?>');"></div>
 
 
 <div id="ap_modal" class="modal hide fade in" data-backdrop="static">

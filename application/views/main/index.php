@@ -59,21 +59,21 @@
 
     <!-- menu -->
     <div class="div_child">
-        <button id="btn_rank">RANKS</button>
-        <button id="btn_log">LOGS</button>
+        <button id="btn_rank" class="btn">RANKS</button>
+        <button id="btn_log" class="btn">LOGS</button>
     </div>
 
     <!-- arena -->
     <div class="div_child">
-        <button id="btn_arena">ARENA</button>
+        <button id="btn_arena" class="btn">ARENA</button>
     </div>
 
     <div class="div_child">
-        <button id="sound" class="music_toggle"><i id="soundicon" class="icon-volume-up"></i></button>
+        <button id="sound" class="music_toggle minibtn"><i id="soundicon" class="icon-volume-up"></i></button>
     </div>
 
     <div class="div_child">
-        <button id="btn_logout" class="logout"><i class="icon-off"></i></button>
+        <button id="btn_logout" class="logout minibtn"><i class="icon-off"></i></button>
     </div>
 </div>
 </center>
