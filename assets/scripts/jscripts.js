@@ -239,9 +239,10 @@ $(document).ready(function(){
                                 .fadeIn('fast')
                                 .delay(2000)
                                 .fadeOut(function(){
-                                    $('#attr_points').html(response.ap);
-                                    $('#ap_modal').removeData("modal").modal({backdrop: 'static', keyboard: false})
-                                    $('#battle').modal('hide');
+                                        $('#attr_points').html(response.ap);
+                                        $('#ap_modal').removeData("modal").modal({backdrop: 'static', keyboard: false})
+                                        $('#ap_hide').val(response.ap);
+                                        $('#battle').modal('hide');
                                 });
                             });
 
