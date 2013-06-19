@@ -34,6 +34,12 @@
                 <?php echo $e_current_hp; ?>
             </span>/ <?php echo $enemy->hp ?>
         </div>
+
+        <div id="enemy_img" style="margin: 10px auto;">
+            <div class="skill"></div>
+            <div class="damage"></div>
+            <img src="<?php echo site_url('assets/Graphics/Characters/'.$enemy->avatar) ?>" />
+        </div>
     </div>
 
 
