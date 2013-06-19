@@ -77,15 +77,7 @@
         <?php endif; ?>
 
         <div style="margin: 3px;">
-            <input type="submit" value="Create Account" class="btn btn-inverse" />
-
-            <div class="msgcontainer">
-                <div class="alert alert-error fade in ">
-
-                    <span id="signup_message"></span>
-                    <a class="close" href="#">&times;</a>
-                </div>
-            </div>
+            <input type="submit" value="Create Account" class="btn btn-inverse" id="signup_message" />
         </div>
     </div>
 </form>

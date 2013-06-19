@@ -65,11 +65,13 @@ $(document).ready(function(){
                 });
 
             } else {
-                $('#'+form+'_message').html(data.message);
-                $(".msgcontainer").css("visibility","visible");
-                if(data.success) {$("#msg").addClass('alert-success');}else{$("#msg").addClass('alert-error');}
 
-                $('.alert').show();
+                $("#signup_message").tooltip({
+                    title: data.message,
+                    placement: "right",
+                    trigger: "manual"
+                }).tooltip('show');
+
                 if(data.success) {
                     setTimeout(function(){
                         window.location.href = data.location;
