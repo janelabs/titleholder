@@ -1,7 +1,6 @@
 *~
 .idea/
 application/config/database.php
-assets/Data/Events/MAP001/EVREP/
 assets/Data/Events/MAP001/EV005.json
 assets/Data/Events/MAP001/EV006.json
 assets/Data/Events/MAP001/EV007.json

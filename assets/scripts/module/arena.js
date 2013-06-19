@@ -1,8 +1,10 @@
 var Arena = {
     initView: function() {
+        $('button.back_to_main').show();
         var site_url = $('#site_url').val();
 
         var player_filename = $('#avatar_file').val();
+        var user_id = $('#userid').val();
         var load_path = $('#hcore').val();
         var rpg;
         var battle_events = [];
@@ -29,10 +31,28 @@ var Arena = {
                 rpg.player.useMouse(true);
                 rpg.setScreenIn("Player");
 
+                rpg.bindMouseEvent('over', function(obj) {
+                    $.post(site_url + "arena/displayUserInfo", {uid: user_id}, function(data){
+                        var u_info = $.parseJSON(data);
+                        $('#u_hp').html(u_info.hp);
+                        $('#u_atk').html(u_info.attk);
+                        $('#u_def').html(u_info.def);
+                        $('#u_lvl').html(u_info.lvl);
+                        $('#u_exp').html(u_info.xp);
+
+                        $('#userstat').show();
+                    });
+                }, rpg.player);
+
+                rpg.bindMouseEvent('out', function(obj) {
+                    $('#userstat').hide();
+                }, rpg.player);
+
 
                 rpg.onEventCall("battle", function(){
                     var enemy_id = $(this)[0].id;
                     rpg.removeEvent(enemy_id);
+                    $('#arena_frame button.back_to_main').hide();
 
                     $.ajax({
                         url: site_url + 'battle',

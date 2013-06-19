@@ -143,7 +143,7 @@ $(document).ready(function(){
 
         $('button .back_to_main').show();
         // return focus on the arena
-        Input.lock($('#canvas_rpg'), true);
+        $('#canvas_rpg-dom').focus();
     });
 
     // battle module attack action

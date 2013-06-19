@@ -1,15 +1,18 @@
 <br>
 <div class="row">
     <div id="player" class="span3 pull-left">
-        <h5><?php echo $player->name ?></h5>
+        <h5 style="text-shadow: 2px 1px 4px rgb(255, 255, 255); filter: dropshadow(color=#000000, offx=2, offy=1); font-size: 22px; color: rgb(0, 0, 0);"><?php echo ucwords($player->name); ?></h5>
         <div>
             <div class="progress" id="player_bar">
                 <div class="bar bar-info" style="width: 100%;"></div>
             </div>
-            <strong>HP: </strong>
-            <span id="player_hp_div">
-                <?php echo $p_current_hp; ?>
-            </span>/ <?php echo $player->hp ?>
+
+            <div style="position: absolute; top: 60px; left: 5px;">
+                <strong>HP: </strong>
+                <span id="player_hp_div">
+                    <?php echo $p_current_hp; ?>
+                </span>/ <?php echo $player->hp ?>
+            </div>
         </div>
         <div id="player_img" style="margin: 10px auto;">
             <div class="skill"></div>
@@ -24,15 +27,18 @@
     </div>
 
     <div id="enemy" class="span3 pull-right">
-        <h5><?php echo $enemy->name ?></h5>
+        <h5 style="text-shadow: 2px 1px 4px rgb(255, 255, 255); filter: dropshadow(color=#000000, offx=2, offy=1); font-size: 22px; color: rgb(0, 0, 0);"><?php echo ucwords($enemy->name); ?></h5>
         <div>
             <div class="progress" id="enemy_bar">
                 <div class="bar bar-info" style="width: 100%;"></div>
             </div>
-            <strong>HP: </strong>
-            <span id="enemy_hp_div">
-                <?php echo $e_current_hp; ?>
-            </span>/ <?php echo $enemy->hp ?>
+
+            <div style="position: absolute; top: 60px;">
+                <strong>HP: </strong>
+                <span id="enemy_hp_div">
+                    <?php echo $e_current_hp; ?>
+                </span>/ <?php echo $enemy->hp ?>
+            </div>
         </div>
 
         <div id="enemy_img" style="margin: 10px auto;">

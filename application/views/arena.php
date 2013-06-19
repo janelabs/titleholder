@@ -7,10 +7,11 @@
 
     <input type="hidden" id="hcore" value="<?php echo base_url('assets/scripts/rpgJs/core/'); ?>" />
     <input type="hidden" id="avatar_file" value="<?php echo $user->avatar_filename; ?>" />
+    <input type="hidden" id="userid" value="<?php echo $user->id; ?>" />
 
     <input type="hidden" id="site_url" value="<?php echo site_url(); ?>" />
 </div>
-<div id="battle" role="dialog" class="modal hide" style="position: absolute; left: 280px; width: 638px; height: 370px; background: url('<?php echo base_url('assets/images/battle.jpg'); ?>');"></div>
+<div id="battle" role="dialog" class="modal hide" style="position: absolute; top: 100px; left: 280px; width: 638px; height: 290px; background: url('<?php echo base_url('assets/images/battle.jpg'); ?>');"></div>
 
 
 <div id="ap_modal" class="modal hide fade in" data-backdrop="static">
@@ -71,6 +72,14 @@
 for the battle result
 was originally in the battle/index view
 -->
+</div>
+
+<div id="userstat" style="position: relative; top: -30px; left: -140px; width: 80%; display: none; color: white;text-shadow: 2px 1px 4px rgb(255, 255, 255);">
+    HP: <span id="u_hp"></span>
+    ATTACK: <span id="u_atk"></span>
+    DEFENSE: <span id="u_def"></span>
+    LEVEL: <span id="u_lvl"></span>
+    XP: <span id="u_exp"></span>
 </div>
 
 

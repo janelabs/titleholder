@@ -222,6 +222,23 @@ class Arena extends CI_Controller {
             }
         }
     }
+
+    public function displayUserInfo()
+    {
+        $uid = $this->input->post('uid', true);
+        $user_data = $this->users->get_userdata($uid);
+        $data = array();
+        if ($user_data) {
+            $data = array(
+                'hp' => $user_data->hp,
+                'attk' => $user_data->attack,
+                'def' => $user_data->defense,
+                'lvl' => $user_data->level,
+                'xp' => $user_data->xp
+            );
+        }
+        echo json_encode($data);
+    }
 }
 
 /* End of file arena.php */
