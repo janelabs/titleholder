@@ -36,7 +36,7 @@
         <div id="enemy_img" style="margin: 10px auto;">
             <div class="skill"></div>
             <div class="damage"></div>
-            <img src="http://localhost/images.jpeg" wi>
+            <img src="http://localhost/images.jpeg">
             <!--<img src="<?php // echo site_url('assets/Graphics/Characters/'.$enemy->avatar) ?>" /> -->
         </div>
     </div>
