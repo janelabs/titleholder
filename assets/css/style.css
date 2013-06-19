@@ -437,14 +437,14 @@ html,body {
 }
 
 #login_btn {
-    width: 100px;
+    width: 120px;
     height: 50px;
     position: absolute;
     top: 265px;
     left: 100px;
 }
 #signup_btn {
-    width: 100px;
+    width: 120px;
     height: 50px;
     position: absolute;
     top: 340px;

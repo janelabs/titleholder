@@ -18,11 +18,11 @@
             <!--<img src="http://localhost/images.jpeg">-->
         </div>
     </div>
-<br><br><br>
-    <div class="span1 pull-left">
-        <h3>VS</h3>
+
+    <div class="span1 pull-left" style="position: relative; top: 85px; z-index: 1; left: 20px;">
+        <h1 style="font-size: 90px;">VS</h1>
     </div>
-<br><br><br>
+
     <div id="enemy" class="span3 pull-right">
         <h5><?php echo $enemy->name ?></h5>
         <div>
@@ -38,7 +38,8 @@
         <div id="enemy_img" style="margin: 10px auto;">
             <div class="skill"></div>
             <div class="damage"></div>
-            <img src="<?php echo site_url('assets/Graphics/Characters/'.$enemy->avatar) ?>" />
+            <img src="<?php echo base_url('assets/images/placeholder.jpg'); ?>" width="80px" height="80px" />
+<!--            <img src="--><?php //echo site_url('assets/Graphics/Characters/'.$enemy->avatar) ?><!--" />-->
         </div>
     </div>
 
@@ -51,8 +52,8 @@
             <input type="hidden" name="enemy_hp" id="enemy_hp" placeholder="enemy hp"  value="<?php echo $enemy->hp ?>" />
 
             <div style="display: block; text-align: center;" id="button_placeholder">
-                <input type="submit" id="attack" value="Attack!" class="btn btn-danger" />
-                <input type="button" id="close" value="Back to Arena" style="display: none;" class="btn btn-inverse" />
+                <input type="submit" id="attack" value="Attack!" class="btn btn-danger" style="position: relative; top: 190px; left: -25px;" />
+                <input type="button" id="close" value="Back to Arena" style="display: none; position: relative; top: 145px; left: 10px;" class="btn btn-inverse" />
             </div>
         </form>
         <div id="debugger"></div>
