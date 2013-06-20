@@ -1,6 +1,6 @@
 [
     {
-        "x": 21,
+        "x": 37,
         "y": 33,
         "id": "02",
         "name": "EV_REP_2"
@@ -21,7 +21,7 @@
             "speed": 4,
             "commands":
             [
-                "SHOW_TEXT: {'text': 'You dared to challenge me? Prepare to die'}",
+                "SHOW_TEXT: {'text': 'You will never be the Title Holder'}",
                 "CALL: 'battle'"
             ]
         }

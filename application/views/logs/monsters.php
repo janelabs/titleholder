@@ -13,7 +13,7 @@
     if ($logs):
         foreach($logs as $log): ?>
             <tr>
-                <td><img class="enemy_image" src="<?php echo base_url('assets/images/placeholder.jpg'); ?>" /></td><?php //echo $log['avatar'] ?>
+                <td><img class="enemy_image" src="<?php echo base_url('assets/images/'.$log['avatar']); ?>" /></td><?php //echo $log['avatar'] ?>
                 <td><?php echo $log['name'] ?></td>
                 <td><?php echo $log['result'] ?></td>
             </tr>
