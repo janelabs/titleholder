@@ -70,7 +70,7 @@ var Arena = {
                                 var soundToggle = getCookie();
 
                                 if (soundToggle == 1) {
-                                    parent.changeBGM('char-main');
+                                    parent.changeBGM('battle');
                                 }
 
                             }
