@@ -26,20 +26,13 @@
             <div>
                 <input type="password" name="password" placeholder="password" id="password" />
             </div>
-            <input type="submit" id="login-btn"  class="btn btn-primary" data-loading-text="Processing..." value="Login" autocomplete="off" />
-            <!--<input type="submit" value="login">-->
-            <div class="msgcontainer">
-                <div id="msgc" class="alert  fade in ">
+            <input type="submit" id="login_message"  class="btn btn-primary" data-loading-text="Processing..." value="Login" autocomplete="off" />
 
-                    <span id="login_message"></span>
-                    <a class="close" href="#">&times;</a>
-                    <audio id="registerbgm" autoplay loop>
-                        <source src="<?php echo base_url('assets/Audio/BGM/menus.mp3'); ?>">
-                        <source src="<?php echo base_url('assets/Audio/BGM/menus.ogg'); ?>">
-                    </audio>
+            <audio id="registerbgm" autoplay loop>
+                <source src="<?php echo base_url('assets/Audio/BGM/menus.mp3'); ?>">
+                <source src="<?php echo base_url('assets/Audio/BGM/menus.ogg'); ?>">
+            </audio>
 
-                </div>
-            </div>
         </div>
     </form>
 </div>
