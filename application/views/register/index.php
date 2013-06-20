@@ -82,4 +82,8 @@
     </div>
 </form>
         </div> <!-- end: inner div -->
+    <audio id="registerbgm" autoplay loop>
+        <source src="<?php echo base_url('assets/Audio/BGM/menus.mp3'); ?>">
+        <source src="<?php echo base_url('assets/Audio/BGM/menus.ogg'); ?>">
+    </audio>
 </div> <!-- end: main container -->

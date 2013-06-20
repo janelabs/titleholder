@@ -65,6 +65,14 @@ var Arena = {
                             if (result) {
                                 $('#battle').html(result);
                                 $('#battle').modal({backdrop: 'static', keyboard: false});
+
+                                // play battle sound
+                                var soundToggle = getCookie();
+
+                                if (soundToggle == 1) {
+                                    parent.changeBGM('char-main');
+                                }
+
                             }
                         }
                     });
@@ -81,6 +89,7 @@ var Arena = {
     },
 
     battleInitView: function() {
+
         // allocate attribute points
         $('#ap_form').on('submit',function(e){
 
@@ -95,7 +104,7 @@ var Arena = {
                 $('#attk, #def, #hp').val(0);
                 alert(data.message);
                 $('#ap_modal').modal('hide');
-            },'json');
+            },'json')
 
             e.preventDefault();
         });
