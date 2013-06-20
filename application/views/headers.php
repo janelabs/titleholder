@@ -28,10 +28,11 @@
             $('button, input[type="submit"], input[type="button"], .btn').bind({
                 'mouseenter': function(){
                     var src = "<?php echo base_url('assets/SFX/btn-hover.mp3'); ?>";
-                    $('#btn_sfx_hover').attr('src', src)[0].play();
+                    $('#btn_sfx_hover').attr('src', src)[0];
+                    $('#btn_sfx_hover')[0].play();
                 },
                 'mouseleave': function(){
-                    var src = "<?php echo base_url('assets/SFX/btn-hover.mp3'); ?>";
+                    var src = "";
                     var sfx = $('#btn_sfx_hover').attr('src', src)[0];
                 },
                 click: function(){
