@@ -36,6 +36,8 @@
                     var sfx = $('#btn_sfx_hover').attr('src', src)[0];
                 },
                 click: function(){
+                    var src = "<?php echo base_url('assets/SFX/btn-click.mp3'); ?>";
+                    $('#btn_sfx_click').attr('src', src)[0];
                     $('#btn_sfx_click')[0].play();
                 }
             });
