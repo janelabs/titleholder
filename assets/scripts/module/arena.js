@@ -81,6 +81,8 @@ var Arena = {
     },
 
     battleInitView: function() {
+        // play battle sound
+
         // allocate attribute points
         $('#ap_form').on('submit',function(e){
 
@@ -95,7 +97,7 @@ var Arena = {
                 $('#attk, #def, #hp').val(0);
                 alert(data.message);
                 $('#ap_modal').modal('hide');
-            },'json');
+            },'json')
 
             e.preventDefault();
         });

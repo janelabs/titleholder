@@ -146,6 +146,10 @@ $(document).ready(function(){
         $('button .back_to_main').show();
         // return focus on the arena
         $('#canvas_rpg-dom').focus();
+
+
+            changeBGM('arena');
+
     });
 
     // battle module attack action
@@ -358,11 +362,17 @@ function getCookie()
 
 function changeBGM(sound){
     var src="/assets/Audio/BGM/" + sound;
-    audio_core_ogg=$('#arenabgm').attr('src', src + '.ogg')[1]
-    audio_core_ogg.play();
 
-    audio_core_mp3=$('#arenabgm').attr('src', src + '.mp3')[0]
-    audio_core_mp3.play();
+    try {
+        audio_core_ogg=$('#arenabgm').attr('src', src + '.ogg')[1]
+        audio_core_ogg.play();
+
+        audio_core_mp3=$('#arenabgm').attr('src', src + '.mp3')[0]
+        audio_core_mp3.play();
+    }catch(e){
+
+    }
+
 }
 
 

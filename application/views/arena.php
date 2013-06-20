@@ -97,10 +97,6 @@ else:
 endif;
 ?>
 
-<audio id="arenabgm" autoplay loop>
-    <source src="<?php echo base_url('assets/Audio/BGM/arena.mp3'); ?>">
-    <source src="<?php echo base_url('assets/Audio/BGM/arena.ogg'); ?>">
-</audio>
 
 <script type="text/javascript">
     $(function(){

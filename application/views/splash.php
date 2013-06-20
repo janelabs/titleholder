@@ -33,6 +33,11 @@
 
                     <span id="login_message"></span>
                     <a class="close" href="#">&times;</a>
+                    <audio id="registerbgm" autoplay loop>
+                        <source src="<?php echo base_url('assets/Audio/BGM/menus.mp3'); ?>">
+                        <source src="<?php echo base_url('assets/Audio/BGM/menus.ogg'); ?>">
+                    </audio>
+
                 </div>
             </div>
         </div>
