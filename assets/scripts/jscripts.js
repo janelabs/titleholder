@@ -66,11 +66,14 @@ $(document).ready(function(){
 
             } else {
 
-                $("#signup_message").tooltip({
+                $('#'+form+'_message')
+                .tooltip('destroy')
+                .tooltip({
                     title: data.message,
                     placement: "right",
                     trigger: "manual"
-                }).tooltip('show');
+                })
+                .tooltip('show');
 
                 if(data.success) {
                     setTimeout(function(){
