@@ -137,7 +137,6 @@ $(document).ready(function(){
             $('#btn_sfx_hover').attr('src', document.location.hostname + '/assets/SFX/btn-hover.mp3')[0].pause();
             $('#btn_sfx_click').attr('src', document.location.hostname + '/assets/SFX/btn-click.mp3')[0].pause();
 
-            alert(document.location.hostname + '/assets/SFX/btn-hover.mp3');
             val = 1;
         }
 
