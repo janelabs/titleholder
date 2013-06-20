@@ -34,12 +34,13 @@ var Arena = {
                 rpg.bindMouseEvent('over', function(obj) {
                     $.post(site_url + "arena/displayUserInfo", {uid: user_id}, function(data){
                         var u_info = $.parseJSON(data);
-                        $('#u_hp').html(u_info.hp);
-                        $('#u_atk').html(u_info.attk);
-                        $('#u_def').html(u_info.def);
-                        $('#u_lvl').html(u_info.lvl);
-                        $('#u_exp').html(u_info.xp);
-
+                        if (u_info) {
+                            $('#u_hp').html(u_info.hp);
+                            $('#u_atk').html(u_info.attk);
+                            $('#u_def').html(u_info.def);
+                            $('#u_lvl').html(u_info.lvl);
+                            $('#u_exp').html(u_info.xp);
+                        }
                         $('#userstat').show();
                     });
                 }, rpg.player);

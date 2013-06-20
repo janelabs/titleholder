@@ -74,12 +74,12 @@ was originally in the battle/index view
 -->
 </div>
 
-<div id="userstat" style="position: relative; top: -30px; left: -140px; width: 80%; display: none; color: white;text-shadow: 2px 1px 4px rgb(255, 255, 255);">
-    HP: <span id="u_hp"></span>
-    ATTACK: <span id="u_atk"></span>
-    DEFENSE: <span id="u_def"></span>
-    LEVEL: <span id="u_lvl"></span>
-    XP: <span id="u_exp"></span>
+<div id="userstat" class="u_stats">
+    HP: <span id="u_hp">-</span>
+    ATTACK: <span id="u_atk">-</span>
+    DEFENSE: <span id="u_def">-</span>
+    LEVEL: <span id="u_lvl">-</span>
+    XP: <span id="u_exp">-</span>
 </div>
 
 
