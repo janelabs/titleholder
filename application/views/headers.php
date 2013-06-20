@@ -24,13 +24,30 @@
                     window.location = "<?php echo site_url(); ?>";
                 });
             });
+
+            $('button, input[type="submit"], input[type="button"], .btn').on('mouseenter', function(){
+                $('#btn_sfx_hover')[0].play();
+            }).click(function(){
+                $('#btn_sfx_click')[0].play();
+            });
         });
+
     </script>
 
 </head>
 
 <body style="margin: 0; background-color: #fff;"> <!--  overflow: hidden; -->
 <noscript>You must enable your javascript to view this game!</noscript><center>
+
+<audio id="btn_sfx_hover">
+    <source src="<?php echo base_url('assets/SFX/btn-hover.mp3'); ?>">
+    <source src="<?php echo base_url('assets/SFX/btn-hover.ogg'); ?>">
+</audio>
+<audio id="btn_sfx_click">
+    <source src="<?php echo base_url('assets/SFX/btn-click.mp3'); ?>">
+    <source src="<?php echo base_url('assets/SFX/btn-click.ogg'); ?>">
+</audio>
+
 <div id="arena_frame" style="display: none;">
     <iframe class="frame"></iframe>
     <button class="back_to_main minibtn">MENU</button>
