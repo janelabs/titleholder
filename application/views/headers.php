@@ -17,8 +17,6 @@
 
     <script type="text/javascript">
         $(function(){
-            //var src = "<?php echo base_url('assets/SFX/btn-hover.mp3'); ?>";
-
             $('.back_to_main').css({'z-index': 0});
             $('.back_to_main').on("click", function(){
                 var parent_div = $(this).parent('div').attr('id');
@@ -26,20 +24,20 @@
                     window.location = "<?php echo site_url(); ?>";
                 });
             });
-            var soundToggle = getCookie();
-            if (soundToggle == 1) {
+
             $('button, input[type="submit"], input[type="button"], .btn').bind({
                 'mouseenter': function(){
+                    var src = "<?php echo base_url('assets/SFX/btn-hover.mp3'); ?>";
                     $('#btn_sfx_hover').attr('src', src)[0].play();
                 },
                 'mouseleave': function(){
+                    var src = "<?php echo base_url('assets/SFX/btn-hover.mp3'); ?>";
                     var sfx = $('#btn_sfx_hover').attr('src', src)[0];
                 },
                 click: function(){
                     $('#btn_sfx_click')[0].play();
                 }
             });
-            }
         });
 
     </script>
