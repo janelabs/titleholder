@@ -536,3 +536,13 @@ iframe {
     border-radius: 5px;
     display: none;
 }
+
+.u_stats {
+    position: relative;
+    top: -30px;
+    left: -140px;
+    width: 80%;
+    display: none;
+    color: white;
+    text-shadow: 2px 1px 4px rgb(0, 0, 0);
+}
