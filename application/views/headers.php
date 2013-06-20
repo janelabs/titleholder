@@ -25,10 +25,18 @@
                 });
             });
 
-            $('button, input[type="submit"], input[type="button"], .btn').on('mouseenter', function(){
-                $('#btn_sfx_hover')[0].play();
-            }).click(function(){
-                $('#btn_sfx_click')[0].play();
+            $('button, input[type="submit"], input[type="button"], .btn').bind({
+                'mouseenter': function(){
+                    var src = "<?php echo base_url('assets/SFX/btn-hover.mp3'); ?>";
+                    $('#btn_sfx_hover').attr('src', src)[0].play();
+                },
+                'mouseleave': function(){
+                    var src = "<?php echo base_url('assets/SFX/btn-hover.mp3'); ?>";
+                    var sfx = $('#btn_sfx_hover').attr('src', src)[0];
+                },
+                click: function(){
+                    $('#btn_sfx_click')[0].play();
+                }
             });
         });
 
