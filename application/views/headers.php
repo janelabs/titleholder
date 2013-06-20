@@ -17,6 +17,7 @@
 
     <script type="text/javascript">
         $(function(){
+
             $('.back_to_main').css({'z-index': 0});
             $('.back_to_main').on("click", function(){
                 var parent_div = $(this).parent('div').attr('id');
@@ -25,15 +26,21 @@
                 });
             });
 
-            $('button, input[type="submit"], input[type="button"], .btn').on('mouseenter', function(){
-                $('#btn_sfx_hover')[0].play();
-            }).click(function(){
-                $('#btn_sfx_click')[0].play();
-            });
+            var soundToggle = getCookie();
+            if (soundToggle == 1) {
+                $('button, input[type="submit"], input[type="button"], .btn').on('mouseenter', function(){
+                    if (soundToggle == 1) {
+                        $('#btn_sfx_hover')[0].play();
+                    }
+                }).click(function(){
+                        if (soundToggle == 1) {
+                        $('#btn_sfx_click')[0].play();
+                        }
+                });
+            }
         });
 
     </script>
-
 </head>
 
 <body style="margin: 0; background-color: #fff;"> <!--  overflow: hidden; -->

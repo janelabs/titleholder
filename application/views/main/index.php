@@ -89,7 +89,8 @@
         <a class="btn btn-danger" href="<?php echo site_url('logout'); ?>">YES</a>
     </div>
 </div>
-
+</body>
+</html>
 
 <script type="text/javascript">
     $(function(){
@@ -137,6 +138,3 @@
 
     });
 </script>
-
-</body>
-</html>

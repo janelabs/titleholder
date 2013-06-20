@@ -122,6 +122,8 @@ $(document).ready(function(){
             $('#soundicon').removeClass('icon-volume-up');
             $('#soundicon').addClass('icon-volume-off');
             bgm.get(0).pause();
+            $('#btn_sfx_hover')[0].pause();
+            $('#btn_sfx_click')[0].pause();
             val = 0;
 
         }
@@ -129,6 +131,8 @@ $(document).ready(function(){
             $('#soundicon').removeClass('icon-volume-off');
             $('#soundicon').addClass('icon-volume-up');
             bgm.get(0).play();
+            $('#btn_sfx_hover')[0].play();
+            $('#btn_sfx_click')[0].play();
             val = 1;
         }
 
