@@ -65,6 +65,14 @@ var Arena = {
                             if (result) {
                                 $('#battle').html(result);
                                 $('#battle').modal({backdrop: 'static', keyboard: false});
+
+                                // play battle sound
+                                var soundToggle = getCookie();
+
+                                if (soundToggle == 1) {
+                                    parent.changeBGM('char-main');
+                                }
+
                             }
                         }
                     });
@@ -81,7 +89,6 @@ var Arena = {
     },
 
     battleInitView: function() {
-        // play battle sound
 
         // allocate attribute points
         $('#ap_form').on('submit',function(e){
