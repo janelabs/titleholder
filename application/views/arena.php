@@ -7,10 +7,11 @@
 
     <input type="hidden" id="hcore" value="<?php echo base_url('assets/scripts/rpgJs/core/'); ?>" />
     <input type="hidden" id="avatar_file" value="<?php echo $user->avatar_filename; ?>" />
+    <input type="hidden" id="userid" value="<?php echo $user->id; ?>" />
 
     <input type="hidden" id="site_url" value="<?php echo site_url(); ?>" />
 </div>
-<div id="battle" role="dialog" class="modal hide"></div>
+<div id="battle" role="dialog" class="modal hide" style="position: absolute; top: 100px; left: 280px; width: 638px; height: 290px; background: url('<?php echo base_url('assets/images/battle.jpg'); ?>');"></div>
 
 
 <div id="ap_modal" class="modal hide fade in" data-backdrop="static">
@@ -19,7 +20,7 @@
     </div>
     <form action="<?php echo site_url('battle/allocate'); ?>" id="ap_form" class="form-horizontal">
         <div class="modal-body">
-
+            <input type="hidden" id="ap_hide" />
             <div>You have five (<span id="attr_points">0</span>) AP left</div>
 
             <div class="control-group pull-left">
@@ -73,10 +74,29 @@ was originally in the battle/index view
 -->
 </div>
 
-<audio id="arenabgm" autoplay loop>
-    <source src="<?php echo base_url('assets/Audio/BGM/arena.mp3'); ?>">
-    <source src="<?php echo base_url('assets/Audio/BGM/arena.ogg'); ?>">
-</audio>
+<div id="userstat" class="u_stats">
+    HP: <span id="u_hp">-</span>
+    ATTACK: <span id="u_atk">-</span>
+    DEFENSE: <span id="u_def">-</span>
+    LEVEL: <span id="u_lvl">-</span>
+    XP: <span id="u_exp">-</span>
+</div>
+
+
+<?php //for event generate
+if ($events):
+    for ($i = 0 ; $i < count($events) ; $i++) {
+        ?>
+        <input class="events" type="hidden" id="events_<?php echo $i; ?>" value="<?php echo $events[$i]; ?>" disabled="true" />
+    <?php
+    }
+else:
+    ?>
+    <input class="events" type="hidden" id="events_0" value="0" disabled="true" />
+<?php
+endif;
+?>
+
 
 <script type="text/javascript">
     $(function(){

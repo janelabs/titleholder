@@ -11,7 +11,7 @@ $(document).ready(function(){
     })
 
     $('#signup,#login').submit(function(e){
-        $('input').tooltip('destroy');
+        $('input, #pet, #avatar').tooltip('destroy');
         var form = e.target.id;
         var param = $(this).serialize();
         var action = $(this).attr('action');
@@ -20,7 +20,7 @@ $(document).ready(function(){
         // TODO: use each
 
         if(e.target.id == 'login') {
-            var regex = /^([a-zA-Z0-9_\.\-\+])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+            var regex = '/^([a-zA-Z0-9_\.\-\+])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/';
             if($("input[name=email]").val() == ""){
 
                 $("input[name=email]").tooltip({
@@ -47,9 +47,12 @@ $(document).ready(function(){
             }
         }
 
+        var $btn = $('.btn');
+        $btn.addClass('disabled').attr('disabled','disabled');
+
         $.post(action,param,function(data){
-            var btn = $('#login-btn');
-            btn.button('loading');
+
+            $btn.removeClass('disabled').removeAttr('disabled');
             if(!data.status) {
                 $('#'+form+'_message').empty();
                 $.each(data.errors,function(key,val){
@@ -61,15 +64,17 @@ $(document).ready(function(){
                     $("#" + key).tooltip('show');
                 });
 
-                btn.button('reset');
-
             } else {
-                $('#'+form+'_message').html(data.message);
-                $(".msgcontainer").css("visibility","visible");
-                if(data.success) {$("#msg").addClass('alert-success');}else{$("#msg").addClass('alert-error');}
 
-                $('.alert').show();
-                btn.button('reset');
+                $('#'+form+'_message')
+                .tooltip('destroy')
+                .tooltip({
+                    title: data.message,
+                    placement: "right",
+                    trigger: "manual"
+                })
+                .tooltip('show');
+
                 if(data.success) {
                     setTimeout(function(){
                         window.location.href = data.location;
@@ -111,19 +116,28 @@ $(document).ready(function(){
 
 
     $('#sound').click(function() {
+        var src="/assets/SFX/";
         var bgm = $("#arenabgm");
         var val = 1;
         if ($('#soundicon').hasClass("icon-volume-up")) {
+            // sound off
             $('#soundicon').removeClass('icon-volume-up');
             $('#soundicon').addClass('icon-volume-off');
             bgm.get(0).pause();
+            $('#btn_sfx_hover').attr('src', '')[0].play();
+            $('#btn_sfx_click').attr('src', '')[0].play();
             val = 0;
 
         }
         else {
+            // sound on
             $('#soundicon').removeClass('icon-volume-off');
             $('#soundicon').addClass('icon-volume-up');
             bgm.get(0).play();
+            $('#btn_sfx_hover').attr('src', document.location.hostname + '/assets/SFX/btn-hover.mp3')[0].pause();
+            $('#btn_sfx_click').attr('src', document.location.hostname + '/assets/SFX/btn-click.mp3')[0].pause();
+
+            alert(document.location.hostname + '/assets/SFX/btn-hover.mp3');
             val = 1;
         }
 
@@ -141,8 +155,14 @@ $(document).ready(function(){
         $('#battle').modal('hide');
         $('#result').hide();
 
+        $('button .back_to_main').show();
         // return focus on the arena
-        Input.lock(rpg.canvas, true);
+        $('#canvas_rpg-dom').focus();
+        var soundToggle = getCookie();
+
+        if (soundToggle == 1) {
+            parent.changeBGM('arena');
+        }
     });
 
     // battle module attack action
@@ -157,42 +177,51 @@ $(document).ready(function(){
             $('#attack').removeClass('disabled').removeAttr('disabled');
             $('#attack').hide();
             if(response.status) {
-                //$('#debugger').html(JSON.stringify(response));
+                //$('#debugger').html(JSON.stringify(response.player,null,"<br>"));
 
                 $('#player_hp').val(response.player.hp);
                 $('#enemy_hp').val(response.enemy.hp);
 
                 // TODO: make skill effect random from hit1.png to hit3 png see style.css
 
-                setTimeout(function(){
-                    updateHPBars('player',response.player.hp_percent);
+                if(!response.enemy.is_dead) {
+                    setTimeout(function(){
+                        updateHPBars('player',response.player.hp_percent);
 
-                    $("#player_img .skill").css('visibility','visible');
-                    $("#player_img .skill").sprite({
+                        $("#player_img .skill").css('visibility','visible');
+                        $("#player_img .skill").sprite({
+                            fps: 9,
+                            no_of_frames: 5,
+                            on_first_frame: function(obj) {
+                                    damageAnim("player", response.player.damage );
+                            },
+                            on_last_frame: function(obj) {
+                                $("#player_img .skill").css('visibility','hidden');
+                                $("#player_img .skill").destroy();
+
+                                $('#player_hp_div').html(response.player.hp);
+                            }
+                        });
+                    }, 1000);
+                }
+
+                    updateHPBars('enemy',response.enemy.hp_percent);
+
+                    $("#enemy_img .skill").css('visibility','visible');
+                    $("#enemy_img .skill").sprite({
                         fps: 9,
                         no_of_frames: 5,
+                        on_first_frame: function(obj) {
+                                damageAnim("enemy", response.enemy.damage );
+                        },
                         on_last_frame: function(obj) {
-                            $("#player_img .skill").css('visibility','hidden');
-                            $("#player_img .skill").destroy();
-                            damageAnim("player", response.player.damage );
-                            $('#player_hp_div').html(response.player.hp);
+                            $("#enemy_img .skill").css('visibility','hidden');
+                            $("#enemy_img .skill").destroy();
+
+                            $('#enemy_hp_div').html(response.enemy.hp);
                         }
                     });
-                }, 1000);
 
-                updateHPBars('enemy',response.enemy.hp_percent);
-
-                $("#enemy_img .skill").css('visibility','visible');
-                $("#enemy_img .skill").sprite({
-                    fps: 9,
-                    no_of_frames: 5,
-                    on_last_frame: function(obj) {
-                        $("#enemy_img .skill").css('visibility','hidden');
-                        $("#enemy_img .skill").destroy();
-                        damageAnim("enemy", response.enemy.damage );
-                        $('#enemy_hp_div').html(response.enemy.hp);
-                    }
-                });
 
                 if(response.player.is_dead && response.result) {
 
@@ -210,10 +239,11 @@ $(document).ready(function(){
                 if(response.enemy.is_dead && response.result) {
                     $('#result')
                     .html(response.result)
+                    .delay(1000)
                     .fadeIn('fast',function(){
                         $('#attack').hide();
                     })
-                    .delay(1000)
+                    .delay(2000)
                     .fadeOut('fast',function(){
 
                         if(response.has_levelup && response.has_rank) {
@@ -228,9 +258,10 @@ $(document).ready(function(){
                                 .fadeIn('fast')
                                 .delay(2000)
                                 .fadeOut(function(){
-                                    $('#attr_points').html(response.ap);
-                                    $('#ap_modal').removeData("modal").modal({backdrop: 'static', keyboard: false})
-                                    $('#battle').modal('hide');
+                                        $('#attr_points').html(response.ap);
+                                        $('#ap_modal').removeData("modal").modal({backdrop: 'static', keyboard: false})
+                                        $('#ap_hide').val(response.ap);
+                                        $('#battle').modal('hide');
                                 });
                             });
 
@@ -242,6 +273,7 @@ $(document).ready(function(){
                             .fadeOut(function(){
                                 $('#attr_points').html(response.ap);
                                 $('#ap_modal').removeData("modal").modal({backdrop: 'static', keyboard: false})
+                                $('#ap_hide').val(response.ap);
                                 $('#battle').modal('hide');
                             });
 
@@ -343,11 +375,9 @@ function getCookie()
 
 function changeBGM(sound){
     var src="/assets/Audio/BGM/" + sound;
-    audio_core_ogg=$('#arenabgm').attr('src', src + '.ogg')[1]
-    audio_core_ogg.play();
+        audio_core_ogg=$('#arenabgm').attr('src', src + '.ogg')[1]
+        audio_core_ogg.play();
 
-    audio_core_mp3=$('#arenabgm').attr('src', src + '.mp3')[0]
-    audio_core_mp3.play();
+        audio_core_mp3=$('#arenabgm').attr('src', src + '.mp3')[0]
+        audio_core_mp3.play();
 }
-
-

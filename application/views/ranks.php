@@ -4,11 +4,14 @@
 <div class="tbl" style="width: 542px; left: 50px; top: 65px; height: 370px;">&nbsp;</div> <!-- DON'T DELETE THIS DIV, used in bg -->
 
 <ul class="nav nav-tabs ul_nav" id="rankTab" style="width: 85%;">
-    <li class="active" style="width: 50%;">
-        <a href="#title"><h5>Title</h5></a>
+    <li class="active" style="width: 35%;">
+        <a href="#title"><h5>By Ranks</h5></a>
     </li>
-    <li style="width: 50%;">
-        <a href="#level"><h5>Level</h5></a>
+    <li style="width: 35%">
+        <a href="#level"><h5>By Level</h5></a>
+    </li>
+    <li style="width: 30%;">
+        <a href="#ranks"><h5>Titles</h5></a>
     </li>
 </ul>
 
@@ -94,6 +97,37 @@
                     <td>No result!</td>
                 </tr>
             <?php
+            endif;
+            ?>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- player titles -->
+
+    <div class="tab-pane tab_position" id="ranks" style="width: 100%;">
+        <table width="80%" cellpadding="5" cellspacing="0" border="0px" class="tbl_text tbl_position">
+            <thead>
+            <tr>
+                <th>Rank Title</th>
+                <th>Rank Type</th>
+            </tr>
+            </thead>
+            <tbody>
+            <?php
+            if ($titles):
+                foreach($titles as $title): ?>
+                <tr>
+                    <td><?php echo $title->rank_name ?></td>
+                    <td><?php echo ($title->rank_type == 1) ? 'Common' : 'Rare' ?></td>
+                </tr>
+                    <?php endforeach;
+            else:
+                ?>
+            <tr>
+                <td colspan="2">No result!</td>
+            </tr>
+                <?php
             endif;
             ?>
             </tbody>

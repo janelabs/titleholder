@@ -1,20 +1,14 @@
 <form action="<?php echo site_url() . 'login' ?>" method="post" id="login">
 <div>
-    <input type="text" name="email"  placeholder="email" />
+    <input type="text" name="email"  placeholder="email" id="email" />
 </div>
 <div>
-    <input type="password" name="password" placeholder="password" />
+    <input type="password" name="password" placeholder="password" id="password" />
 </div>
 <div>
-    <input type="submit" id="login-btn"  class="btn btn-primary" data-loading-text="Processing..." value="Login" autocomplete="off" />
+    <input type="submit" id="login_message" class="btn btn-primary" data-loading-text="Processing..." value="Login" autocomplete="off" />
     <!--<input type="submit" value="login">-->
-    <div class="msgcontainer">
-    <div id="msgc" class="alert  fade in ">
 
-    <span id="login_message"></span>
-        <a class="close" href="#">&times;</a>
-    </div>
-    </div>
 </div>
 </form>
 

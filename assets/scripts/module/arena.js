@@ -1,8 +1,10 @@
 var Arena = {
     initView: function() {
+        $('button.back_to_main').show();
         var site_url = $('#site_url').val();
 
         var player_filename = $('#avatar_file').val();
+        var user_id = $('#userid').val();
         var load_path = $('#hcore').val();
         var rpg;
         var battle_events = [];
@@ -17,8 +19,8 @@ var Arena = {
 
             rpg.loadMap('MAP001', {
                 tileset: 'tilea1.png',
-                //events: ['EV001', 'EV002'].concat(battle_events),
-                events: ['EV001', 'EV002', 'EV005', 'EV006', 'EV007'],
+                events: ['EV001', 'EV002'].concat(battle_events),
+                //events: ['EV001', 'EV002', 'EV005', 'EV006', 'EV007'],
                 player:  {
                     x: 26,
                     y: 19,
@@ -26,11 +28,32 @@ var Arena = {
                 }
             }, function () {
                 rpg.player.setTypeMove("tile");
+                rpg.player.useMouse(true);
                 rpg.setScreenIn("Player");
+
+                rpg.bindMouseEvent('over', function(obj) {
+                    $.post(site_url + "arena/displayUserInfo", {uid: user_id}, function(data){
+                        var u_info = $.parseJSON(data);
+                        if (u_info) {
+                            $('#u_hp').html(u_info.hp);
+                            $('#u_atk').html(u_info.attk);
+                            $('#u_def').html(u_info.def);
+                            $('#u_lvl').html(u_info.lvl);
+                            $('#u_exp').html(u_info.xp);
+                        }
+                        $('#userstat').show();
+                    });
+                }, rpg.player);
+
+                rpg.bindMouseEvent('out', function(obj) {
+                    $('#userstat').hide();
+                }, rpg.player);
+
 
                 rpg.onEventCall("battle", function(){
                     var enemy_id = $(this)[0].id;
                     rpg.removeEvent(enemy_id);
+                    $('#arena_frame button.back_to_main').hide();
 
                     $.ajax({
                         url: site_url + 'battle',
@@ -41,14 +64,22 @@ var Arena = {
                         success: function(result) {
                             if (result) {
                                 $('#battle').html(result);
-                                $('#battle').modal({backdrop: 'static', keyboard: false})
+                                $('#battle').modal({backdrop: 'static', keyboard: false});
+
+                                // play battle sound
+                                var soundToggle = getCookie();
+
+                                if (soundToggle == 1) {
+                                    parent.changeBGM('char-main');
+                                }
+
                             }
                         }
                     });
 
                     rpg.refreshMap();
                     $.post(site_url + "arena/replaceevent", {id: enemy_id}, function(){
-                        rpg.addEventAjax('MAP001/EVREP/EV_REP_'+enemy_id);
+                        rpg.addEventAjax('MAP001/EVREP/EV_REP_' + enemy_id);
                     });
                 });
             });
@@ -58,6 +89,7 @@ var Arena = {
     },
 
     battleInitView: function() {
+
         // allocate attribute points
         $('#ap_form').on('submit',function(e){
 
@@ -69,19 +101,31 @@ var Arena = {
 
             $.post(action, param, function(data){
                 $('#ap_form .btn').removeClass('disabled').removeAttr('disabled');
-                alert(data.message);
                 $('#attk, #def, #hp').val(0);
-            },'json');
+                alert(data.message);
+                $('#ap_modal').modal('hide');
+            },'json')
 
             e.preventDefault();
         });
 
         // if input is not numeric, change to 0
-        $('#attk, #def, #hp').on('keyup',function(){
+        $('#attk, #def, #hp').on('change',function(){
             var input = $(this).val();
             var is_numeric = $.isNumeric(input);
-            if (!is_numeric) {
+            var total_ap = parseInt($('#ap_hide').val());
+            var total = 0;
+            $('#attk,#def,#hp').each(function(k,v){
+                total = total + parseInt($(this).val());
+            });
+            if(!total_ap || !is_numeric || (input > total_ap) || (total > total_ap)) {
                 $(this).val(0);
+                var attr_points = total_ap - total;
+                attr_points = (attr_points < 0) ? 0 : attr_points;
+                $('#attr_points').text();
+            } else {
+                var attr_points = total_ap - total;
+                $('#attr_points').text(attr_points);
             }
         });
 

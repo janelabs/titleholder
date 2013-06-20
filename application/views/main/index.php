@@ -15,9 +15,6 @@
             if ($user['avatar_image'] == 'c_01.png') {
                 $left = '-2px';
             }
-            if ($user['avatar_image'] == 'c_04.png') {
-                $left = '-55px';
-            }
         ?>
         <img style="left: <?php echo $left; ?> !important;" id="user_dp" src="<?php echo base_url('assets/images/wb/'.$user['avatar_image']); ?>" />
     </div>
@@ -31,27 +28,27 @@
     <div class="div_child user_stat">
         <table border="0px" class="status" cellpadding="3" cellspacing="3">
             <tr>
-                <td>HP: </td>
-                <td class="td_elem"><?php echo $user['user_hp']; ?></td>
-            </tr>
-            <tr><td></td></tr>
-            <tr>
                 <td>Level: </td>
                 <td class="td_elem"><?php echo $user['user_lvl']; ?></td>
             </tr>
             <tr><td></td></tr>
             <tr>
-                <td>Experience: </td>
+                <td>Exp: </td>
                 <td class="td_elem"><?php echo $user['user_xp']; ?></td>
             </tr>
             <tr><td></td></tr>
             <tr>
-                <td>Attack: </td>
+                <td>HP: </td>
+                <td class="td_elem"><?php echo $user['user_hp']; ?></td>
+            </tr>
+            <tr><td></td></tr>
+            <tr>
+                <td>Atk: </td>
                 <td class="td_elem"><?php echo $user['user_atk']; ?></td>
             </tr>
             <tr><td></td></tr>
             <tr>
-                <td>Defense: </td>
+                <td>Def: </td>
                 <td class="td_elem"><?php echo $user['user_def']; ?></td>
             </tr>
         </table>
@@ -59,21 +56,21 @@
 
     <!-- menu -->
     <div class="div_child">
-        <button id="btn_rank">RANKS</button>
-        <button id="btn_log">LOGS</button>
+        <button id="btn_rank" class="btn">RANKS</button>
+        <button id="btn_log" class="btn">LOGS</button>
     </div>
 
     <!-- arena -->
     <div class="div_child">
-        <button id="btn_arena">ARENA</button>
+        <button id="btn_arena" class="btn">ARENA</button>
     </div>
 
     <div class="div_child">
-        <button id="sound" class="music_toggle"><i id="soundicon" class="icon-volume-up"></i></button>
+        <button id="sound" class="music_toggle minibtn"><i id="soundicon" class="icon-volume-up"></i></button>
     </div>
 
     <div class="div_child">
-        <button id="btn_logout" class="logout"><i class="icon-off"></i></button>
+        <button id="btn_logout" class="logout minibtn"><i class="icon-off"></i></button>
     </div>
 </div>
 </center>

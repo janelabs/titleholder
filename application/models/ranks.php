@@ -70,7 +70,16 @@ ORDER BY `user_data`.`level` DESC LIMIT 5');
 
     }
 
-    public function getTop($int){
+    public function getUserRanks($user_id)
+    {
+        $user_ranks = $this->db
+            ->select('ranks.rank_name, ranks.rank_type, user_ranks.user_id, user_ranks.rank_id')
+            ->join('ranks','ranks.rank_id = user_ranks.rank_id')
+            ->get_where('user_ranks',array('user_ranks.user_id'=>$user_id))
+            ->result();
 
+        return ($user_ranks) ? $user_ranks : false;
     }
+
+
 }

@@ -89,7 +89,16 @@ class Battle extends CI_Controller {
         if($exp_gain && $is_killed) {
             $result = "You won the battle";
 
-            $player_xp = $player_data->xp + $exp_gain->reward_xp;
+            // pet boost on exp, other attribute boost are given upon sign up
+            $boost = ceil(($player_data->pet_xp / 100) * $exp_gain->reward_xp);
+
+            // character boost on exp
+            if($player_data->avatar_exp) {
+                $character_boost = ceil(($player_data->avatar_exp / 100) * $exp_gain->reward_xp);
+                $boost = $boost + $character_boost;
+            }
+
+            $player_xp = $player_data->xp + $exp_gain->reward_xp + $boost;
 
             $player_level = $this->users->get_userlevel($player_xp);
 

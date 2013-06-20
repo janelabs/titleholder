@@ -1,7 +1,10 @@
 
 <div class="main_container"> <!-- start: main container -->
+    <a class="btn btn-danger" href="<?php echo site_url(); ?>" style="position: relative; top: 15px; left: 15px; float: left;">Back</a>
 
     <div class="inner_div"> <!-- start: inner div -->
+
+
 
 <form action="<?php echo site_url('signup') ?>" method="post" id="signup">
 
@@ -73,19 +76,14 @@
         </ul>
         <?php endif; ?>
 
-        <div>
-            <input type="submit" value="Create Account" class="btn btn-inverse" />
-            <a class="btn" href="<?php echo site_url(); ?>">Back</a>
-
-            <div class="msgcontainer">
-                <div class="alert alert-error fade in ">
-
-                    <span id="signup_message"></span>
-                    <a class="close" href="#">&times;</a>
-                </div>
-            </div>
+        <div style="margin: 3px;">
+            <input type="submit" value="Create Account" class="btn btn-inverse" id="signup_message" />
         </div>
     </div>
 </form>
         </div> <!-- end: inner div -->
+    <audio id="registerbgm" autoplay loop>
+        <source src="<?php echo base_url('assets/Audio/BGM/menus.mp3'); ?>">
+        <source src="<?php echo base_url('assets/Audio/BGM/menus.ogg'); ?>">
+    </audio>
 </div> <!-- end: main container -->
