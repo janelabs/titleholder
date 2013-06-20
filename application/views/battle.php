@@ -44,7 +44,7 @@
         <div id="enemy_img" style="margin: 10px auto;">
             <div class="skill"></div>
             <div class="damage"></div>
-            <img src="<?php echo base_url('assets/images/'.$enemy->avatar); ?>" width="80px" height="80px" />
+            <img src="<?php echo base_url('assets/images/placeholder.jpg'); ?>" width="80px" height="80px" />
 <!--            <img src="--><?php //echo site_url('assets/Graphics/Characters/'.$enemy->avatar) ?><!--" />-->
         </div>
     </div>
