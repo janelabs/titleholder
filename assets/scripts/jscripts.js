@@ -116,23 +116,28 @@ $(document).ready(function(){
 
 
     $('#sound').click(function() {
+        var src="/assets/SFX/";
         var bgm = $("#arenabgm");
         var val = 1;
         if ($('#soundicon').hasClass("icon-volume-up")) {
+            // sound off
             $('#soundicon').removeClass('icon-volume-up');
             $('#soundicon').addClass('icon-volume-off');
             bgm.get(0).pause();
-            $('#btn_sfx_hover')[0].pause();
-            $('#btn_sfx_click')[0].pause();
+            $('#btn_sfx_hover').attr('src', '')[0].play();
+            $('#btn_sfx_click').attr('src', '')[0].play();
             val = 0;
 
         }
         else {
+            // sound on
             $('#soundicon').removeClass('icon-volume-off');
             $('#soundicon').addClass('icon-volume-up');
             bgm.get(0).play();
-            $('#btn_sfx_hover')[0].play();
-            $('#btn_sfx_click')[0].play();
+            $('#btn_sfx_hover').attr('src', document.location.hostname + '/assets/SFX/btn-hover.mp3')[0].pause();
+            $('#btn_sfx_click').attr('src', document.location.hostname + '/assets/SFX/btn-click.mp3')[0].pause();
+
+            alert(document.location.hostname + '/assets/SFX/btn-hover.mp3');
             val = 1;
         }
 
