@@ -15,9 +15,6 @@
             if ($user['avatar_image'] == 'c_01.png') {
                 $left = '-2px';
             }
-            if ($user['avatar_image'] == 'c_04.png') {
-                $left = '-55px';
-            }
         ?>
         <img style="left: <?php echo $left; ?> !important;" id="user_dp" src="<?php echo base_url('assets/images/wb/'.$user['avatar_image']); ?>" />
     </div>
