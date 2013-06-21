@@ -187,11 +187,12 @@ class Arena extends CI_Controller {
         if ($user_data) {
             $where = "monster_level BETWEEN {$user_data->level} AND {$user_data->level} + 5";
             $monsters = $this->monsters->getByLevel($where);
+            $enemy = $monsters[array_rand($monsters)] ? $monsters[array_rand($monsters)] : false;
 
-            if (count($monsters) > 0) {
-                $dataOptions['m_id'] = '0'.$monsters[0]->monster_id;
+            if ($enemy) {
+                $dataOptions['m_id'] = '0'.$enemy->monster_id;
                 $dataOptions['name'] = $f_name;
-                $dataOptions['avatar'] = $monsters[0]->monster_avatar;
+                $dataOptions['avatar'] = $enemy->monster_avatar;
                 $dataOptions['msg'] = $msg[array_rand($msg)];
                 $dataOptions['direction'] = $directions[array_rand($directions)];
 

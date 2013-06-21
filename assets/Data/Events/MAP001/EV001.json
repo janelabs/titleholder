@@ -21,7 +21,7 @@
             "alwaysOnTop": false,
             "speed": 4,
             "commands": [
-                "SHOW_TEXT: {'text': 'Hello there!'}",
+                "SHOW_TEXT: {'text': 'I heard that some opponents are hidden somewhere'}",
                 "SELF_SWITCH_ON: 'A'"
             ]
         },
@@ -40,7 +40,7 @@
             "alwaysOnTop": false,
             "speed": 4,
             "commands": [
-                "SHOW_TEXT: {'text': 'You must be you?!!'}"
+                "SHOW_TEXT: {'text': 'Beware when you bumped nothing, that means them!'}"
             ]
         }
     ]
